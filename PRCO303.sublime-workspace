@@ -1,0 +1,283 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"di",
+				"display"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"authorize",
+				"authorize-button"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "AINT304Build",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/PRCO303/index.html",
+		"/C/Users/Adam/Documents/NetBeansProjects/Blog/config.ru",
+		"/C/Users/Adam/Desktop/recrack.bat",
+		"/C/xampp/htdocs/AINT304/src/sass/640.scss",
+		"/C/xampp/htdocs/AINT304/src/sass/main.scss",
+		"/C/xampp/htdocs/AINT304/public/css/main.css",
+		"/C/xampp/htdocs/AINT304/public/index.html",
+		"/C/xampp/htdocs/AINT304/src/sass/768.scss",
+		"/C/xampp/htdocs/AINT304/public/results.html",
+		"/C/xampp/htdocs/AINT304/public/search.html",
+		"/C/xampp/htdocs/AINT304/src/sass/style.scss",
+		"/C/xampp/htdocs/AINT304/src/sass/boilerplate.scss",
+		"/C/xampp/htdocs/AINT304/src/sass/helpers.scss",
+		"/C/Users/Adam/.gitconfig",
+		"/C/xampp/htdocs/AINT304/public/images/preview.png",
+		"/C/xampp/htdocs/AINT304/public/css/normalize.min.css",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/Adam/Downloads/jira_backup.sql",
+		"/C/Users/Adam/Desktop/My Basket - Tesco Groceries_files/standard",
+		"/C/xampp/htdocs/uni/soft335/week1/js/app.js",
+		"/C/Users/Adam/Desktop/dir.rb",
+		"/C/xampp/htdocs/uni/soft335/week1/index.html",
+		"/C/xampp/htdocs/plymouthUG/alpha/js/app.js",
+		"/C/xampp/php/php.ini",
+		"/C/xampp/htdocs/plymouthUG/.gitignore",
+		"/C/Users/Adam/Downloads/DevKit/config.yml",
+		"/C/Users/Adam/Desktop/launcher.rb",
+		"/C/xampp/htdocs/plymouthUG/alpha/css/style.css",
+		"/C/xampp/htdocs/plymouthUG/alpha/index.php",
+		"/C/xampp/apache/conf/extra/httpd-xampp.conf",
+		"/C/xampp/htdocs/plymouthUG/alpha/js/plugins.js",
+		"/C/xampp/htdocs/jgs/index.php",
+		"/C/xampp/htdocs/jgs/assets/css/style.css",
+		"/C/xampp/htdocs/jgs/header.php",
+		"/C/xampp/htdocs/jgs/blog/wp-config.php",
+		"/C/xampp/htdocs/jgs/footer.php",
+		"/C/xampp/htdocs/jgs/blog/index.php",
+		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/really-simple-captcha.php",
+		"/C/xampp/htdocs/scudworks/index2.html",
+		"/C/themehospital/HOSPITAL.CFG",
+		"/C/xampp/htdocs/jgs/assets/js/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.js",
+		"/C/xampp/htdocs/jgs/assets/js/jquery.fancybox/fancybox/jquery.easing-1.3.pack.js",
+		"/C/xampp/htdocs/jgs/assets/js/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.pack.js",
+		"/C/xampp/htdocs/jgs/assets/js/plugins.js",
+		"/C/Users/Adam/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/sidebar.php",
+		"/C/xampp/htdocs/jgs/sidebar.php",
+		"/C/xampp/htdocs/tinypages/website/admin/js/script.js",
+		"/C/xampp/htdocs/tinypages/website/phpinfo.php",
+		"/C/xampp/htdocs/newdubsilo/wp-content/themes/arthemia/header.php",
+		"/C/xampp/htdocs/newdubsilo/wp-config.php",
+		"/C/Users/Adam/Downloads/localhost (1).sql",
+		"/C/xampp/htdocs/jgs/assets/js/script.js",
+		"/C/xampp/htdocs/jgs/services.php",
+		"/C/xampp/htdocs/dubsilo/wp-config.php",
+		"/C/xampp/htdocs/dubsilo/wp-content/themes/arthemia/index.php",
+		"/C/xampp/htdocs/dubsilo/wp-content/themes/arthemia/header.php",
+		"/C/xampp/htdocs/jgs/gardenregeneration.php",
+		"/C/xampp/htdocs/jgs/adviceandideas.php",
+		"/C/xampp/htdocs/dubsilo/bigdump.php",
+		"/C/xampp/htdocs/newdubsilo/bigdump.php",
+		"/C/xampp/htdocs/dubsilo/wp-content/backup-f5c86/dubsilo_wp_20120212_641.sql",
+		"/C/xampp/htdocs/jgs/gardenplantingplans.php",
+		"/C/xampp/htdocs/jgs/gardendesign.php",
+		"/C/xampp/htdocs/jgs/gardenmaintenance.php",
+		"/C/xampp/htdocs/jgs/testimonials.php",
+		"/C/xampp/htdocs/jgs/gardenregeneration.html",
+		"/C/xampp/htdocs/jgs/services/gardenmaintenance.php",
+		"/C/xampp/htdocs/jgs/services/gardenmaintenance",
+		"/C/xampp/htdocs/jgs/about.php",
+		"/C/xampp/htdocs/jgs/gallery.php",
+		"/C/xampp/htdocs/jgs/contact.php",
+		"/C/xampp/htdocs/jgs/assets/css/gallery.php",
+		"/C/xampp/htdocs/jgs/includes/header.php",
+		"/C/xampp/htdocs/jgs/includes/about.php",
+		"/C/xampp/htdocs/jgs/css/style.css",
+		"/C/xampp/htdocs/jgs/index.html",
+		"/C/Users/Adam/Documents/Development/impress.js/README.md",
+		"/C/Users/Adam/Documents/Development/impress.js/js/impress.js",
+		"/C/Users/Adam/Documents/Development/impress.js/css/impress-demo.css",
+		"/C/Users/Adam/Documents/Development/impress.js/index.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"                    $",
+			"#player .track",
+			".search-result:nth-child(even) {",
+			"thubnail",
+			"main-",
+			"search-result",
+			"thubnail",
+			".thubnail",
+			"thubnail",
+			"{\n",
+			"search",
+			".search-submit",
+			"search-submit",
+			"input",
+			"===============\n",
+			"#add",
+			"height",
+			"20px",
+			"text",
+			"NORMAL",
+			"1200px",
+			"cta",
+			"three-col-thumb",
+			"var data",
+			"service-page",
+			">",
+			"imagettftext",
+			">",
+			"reveal",
+			"	-",
+			".transitions",
+			"$.fancybox.transitions",
+			"onCleanup",
+			"3",
+			">",
+			"\"; ?>",
+			"hgroup",
+			"doverlay",
+			"></",
+			" background 500ms ease-in;\n    -moz-transition: background 500ms ease-in;\n    -o-transition: background 500ms ease-in;\n    transition: background 500ms ease-in;",
+			"text",
+			"home",
+			"dubsilo",
+			"feature-list",
+			"hot pi",
+			"font-family",
+			"phone-number",
+			"h3",
+			"h4",
+			"a4",
+			"ul"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"thumbnail",
+			"three-col-heading-thumb",
+			"three-col-thumb"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 109.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 369.0,
+	"status_bar_visible": true
+}

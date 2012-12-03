@@ -1,0 +1,21 @@
+{
+	"build_systems":
+	[
+		{
+			"name" : "Build PRCO303",
+			"cmd" : [ "${project_path}/src/build.sh" ],
+			"working_dir": "${project_path}",
+			"windows":
+			{
+				"cmd": ["${project_path}\\src\\build.bat"]
+			}
+		}
+	],
+
+	"folders":
+	[
+		{
+			"path": "/C/xampp/htdocs/PRCO303"
+		}
+	]
+}
