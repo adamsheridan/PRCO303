@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>My Spiffy Movie Page</title>
+	<style>
+		#player {
+			background: transparent;
+			border: 1px solid red;
+			display: block;
+			height: 400px;
+			width: 400px;
+		}
+
+		iframe {
+			height: 1200px;
+			width: 100%;
+		}
+	</style>
+	 
+</head>
+<body>
+
+ <div id="myMovieLocation">
+ <img src="http://cdn-7.nflximg.com/us/boxshots/large/70068647.jpg" /><br />
+ </div>
+
+ <div id="player"></div>
+
+ <a href="" onclick="javascript:nflx.openPlayer('http://api.netflix.com/catalog/movie/70068647', 0, 0, 'my_consumer_key');">Play</a>
+
+	<br />
+ 
+  <iframe src="http://movies.netflix.com/Movie/70111470"></iframe>
+
+
+ <script src="http://jsapi.netflix.com/us/api/js/api.js"></script>
+
+ <script>
+// nflx.openPlayer(movieId, xPos, yPos, applicationId, type, domId);
+console.log('hello');
+console.log(nflx);
+//nflx.openPlayer("70068647", 0, 0, "applicationId", "type", "player");
+
+/* {
+	 "title_id" : "http://api.netflix.com/catalog/movie/70068647",
+	 "button_type" : ["PLAY_BUTTON"],
+	 "show_logo" : "true",
+	 "x" : "40",
+	 "y" : "20",
+	 "dom_id" : "myMovieLocation",
+	 "application_id" : "my_consumer_key"
+ }*/
+ </script>
+
+</body>
+</html>
