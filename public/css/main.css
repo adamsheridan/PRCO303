@@ -1,0 +1,17 @@
+#artists,
+#releases,
+#songs {
+	border: 1px solid red;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 300px;
+}
+
+#artists li a {
+	background: #000;
+	display: block;
+	
+
+}

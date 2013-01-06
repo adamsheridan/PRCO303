@@ -1,0 +1,92 @@
+//artist
+{
+	_id: '50dde48315b58db448000277',
+	name: 'Skream'
+}
+
+//release
+{
+	_id: "50dde48315b58db448000279",
+	artistid: "50dde48315b58db448000277",
+	title: "Outside The Box",
+	discogsid: "267405",
+	resource_url: "http://api.discogs.com/masters/267405",
+
+	meta: {
+		catno: "TEMPACD016",
+		year: "2010",
+		country: "Europe"
+		style: [
+			"Dubstep",
+			"Drum n Bass"
+		]
+	},
+
+	resources {
+		"images": [
+		{
+            "uri": "http://api.discogs.com/image/R-2421529-1283703220.jpeg",
+            "height": 600,
+            "width": 600,
+            "resource_url": "http://api.discogs.com/image/R-2421529-1283703220.jpeg",
+            "type": "primary",
+            "uri150": "http://api.discogs.com/image/R-150-2421529-1283703220.jpeg"
+        },
+        {
+            "uri": "http://api.discogs.com/image/R-2421529-1355314613-7228.jpeg",
+            "height": 517,
+            "width": 600,
+            "resource_url": "http://api.discogs.com/image/R-2421529-1355314613-7228.jpeg",
+            "type": "secondary",
+            "uri150": "http://api.discogs.com/image/R-150-2421529-1355314613-7228.jpeg"
+        },
+        {
+            "uri": "http://api.discogs.com/image/R-2421529-1355314620-1469.jpeg",
+            "height": 603,
+            "width": 600,
+            "resource_url": "http://api.discogs.com/image/R-2421529-1355314620-1469.jpeg",
+            "type": "secondary",
+            "uri150": "http://api.discogs.com/image/R-150-2421529-1355314620-1469.jpeg"
+        }
+        ],
+
+        "videos": [
+        {
+            "duration": 268,
+            "description": "Skream - Where You Should Be (feat. Sam Frank)",
+            "embed": true,
+            "uri": "http://www.youtube.com/watch?v=TVNpsg7rYS0",
+            "title": "Skream - Where You Should Be (feat. Sam Frank)"
+        },
+        {
+            "duration": 215,
+            "description": "Skream - Listenin' To The Records On My Wall",
+            "embed": true,
+            "uri": "http://www.youtube.com/watch?v=C2pf5roMZ08",
+            "title": "Skream - Listenin' To The Records On My Wall"
+        },
+        {
+            "duration": 3807,
+            "description": "Skream - Outside the Box (Full Album)",
+            "embed": true,
+            "uri": "http://www.youtube.com/watch?v=a8mJgbfkSNs",
+            "title": "Skream - Outside the Box (Full Album)"
+        },
+        {
+            "duration": 257,
+            "description": "Skream - Outside The Box - Cpu",
+            "embed": true,
+            "uri": "http://www.youtube.com/watch?v=7mCBLYLRhXA",
+            "title": "Skream - Outside The Box - Cpu"
+        },
+        {
+            "duration": 241,
+            "description": "Skream — Where You Should Be feat. Sam Frank (OUT NOW!)",
+            "embed": true,
+            "uri": "http://www.youtube.com/watch?v=SfAvnVN72ew",
+            "title": "Skream — Where You Should Be feat. Sam Frank (OUT NOW!)"
+        }
+    	]
+	}
+
+}
