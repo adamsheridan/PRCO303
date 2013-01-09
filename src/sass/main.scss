@@ -1,0 +1,128 @@
+html, body, h1 {
+	padding: 0;
+	margin: 0;
+}
+
+ol, ul {
+	padding: 0;
+}
+
+dl, ol, ul {
+	margin: 0;
+}
+
+header#header {
+	background-color: #3a3a3a;
+	color: #fff;
+	padding: 20px;
+	width: 100%;
+}
+
+#menu {
+	background: #006a94;
+	height: 40px;
+	width: 100%;
+
+	#switch-media {
+		background-color: #007fb1;
+		height: 100%;
+		float: left;
+		width: 280px;
+	}
+
+	#main-nav {
+		height: 100%;
+		width: 1640px;
+
+		li {
+			height: 100%;
+			float: left;
+			a {
+				display: block;
+				height: 100%;
+				width: 150px;
+			}
+		}
+	}
+}
+
+.sidebar {
+	float: left;
+	width: 280px;
+
+	#artists {
+
+		.artist {
+
+			.bold a {
+				font-weight: bold;
+			}
+
+			a {
+				background: #c6e5f1;
+				color: #000;
+				display: block;
+				height: 20px;
+				padding: 10px;
+				text-decoration: none;
+				width: 260px;
+
+				&:hover {
+					background: #8bd1ec;
+				}
+			}
+		}
+	}
+}
+
+#main-section {
+	float: left;
+	width: 1623px;
+}
+
+@-webkit-keyframes spinner {
+	from { -webkit-transform: rotateY(0deg);    }
+	to   { -webkit-transform: rotateY(-90deg); }
+}
+
+#featured-artist {
+	background-position: -200px, -200px;
+	color: #fff;
+	height: 360px;
+	padding: 20px;
+	position: relative;
+	width: 100%;
+
+	#logo {
+		bottom: 20px;
+		left: 20px;
+		position: absolute;
+
+	}
+
+	.show-stats {
+		&#stats {
+			display: block;
+			bottom: 0;
+			position: absolute;
+			right: 0;
+
+			li {
+				background: #2d2d2d url('../images/synkro.png');
+				height: 160px;
+				float: left;
+				list-style: none;
+				width: 160px;
+				-webkit-animation-name: spinner;
+			    -webkit-animation-timing-function: linear;
+			    -webkit-animation-iteration-count: 1;
+			    -webkit-animation-duration: 2s;
+			    -webkit-transform-style: preserve-3d;
+			}
+		}
+	}
+
+	#stats {
+		display: none;
+	}
+}

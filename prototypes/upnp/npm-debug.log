@@ -1,0 +1,128 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'upnp' ]
+2 info using npm@1.1.65
+3 info using node@v0.8.14
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose read json C:\xampp\htdocs\PRCO303\prototypes\upnp\package.json
+6 verbose read json C:\xampp\htdocs\PRCO303\prototypes\upnp\package.json
+7 verbose cache add [ 'upnp', null ]
+8 silly cache add name=undefined spec="upnp" args=["upnp",null]
+9 verbose parsed url { pathname: 'upnp', path: 'upnp', href: 'upnp' }
+10 silly lockFile c93d386f-upnp upnp
+11 verbose lock upnp C:\Users\Adam\AppData\Roaming\npm-cache\c93d386f-upnp.lock
+12 silly lockFile c93d386f-upnp upnp
+13 verbose addNamed [ 'upnp', '' ]
+14 verbose addNamed [ null, '' ]
+15 silly lockFile d35357df-upnp upnp@
+16 verbose lock upnp@ C:\Users\Adam\AppData\Roaming\npm-cache\d35357df-upnp.lock
+17 silly addNameRange { name: 'upnp', range: '', hasData: false }
+18 verbose url raw upnp
+19 verbose url resolving [ 'https://registry.npmjs.org/', './upnp' ]
+20 verbose url resolved https://registry.npmjs.org/upnp
+21 info trying registry request attempt 1 at 02:37:27
+22 http GET https://registry.npmjs.org/upnp
+23 http 200 https://registry.npmjs.org/upnp
+24 silly registry.get cb [ 200,
+24 silly registry.get   { vary: 'Accept',
+24 silly registry.get     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+24 silly registry.get     etag: '"9BEOEXUL63XK908H98FXHNHGR"',
+24 silly registry.get     date: 'Sun, 23 Dec 2012 02:36:37 GMT',
+24 silly registry.get     'content-type': 'application/json',
+24 silly registry.get     'content-length': '1595' } ]
+25 silly addNameRange number 2 { name: 'upnp', range: '', hasData: true }
+26 silly addNameRange versions [ 'upnp', [ '0.0.1' ] ]
+27 verbose addNamed [ 'upnp', '0.0.1' ]
+28 verbose addNamed [ '0.0.1', '0.0.1' ]
+29 silly lockFile 49345db3-upnp-0-0-1 upnp@0.0.1
+30 verbose lock upnp@0.0.1 C:\Users\Adam\AppData\Roaming\npm-cache\49345db3-upnp-0-0-1.lock
+31 silly lockFile 5bff0425-ry-npmjs-org-upnp-upnp-0-0-1-tgz https://registry.npmjs.org/upnp/-/upnp-0.0.1.tgz
+32 verbose lock https://registry.npmjs.org/upnp/-/upnp-0.0.1.tgz C:\Users\Adam\AppData\Roaming\npm-cache\5bff0425-ry-npmjs-org-upnp-upnp-0-0-1-tgz.lock
+33 verbose addRemoteTarball [ 'https://registry.npmjs.org/upnp/-/upnp-0.0.1.tgz',
+33 verbose addRemoteTarball   '45c13e7a86d73719acbbdcea3dd65d8cf15b5093' ]
+34 info retry fetch attempt 1 at 02:37:29
+35 verbose fetch to= C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\tmp.tgz
+36 http GET https://registry.npmjs.org/upnp/-/upnp-0.0.1.tgz
+37 http 200 https://registry.npmjs.org/upnp/-/upnp-0.0.1.tgz
+38 silly shasum updated bytes 10240
+39 info shasum 45c13e7a86d73719acbbdcea3dd65d8cf15b5093
+39 info shasum C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\tmp.tgz
+40 verbose tar unpack C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\tmp.tgz
+41 silly lockFile 10cce02a-9314-0-07620882359333336-package C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\package
+42 verbose lock C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\package C:\Users\Adam\AppData\Roaming\npm-cache\10cce02a-9314-0-07620882359333336-package.lock
+43 silly gunzTarPerm modes [ '755', '644' ]
+44 silly gunzTarPerm extractEntry package.json
+45 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+46 silly gunzTarPerm extractEntry readme.md
+47 silly gunzTarPerm modified mode [ 'readme.md', 438, 420 ]
+48 silly gunzTarPerm extractEntry upnp.js
+49 silly gunzTarPerm modified mode [ 'upnp.js', 438, 420 ]
+50 verbose read json C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\package\package.json
+51 silly lockFile 10cce02a-9314-0-07620882359333336-package C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\package
+52 verbose from cache C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\package\package.json
+53 verbose tar pack [ 'C:\\Users\\Adam\\AppData\\Roaming\\npm-cache\\upnp\\0.0.1\\package.tgz',
+53 verbose tar pack   'C:\\Users\\Adam\\AppData\\Local\\Temp\\npm-2112\\1356230249314-0.07620882359333336\\package' ]
+54 verbose tarball C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz
+55 verbose folder C:\Users\Adam\AppData\Local\Temp\npm-2112\1356230249314-0.07620882359333336\package
+56 silly lockFile 2bb18691-npm-cache-upnp-0-0-1-package-tgz C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz
+57 verbose lock C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz C:\Users\Adam\AppData\Roaming\npm-cache\2bb18691-npm-cache-upnp-0-0-1-package-tgz.lock
+58 silly lockFile 2bb18691-npm-cache-upnp-0-0-1-package-tgz C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz
+59 silly lockFile 2d2b74ee-ing-npm-cache-upnp-0-0-1-package C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package
+60 verbose lock C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package C:\Users\Adam\AppData\Roaming\npm-cache\2d2b74ee-ing-npm-cache-upnp-0-0-1-package.lock
+61 silly lockFile 2d2b74ee-ing-npm-cache-upnp-0-0-1-package C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package
+62 verbose tar unpack C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz
+63 silly lockFile 2d2b74ee-ing-npm-cache-upnp-0-0-1-package C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package
+64 verbose lock C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package C:\Users\Adam\AppData\Roaming\npm-cache\2d2b74ee-ing-npm-cache-upnp-0-0-1-package.lock
+65 silly gunzTarPerm modes [ '755', '644' ]
+66 silly gunzTarPerm extractEntry package.json
+67 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+68 silly gunzTarPerm extractEntry upnp.js
+69 silly gunzTarPerm modified mode [ 'upnp.js', 438, 420 ]
+70 silly gunzTarPerm extractEntry readme.md
+71 silly gunzTarPerm modified mode [ 'readme.md', 438, 420 ]
+72 verbose read json C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package\package.json
+73 silly lockFile 2d2b74ee-ing-npm-cache-upnp-0-0-1-package C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package
+74 silly shasum updated bytes 1302
+75 info shasum 40cd216f0306336c65b298a70637c3668bed6082
+75 info shasum C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz
+76 verbose from cache C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package\package.json
+77 verbose chmod C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz 644
+78 silly chown skipping for windows C:\Users\Adam\AppData\Roaming\npm-cache\upnp\0.0.1\package.tgz
+79 silly lockFile 5bff0425-ry-npmjs-org-upnp-upnp-0-0-1-tgz https://registry.npmjs.org/upnp/-/upnp-0.0.1.tgz
+80 silly lockFile 49345db3-upnp-0-0-1 upnp@0.0.1
+81 silly lockFile d35357df-upnp upnp@
+82 silly resolved [ { name: 'upnp',
+82 silly resolved     description: 'A (crude) UPnP client and server',
+82 silly resolved     keywords: [ 'media', 'device', 'upnp', 'dlna' ],
+82 silly resolved     version: '0.0.1',
+82 silly resolved     author: { name: 'Nicholas Libby', email: 'Xedecimal@gmail.com' },
+82 silly resolved     repository:
+82 silly resolved      { type: 'mercurial',
+82 silly resolved        url: 'https://bitbucket.org/Xedecimal/node-upnp' },
+82 silly resolved     bugs: { url: 'https://bitbucket.org/Xedecimal/node-upnp/issues' },
+82 silly resolved     os: [ 'linux', 'windows', 'mac' ],
+82 silly resolved     main: './upnp',
+82 silly resolved     dependencies: { ssdp: '>=0.0.1', mongodb: '>=0.9.9' },
+82 silly resolved     engines: { node: '>=0.6.11' },
+82 silly resolved     readme: '## Premise\n\nI\'m sure this will fail for the faint of heart. If this does not work for you, which it probably won\'t, drop an issue and I\'ll get to fixing it.\n\n## Usage - Server\n\n\t:::javascript\n\tvar UPNP = require(\'upnp\').UPNP;\n\tupnp = new UPNP;\n\tupnp.server();\n',
+82 silly resolved     readmeFilename: 'readme.md',
+82 silly resolved     _id: 'upnp@0.0.1',
+82 silly resolved     dist: { shasum: '40cd216f0306336c65b298a70637c3668bed6082' },
+82 silly resolved     _from: 'upnp' } ]
+83 info install upnp@0.0.1 into C:\xampp\htdocs\PRCO303\prototypes\upnp
+84 info installOne upnp@0.0.1
+85 error notsup Unsupported
+85 error notsup Not compatible with your operating system or architecture: upnp@0.0.1
+85 error notsup Valid OS:    linux,windows,mac
+85 error notsup Valid Arch:  any
+85 error notsup Actual OS:   win32
+85 error notsup Actual Arch: x64
+86 error System Windows_NT 6.1.7600
+87 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "upnp"
+88 error cwd C:\xampp\htdocs\PRCO303\prototypes\upnp
+89 error node -v v0.8.14
+90 error npm -v 1.1.65
+91 error code EBADPLATFORM
+92 verbose exit [ 1, true ]

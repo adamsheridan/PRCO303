@@ -1,17 +1,92 @@
-#artists,
-#releases,
-#songs {
-	border: 1px solid red;
-	display: block;
-	float: left;
-	margin: 0;
-	padding: 0;
-	width: 300px;
-}
+html, body, h1 {
+  padding: 0;
+  margin: 0; }
 
-#artists li a {
-	background: #000;
-	display: block;
-	
+ol, ul {
+  padding: 0; }
 
-}
+dl, ol, ul {
+  margin: 0; }
+
+header#header {
+  background-color: #3a3a3a;
+  color: #fff;
+  padding: 20px;
+  width: 100%; }
+
+#menu {
+  background: #006a94;
+  height: 40px;
+  width: 100%; }
+  #menu #switch-media {
+    background-color: #007fb1;
+    height: 100%;
+    float: left;
+    width: 280px; }
+  #menu #main-nav {
+    height: 100%;
+    width: 1640px; }
+    #menu #main-nav li {
+      height: 100%;
+      float: left; }
+      #menu #main-nav li a {
+        display: block;
+        height: 100%;
+        width: 150px; }
+
+.sidebar {
+  float: left;
+  width: 280px; }
+  .sidebar #artists .artist .bold a {
+    font-weight: bold; }
+  .sidebar #artists .artist a {
+    background: #c6e5f1;
+    color: #000;
+    display: block;
+    height: 20px;
+    padding: 10px;
+    text-decoration: none;
+    width: 260px; }
+    .sidebar #artists .artist a:hover {
+      background: #8bd1ec; }
+
+#main-section {
+  float: left;
+  width: 1623px; }
+
+@-webkit-keyframes spinner {
+  from {
+    -webkit-transform: rotateY(0deg); }
+
+  to {
+    -webkit-transform: rotateY(-90deg); } }
+
+#featured-artist {
+  background-position: -200px, -200px;
+  color: #fff;
+  height: 360px;
+  padding: 20px;
+  position: relative;
+  width: 100%; }
+  #featured-artist #logo {
+    bottom: 20px;
+    left: 20px;
+    position: absolute; }
+  #featured-artist .show-stats#stats {
+    display: block;
+    bottom: 0;
+    position: absolute;
+    right: 0; }
+    #featured-artist .show-stats#stats li {
+      background: #2d2d2d url("../images/synkro.png");
+      height: 160px;
+      float: left;
+      list-style: none;
+      width: 160px;
+      -webkit-animation-name: spinner;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-iteration-count: 1;
+      -webkit-animation-duration: 2s;
+      -webkit-transform-style: preserve-3d; }
+  #featured-artist #stats {
+    display: none; }

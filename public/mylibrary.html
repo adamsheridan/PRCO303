@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+
+    <header id="header">
+        <h1>PRCO303</h1>
+    </header>
+
+    <nav id="menu">
+
+        <div id="switch-media">
+            Music
+        </div>
+
+        <ul id="main-nav">
+            <li><a href="">Browse</a></li>
+            <li><a href="">My Library</a></li>
+            <li><a href="">Playlists</a></li>
+            <li><a href="">Genres</a></li>
+        </ul>
+
+    </nav>
+
+    <nav class="sidebar">
+        <ul id="artists">
+            <li class="artist bold"><a href="">All Artists (456)</a></li>
+            <li class="artist bold"><a href="">Compilations</a></li>
+            <li class="artist"><a href="">A$AP Rocky</a></li>
+            <li class="artist"><a href="">Addison Groove</a></li>
+            <li class="artist"><a href="">Aerosmith</a></li>
+            <li class="artist"><a href="">Aesop Rock</a></li>
+            <li class="artist"><a href="">AFI</a></li>
+            <li class="artist"><a href="">Akkord</a></li>
+            <li class="artist"><a href="">Alex Metric</a></li>
+            <li class="artist"><a href="">Alexisonfire</a></li>
+            <li class="artist"><a href="">Alient Ant Farm</a></li>
+            <li class="artist"><a href="">Aluna George</a></li>
+            <li class="artist"><a href="">Angels &amp; Airwaves</a></li>
+            <li class="artist"><a href="">Aphex Twin</a></li>
+            <li class="artist"><a href="">Atmosphere</a></li>
+            <li class="artist"><a href="">Baauer</a></li>
+            <li class="artist"><a href="">Babylon System</a></li>
+            <li class="artist"><a href="">Basement Jaxx</a></li>
+            <li class="artist"><a href="">Benga</a></li>
+            <li class="artist"><a href="">Black Eyed Peas</a></li>
+            <li class="artist"><a href="">Blink 182</a></li>
+            <li class="artist"><a href="">Bondax</a></li>
+            <li class="artist"><a href="">Booka Shade</a></li>
+            <li class="artist"><a href="">Brackles</a></li>
+            <li class="artist"><a href="">Brand New</a></li>
+
+        </ul>
+    </nav>
+
+    <div id="main-section">
+
+        <article id="featured-artist" style="background-image: url('http://fanart.tv/fanart/music/c8b03190-306c-4120-bb0b-6f2ebfc06ea9/artistbackground/weeknd-the-50a145747c354.jpg')">
+            <h1>Featured Artist</h1>
+            <img src="http://fanart.tv/fanart/music/c8b03190-306c-4120-bb0b-6f2ebfc06ea9/musiclogo/the-weeknd-4ee692822a3aa.png" id="logo" />
+
+            <ul id="stats">
+                <li id="1" class="closed"></li>
+                <li id="2" class="closed"></li>
+                <li id="3" class="closed"></li>
+            </ul>
+
+        </article>
+
+    </div>
+
+    <script src="js/vendor/jquery-1.8.3.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="js/plugins.js"></script>
+    <!-- <script src="js/main.js"></script>-->
+
+    <script>
+        $(document).ready(function(){
+            $('#featured-artist').hover(function(){
+                $('#stats').addClass('show-stats');
+            }, function(){
+                $('#stats').removeClass('show-stats');
+            });
+        });
+    </script>
+    
+    <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+</body>
+</html>
