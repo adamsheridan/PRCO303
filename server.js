@@ -23,12 +23,13 @@ var db = mongo.connect(db_url, collections);
 
 // routing
 app.get('/', function(req, res){
-  res.sendfile(__dirname + '/public/index.html');
+  res.sendfile(__dirname + '/public/mylibrary.html');
 });
 
 app.use('/images', express.static(__dirname + '/public/images'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/js', express.static(__dirname + '/public/js'));
+app.use('/fonts', express.static(__dirname + '/public/fonts'));
 
 function mkObj(key, val) {
 	var obj = {};

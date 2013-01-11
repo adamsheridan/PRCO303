@@ -13,7 +13,7 @@ $(document).ready(function(){
 			var artist = arr[i].split('|');
 			console.log(artist);
 			if (arr.indexOf('.') != 0) {
-				$artists.append('<li><a href="#" data-artist-id="'+artist[0]+'" class="artist">'+artist[1]+'</a></li>');
+				$artists.append('<li class="artist"><a href="#" data-artist-id="'+artist[0]+'" class="artist">'+artist[1]+'</a></li>');
 			}
 		}
 		//document.write(arr);

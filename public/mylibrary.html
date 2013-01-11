@@ -37,7 +37,7 @@
         <ul id="artists">
             <li class="artist bold"><a href="">All Artists (456)</a></li>
             <li class="artist bold"><a href="">Compilations</a></li>
-            <li class="artist"><a href="">A$AP Rocky</a></li>
+            <!-- <li class="artist"><a href="">A$AP Rocky</a></li>
             <li class="artist"><a href="">Addison Groove</a></li>
             <li class="artist"><a href="">Aerosmith</a></li>
             <li class="artist"><a href="">Aesop Rock</a></li>
@@ -59,7 +59,7 @@
             <li class="artist"><a href="">Bondax</a></li>
             <li class="artist"><a href="">Booka Shade</a></li>
             <li class="artist"><a href="">Brackles</a></li>
-            <li class="artist"><a href="">Brand New</a></li>
+            <li class="artist"><a href="">Brand New</a></li> -->
 
         </ul>
     </nav>
@@ -247,10 +247,14 @@
     <script src="js/vendor/colorThief.js"></script>
 
     <script src="js/plugins.js"></script>
-    <!-- <script src="js/main.js"></script>-->
+    <script src="js/main.js"></script>
 
     <script>
         $(document).ready(function(){
+            var mainWidth = window.innerWidth - 300;
+            console.log(window.innerWidth);
+            $('#main-section').css('width', mainWidth);
+
             $('#featured-artist').hover(function(){
                 $('#stats').addClass('show-stats');
             }, function(){
