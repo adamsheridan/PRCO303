@@ -14,6 +14,10 @@ header#header {
   padding: 20px;
   width: 100%; }
 
+h1#header {
+  color: red;
+  font-family: "proxima_nova_ltbold", comic-sans; }
+
 #menu {
   background: #006a94;
   height: 40px;
@@ -61,6 +65,7 @@ header#header {
   to {
     -webkit-transform: rotateY(-90deg); } }
 
+/* main container modules */
 #featured-artist {
   background-position: -200px, -200px;
   color: #fff;
@@ -81,7 +86,7 @@ header#header {
       background: #2d2d2d url("../images/synkro.png");
       height: 160px;
       float: left;
-      list-style: none;
+      list-style: noen;
       width: 160px;
       -webkit-animation-name: spinner;
       -webkit-animation-timing-function: linear;
@@ -90,3 +95,10 @@ header#header {
       -webkit-transform-style: preserve-3d; }
   #featured-artist #stats {
     display: none; }
+
+.module {
+  background: red;
+  border: 1px solid red;
+  margin: 20px; }
+  .module .thumb-list li {
+    list-style: none; }

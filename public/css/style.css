@@ -1,0 +1,295 @@
+/* Concat stylesheets */
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222; }
+
+body {
+  font-size: 1em;
+  line-height: 1.4; }
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+img {
+  vertical-align: middle; }
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+textarea {
+  resize: vertical; }
+
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
+
+/* ==========================================================================
+ Helper classes
+ ========================================================================== */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  text-indent: -9999px; }
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%; }
+
+.hidden {
+  display: none !important;
+  visibility: hidden; }
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+.invisible {
+  visibility: hidden; }
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  *zoom: 1; }
+
+@font-face {
+  font-family: 'proxima_nova_rgbold';
+  src: url("../fonts/proxima-nova/proximanova-bold-webfont.eot");
+  src: url("../fonts/proxima-nova/proximanova-bold-webfont.svg#proxima_nova_rgbold") format("svg") url("../fonts/proxima-nova/proximanova-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/proxima-nova/proximanova-bold-webfont.woff") format("woff"), url("../fonts/proxima-nova/proximanova-bold-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'proxima_nova_ltbold';
+  src: url("../fonts/proxima-nova/proximanova-semibold-webfont.eot");
+  src: url("../fonts/proxima-nova/proximanova-semibold-webfont.svg#proxima_nova_ltbold") format("svg"), url("../fonts/proxima-nova/proximanova-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/proxima-nova/proximanova-semibold-webfont.woff") format("woff"), url("../fonts/proxima-nova/proximanova-semibold-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'proxima_nova_rgregular';
+  src: url("../fonts/proxima-nova/proximanova-regular-webfont.eot");
+  src: url("../fonts/proxima-nova/proximanova-regular-webfont.svg#proxima_nova_rgregular") format("svg"), url("../fonts/proxima-nova/proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/proxima-nova/proximanova-regular-webfont.woff") format("woff"), url("../fonts/proxima-nova/proximanova-regular-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+html, body, h1 {
+  padding: 0;
+  margin: 0; }
+
+ol, ul {
+  padding: 0; }
+
+dl, ol, ul {
+  margin: 0; }
+
+header#header {
+  background-color: #3a3a3a;
+  color: #fff;
+  padding: 20px;
+  width: 100%; }
+
+h1, h2, h3, .artist a, #switch-media, #main-nav li a {
+  font-family: "proxima_nova_ltbold"; }
+
+#menu {
+  background: #006a94;
+  height: 40px;
+  width: 100%; }
+  #menu #switch-media, #menu #main-nav li a {
+    color: #fff;
+    font-size: 1em;
+    text-decoration: none;
+    text-transform: uppercase; }
+  #menu #switch-media {
+    background-color: #007fb1;
+    height: 30px;
+    float: left;
+    padding: 10px 0 0 0;
+    text-align: center;
+    width: 280px; }
+  #menu #main-nav {
+    height: 100%;
+    margin: 0 auto;
+    width: 400px; }
+    #menu #main-nav li {
+      height: 100%;
+      float: left;
+      text-align: center;
+      width: 100px; }
+      #menu #main-nav li a {
+        display: block;
+        height: 30px;
+        padding: 10px 0 0 0;
+        width: 100px; }
+        #menu #main-nav li a.current {
+          background: #0b4f6a; }
+
+.sidebar {
+  clear: both;
+  float: left;
+  width: 280px; }
+  .sidebar #artists .artist .bold a {
+    font-family: "proxima_nova_rgbold";
+    font-weight: bold; }
+  .sidebar #artists .artist a {
+    background: #c6e5f1;
+    color: #000;
+    display: block;
+    font-family: "proxima_nova_ltbold";
+    height: 20px;
+    padding: 10px;
+    text-decoration: none;
+    width: 260px; }
+    .sidebar #artists .artist a:hover {
+      background: #8bd1ec; }
+
+#main-section {
+  background: #e4f7ff;
+  float: left;
+  width: 1623px; }
+
+@-webkit-keyframes spinner {
+  from {
+    -webkit-transform: rotateY(0deg); }
+
+  to {
+    -webkit-transform: rotateY(-90deg); } }
+
+/* main container modules */
+#featured-artist {
+  background-position: -200px, -200px;
+  color: #fff;
+  height: 360px;
+  padding: 20px;
+  position: relative;
+  width: 100%; }
+  #featured-artist #logo {
+    bottom: 20px;
+    left: 20px;
+    position: absolute; }
+  #featured-artist .show-stats#stats {
+    display: block;
+    bottom: 0;
+    position: absolute;
+    right: 0; }
+    #featured-artist .show-stats#stats li {
+      background: #2d2d2d url("../images/synkro.png");
+      height: 160px;
+      float: left;
+      list-style: none;
+      width: 160px;
+      	/* -webkit-animation-name: spinner;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-iteration-count: 1;
+          -webkit-animation-duration: 2s;
+          -webkit-transform-style: preserve-3d; */ }
+  #featured-artist #stats {
+    display: none; }
+
+.module {
+  margin: 20px; }
+  .module.thumb-list li {
+    height: 200px;
+    list-style: none;
+    float: left;
+    margin: 0 20px 0 0;
+    position: relative; }
+    .module.thumb-list li a {
+      display: block;
+      height: 100%;
+      -webkit-transition: opacity 100ms linear; }
+    .module.thumb-list li .artist-title {
+      bottom: 0px;
+      color: #fff;
+      left: 5px;
+      margin: 0;
+      position: absolute;
+      text-decoration: none; }
+    .module.thumb-list li.item:hover .overlay {
+      opacity: 1; }
+    .module.thumb-list li.item:hover h3 {
+      opacity: 0; }
+    .module.thumb-list li .overlay {
+      color: #fff;
+      display: block;
+      height: 200px;
+      position: absolute;
+      opacity: 0;
+      -webkit-transition: opacity 100ms linear;
+      width: 200px;
+      z-index: 100; }
+      .module.thumb-list li .overlay h1 {
+        font-size: 1.4em;
+        margin: 10px 0 0 10px; }
+      .module.thumb-list li .overlay .thumb-list-info {
+        display: block; }
+        .module.thumb-list li .overlay .thumb-list-info li {
+          display: none;
+          height: 57px;
+          width: 100%; }
+          .module.thumb-list li .overlay .thumb-list-info li h2, .module.thumb-list li .overlay .thumb-list-info li h3 {
+            color: #fff;
+            display: block;
+            opacity: 1;
+            padding: 0;
+            margin: 0;
+            width: 150px; }
+          .module.thumb-list li .overlay .thumb-list-info li h2 {
+            font-size: 1em;
+            margin: 10px 0 0 10px; }
+          .module.thumb-list li .overlay .thumb-list-info li h3 {
+            font-size: 0.8em;
+            margin: 0 0 0 10px;
+            opacity: 0.8; }
+          .module.thumb-list li .overlay .thumb-list-info li:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            background-image: url("../images/play-this-icon.png");
+            background-position: 160px, -180px;
+            background-repeat: no-repeat; }
