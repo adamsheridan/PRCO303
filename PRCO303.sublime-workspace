@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"res",
+				"result"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
 				"di",
 				"display"
 			],
@@ -23,7 +31,7 @@
 			"file": "public/mylibrary.html",
 			"settings":
 			{
-				"buffer_size": 4546,
+				"buffer_size": 11844,
 				"line_ending": "Windows"
 			}
 		},
@@ -31,24 +39,85 @@
 			"file": "src/sass/main.scss",
 			"settings":
 			{
-				"buffer_size": 1856,
+				"buffer_size": 3657,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/style.scss",
+			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 116,
-				"line_ending": "Windows",
-				"name": "@import \"boilerplate.scss\";"
+				"buffer_size": 1472,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/build.sh",
+			"file": "src/sass/640.scss",
 			"settings":
 			{
-				"buffer_size": 108,
+				"buffer_size": 1685,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 8233,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 239,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/C/Users/Adam/AppData/Local/Temp/Rar$DI82.800/MemberModel.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"file": "models/ArtistModel.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_modules/express/Readme.md",
+			"settings":
+			{
+				"buffer_size": 5800,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_modules/mongojs/README.md",
+			"settings":
+			{
+				"buffer_size": 2712,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "datamodels",
+			"settings":
+			{
+				"buffer_size": 2934,
 				"line_ending": "Windows"
 			}
 		}
@@ -77,8 +146,21 @@
 	},
 	"file_history":
 	[
-		"/C/xampp/htdocs/PRCO303/src/sass/768.scss",
+		"/C/xampp/htdocs/node-mvc/config/routes.js",
+		"/C/xampp/htdocs/AINT304/public/search.html",
+		"/C/xampp/htdocs/PRCO303/public/.htaccess",
+		"/C/xampp/htdocs/PRCO303/public/js/vendor/quantize.js",
+		"/C/xampp/htdocs/PRCO303/public/js/plugins.js",
+		"/C/xampp/htdocs/PRCO303/public/js/vendor/colorThief.js",
+		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/Users/Adam/AppData/Local/Temp/Rar$DI36.248/stylesheet.css",
+		"/C/xampp/htdocs/PRCO303/src/sass/style.scss",
+		"/C/xampp/htdocs/PRCO303/src/build.sh",
 		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
+		"/C/Users/Adam/Downloads/color-thief-master/sass/app.sass",
+		"/C/Users/Adam/Downloads/color-thief-master/README.markdown",
+		"/C/xampp/htdocs/PRCO303/src/build.bat",
+		"/C/xampp/htdocs/PRCO303/src/sass/768.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/boilerplate.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/640",
 		"/C/xampp/htdocs/PRCO303/public/css/normalize.css",
@@ -90,9 +172,7 @@
 		"/C/xampp/htdocs/mrbs-1.2.5/web/view_entry.php",
 		"/C/xampp/htdocs/mrbs-1.2.5/web/config.inc.php",
 		"/C/Program Files (x86)/VideoLAN/VLC/lua/http/.hosts",
-		"/C/xampp/htdocs/PRCO303/src/build.bat",
 		"/C/Users/Adam/Downloads/SOFT331Week07.docx",
-		"/C/xampp/htdocs/PRCO303/src/build.sh",
 		"/C/xampp/htdocs/AINT304/AINT304.sublime-project",
 		"/C/xampp/htdocs/PRCO303/PRCO303.sublime-project",
 		"/C/xampp/htdocs/PRCO303/index.html",
@@ -104,7 +184,6 @@
 		"/C/xampp/htdocs/AINT304/public/index.html",
 		"/C/xampp/htdocs/AINT304/src/sass/768.scss",
 		"/C/xampp/htdocs/AINT304/public/results.html",
-		"/C/xampp/htdocs/AINT304/public/search.html",
 		"/C/xampp/htdocs/AINT304/src/sass/style.scss",
 		"/C/xampp/htdocs/AINT304/src/sass/boilerplate.scss",
 		"/C/xampp/htdocs/AINT304/src/sass/helpers.scss",
@@ -193,6 +272,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sendFile",
+			"index",
+			"170px",
+			"    \n",
+			";\n",
 			"                    $",
 			"#player .track",
 			".search-result:nth-child(even) {",
@@ -264,7 +348,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -272,15 +356,15 @@
 					"file": "public/mylibrary.html",
 					"settings":
 					{
-						"buffer_size": 4546,
+						"buffer_size": 11844,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3070,
-								3070
+								198,
+								198
 							]
 						],
 						"settings":
@@ -290,7 +374,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 224.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -300,47 +384,48 @@
 					"file": "src/sass/main.scss",
 					"settings":
 					{
-						"buffer_size": 1856,
+						"buffer_size": 3657,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1735,
-								1735
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage"
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1219.0,
+						"translation.y": 2632.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/sass/style.scss",
+					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 116,
+						"buffer_size": 1472,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								116,
-								116
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_name": "@import \"boilerplate.scss\";",
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -350,23 +435,215 @@
 				},
 				{
 					"buffer": 3,
-					"file": "src/build.sh",
+					"file": "src/sass/640.scss",
 					"settings":
 					{
-						"buffer_size": 108,
+						"buffer_size": 1685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								108,
-								108
+								1685,
+								1685
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "server.js",
+					"settings":
+					{
+						"buffer_size": 8233,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								803,
+								803
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "package.json",
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								239,
+								239
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Adam/AppData/Local/Temp/Rar$DI82.800/MemberModel.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/ArtistModel.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "node_modules/express/Readme.md",
+					"settings":
+					{
+						"buffer_size": 5800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								454,
+								454
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "node_modules/mongojs/README.md",
+					"settings":
+					{
+						"buffer_size": 2712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								898,
+								898
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "datamodels",
+					"settings":
+					{
+						"buffer_size": 2934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								60,
+								60
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -437,6 +714,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 238.0,
+	"side_bar_width": 158.0,
 	"status_bar_visible": true
 }
