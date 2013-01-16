@@ -2,6 +2,9 @@
 {
 	_id: '50dde48315b58db448000277',
 	name: 'Skream'
+    meta: {
+
+    }
 }
 
 //release
@@ -23,7 +26,7 @@
 	},
 
 	resources {
-		"images": [
+		images: [
 		{
             "uri": "http://api.discogs.com/image/R-2421529-1283703220.jpeg",
             "height": 600,
@@ -50,7 +53,7 @@
         }
         ],
 
-        "videos": [
+        videos: [
         {
             "duration": 268,
             "description": "Skream - Where You Should Be (feat. Sam Frank)",

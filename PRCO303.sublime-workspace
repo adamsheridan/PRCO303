@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"librar",
+				"libraryPath"
+			],
+			[
 				"res",
 				"result"
 			],
@@ -28,96 +32,58 @@
 	"buffers":
 	[
 		{
-			"file": "public/mylibrary.html",
-			"settings":
-			{
-				"buffer_size": 11844,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/sass/main.scss",
-			"settings":
-			{
-				"buffer_size": 3657,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/main.js",
-			"settings":
-			{
-				"buffer_size": 1472,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/sass/640.scss",
-			"settings":
-			{
-				"buffer_size": 1685,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 8233,
+				"buffer_size": 1515,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "app/controllers/LibraryController.js",
 			"settings":
 			{
-				"buffer_size": 239,
+				"buffer_size": 1405,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "",
-			"file": "/C/Users/Adam/AppData/Local/Temp/Rar$DI82.800/MemberModel.js",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 593,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "",
-			"file": "models/ArtistModel.js",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "app/views/library/rescan.html",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 203,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "node_modules/express/Readme.md",
+			"file": "app/views/partials/_header.html",
 			"settings":
 			{
-				"buffer_size": 5800,
+				"buffer_size": 579,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "node_modules/mongojs/README.md",
+			"file": "app/views/partials/_footer.html",
 			"settings":
 			{
-				"buffer_size": 2712,
+				"buffer_size": 331,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "datamodels",
+			"file": "config/registerPartials.js",
 			"settings":
 			{
-				"buffer_size": 2934,
+				"buffer_size": 479,
 				"line_ending": "Windows"
 			}
 		}
@@ -146,17 +112,42 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Adam/AppData/Local/Temp/Rar$DI22.008/id3.js",
+		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_menu.html",
+		"/C/xampp/htdocs/PRCO303/app/views/_header.html",
+		"/C/xampp/htdocs/PRCO303/apiroutes",
+		"/C/xampp/htdocs/PRCO303/datamodels",
+		"/C/xampp/htdocs/PRCO303/app/views/test.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_sidebarArtists.html",
+		"/C/xampp/htdocs/PRCO303/app/views/newArtist.html",
+		"/C/xampp/htdocs/PRCO303/config/routes.js",
+		"/C/xampp/htdocs/PRCO303/config/registerPartials.js",
+		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
+		"/C/xampp/htdocs/PRCO303/config/config.js",
+		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
+		"/C/xampp/htdocs/PRCO303/public/index.html",
+		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/xampp/htdocs/PRCO303/public/js/main.js",
+		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
+		"/C/xampp/htdocs/PRCO303/node_modules/mongojs/README.md",
+		"/C/xampp/htdocs/PRCO303/node_modules/express/Readme.md",
+		"/C/xampp/htdocs/PRCO303/models/ArtistModel.js",
+		"/C/Users/Adam/AppData/Local/Temp/Rar$DI82.800/MemberModel.js",
+		"/C/xampp/htdocs/PRCO303/package.json",
+		"/C/Program Files/nodejs/nodejsvars.bat",
 		"/C/xampp/htdocs/node-mvc/config/routes.js",
 		"/C/xampp/htdocs/AINT304/public/search.html",
 		"/C/xampp/htdocs/PRCO303/public/.htaccess",
 		"/C/xampp/htdocs/PRCO303/public/js/vendor/quantize.js",
 		"/C/xampp/htdocs/PRCO303/public/js/plugins.js",
 		"/C/xampp/htdocs/PRCO303/public/js/vendor/colorThief.js",
-		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
 		"/C/Users/Adam/AppData/Local/Temp/Rar$DI36.248/stylesheet.css",
 		"/C/xampp/htdocs/PRCO303/src/sass/style.scss",
 		"/C/xampp/htdocs/PRCO303/src/build.sh",
-		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/Users/Adam/Downloads/color-thief-master/sass/app.sass",
 		"/C/Users/Adam/Downloads/color-thief-master/README.markdown",
 		"/C/xampp/htdocs/PRCO303/src/build.bat",
@@ -165,7 +156,6 @@
 		"/C/xampp/htdocs/PRCO303/src/sass/640",
 		"/C/xampp/htdocs/PRCO303/public/css/normalize.css",
 		"/C/xampp/htdocs/PRCO303/public/css/main.css",
-		"/C/xampp/htdocs/PRCO303/public/index.html",
 		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/package.json",
 		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/test.js",
 		"/C/xampp/htdocs/plym/exchange.plymouth.ac.uk -  home .htm",
@@ -249,12 +239,7 @@
 		"/C/xampp/htdocs/jgs/assets/css/gallery.php",
 		"/C/xampp/htdocs/jgs/includes/header.php",
 		"/C/xampp/htdocs/jgs/includes/about.php",
-		"/C/xampp/htdocs/jgs/css/style.css",
-		"/C/xampp/htdocs/jgs/index.html",
-		"/C/Users/Adam/Documents/Development/impress.js/README.md",
-		"/C/Users/Adam/Documents/Development/impress.js/js/impress.js",
-		"/C/Users/Adam/Documents/Development/impress.js/css/impress-demo.css",
-		"/C/Users/Adam/Documents/Development/impress.js/index.html"
+		"/C/xampp/htdocs/jgs/css/style.css"
 	],
 	"find":
 	{
@@ -272,6 +257,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"data",
 			"sendFile",
 			"index",
 			"170px",
@@ -348,28 +334,28 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/mylibrary.html",
+					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 11844,
+						"buffer_size": 1515,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								198,
-								198
+								462,
+								523
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -381,45 +367,44 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/sass/main.scss",
+					"file": "app/controllers/LibraryController.js",
 					"settings":
 					{
-						"buffer_size": 3657,
+						"buffer_size": 1405,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1009,
+								1009
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2632.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "public/js/main.js",
+					"file": "config/routes.js",
 					"settings":
 					{
-						"buffer_size": 1472,
+						"buffer_size": 593,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								501,
+								501
 							]
 						],
 						"settings":
@@ -435,25 +420,23 @@
 				},
 				{
 					"buffer": 3,
-					"file": "src/sass/640.scss",
+					"file": "app/views/library/rescan.html",
 					"settings":
 					{
-						"buffer_size": 1685,
+						"buffer_size": 203,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1685,
-								1685
+								117,
+								117
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -463,24 +446,25 @@
 				},
 				{
 					"buffer": 4,
-					"file": "server.js",
+					"file": "app/views/partials/_header.html",
 					"settings":
 					{
-						"buffer_size": 8233,
+						"buffer_size": 579,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								803,
-								803
+								399,
+								399
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -490,23 +474,23 @@
 				},
 				{
 					"buffer": 5,
-					"file": "package.json",
+					"file": "app/views/partials/_footer.html",
 					"settings":
 					{
-						"buffer_size": 239,
+						"buffer_size": 331,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								239,
-								239
+								250,
+								250
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -516,134 +500,24 @@
 				},
 				{
 					"buffer": 6,
-					"file": "/C/Users/Adam/AppData/Local/Temp/Rar$DI82.800/MemberModel.js",
+					"file": "config/registerPartials.js",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 479,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								479,
+								479
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "models/ArtistModel.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "node_modules/express/Readme.md",
-					"settings":
-					{
-						"buffer_size": 5800,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								454,
-								454
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "node_modules/mongojs/README.md",
-					"settings":
-					{
-						"buffer_size": 2712,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								898,
-								898
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "datamodels",
-					"settings":
-					{
-						"buffer_size": 2934,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								60,
-								60
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -714,6 +588,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 158.0,
+	"side_bar_width": 176.0,
 	"status_bar_visible": true
 }

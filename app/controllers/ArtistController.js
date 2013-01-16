@@ -23,3 +23,13 @@ exports.create = function(req, res){
 		} 
 	}); */
 }
+
+// edit
+
+// update
+
+// destroy
+
+// show
+
+// index
