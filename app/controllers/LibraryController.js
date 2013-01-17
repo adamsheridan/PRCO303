@@ -6,24 +6,40 @@ var hbs = require('hbs'),
 	wrench = require('wrench'),
 	util = require('util'),
 	libraryPath = 'D:/Music/',
-	ID3 = require('id3');
+	ID3 = require('id3'),
+	mongoose = require('mongoose'),
+	async = require('async');
 
 exports.index = function (req, res){
-	console.log('library index controller');
+	console.log('library index controller', __dirname);
 
-	var data = {
-		locals: {
-			title: 'Library Index'
+	var Artists = mongoose.model('Artist');
+
+	/* Artists.findAll(function(err, artists){
+		//console.log('artists', artists);
+		data.artists = artists;
+		console.log('data', data);
+		res.render('library/index', data);
+	}); */
+
+	async.parallel({
+		artistsAll: function (){
+			Artists.find({});
 		},
+		artistsOne: function (callback){
+			Artists.find({name: 'Adam'}, callback);
+		}
+	}, function(results){
+		/* res.render('library/index', {
+			locals: {
+				title: 'async test'
+			},
+			artists: total.artistsAll,
+			artistsOne: total.artistsOne
+		}); */
+		console.log('results: ', results);
+	});
 
-		users: [
-			{username: 'asheridan', firstName: 'Adam', lastName: 'Sheridan'},
-            {username: 'sbrown', firstName: 'Sam', lastName: 'Brown'},
-            {username: 'bollins', firstName: 'Bo', lastName: 'Llins'}
-		]
-	}
-	
-	res.render('library/index', data);
 }
 
 exports.rescan = function (req, res) {
