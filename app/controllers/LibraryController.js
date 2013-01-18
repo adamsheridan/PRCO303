@@ -11,35 +11,28 @@ var hbs = require('hbs'),
 	async = require('async');
 
 exports.index = function (req, res){
-	console.log('library index controller', __dirname);
 
 	var Artists = mongoose.model('Artist');
 
-	/* Artists.findAll(function(err, artists){
-		//console.log('artists', artists);
-		data.artists = artists;
-		console.log('data', data);
-		res.render('library/index', data);
-	}); */
-
 	async.parallel({
-		artistsAll: function (){
-			Artists.find({});
+		artistsAll: function (callback){
+			Artists.find({}, function(err, result){
+				callback(null, result);
+			});
 		},
 		artistsOne: function (callback){
-			Artists.find({name: 'Adam'}, callback);
+			Artists.find({name: 'Adam'}, function(err, result){
+				callback(null, result);
+			});
 		}
-	}, function(results){
-		/* res.render('library/index', {
+	}, function(err, results){
+		res.render('library/index', {
 			locals: {
-				title: 'async test'
+				title: 'Library Index'
 			},
-			artists: total.artistsAll,
-			artistsOne: total.artistsOne
-		}); */
-		console.log('results: ', results);
+			artists: results.artistsAll
+		})
 	});
-
 }
 
 exports.rescan = function (req, res) {
@@ -99,3 +92,7 @@ exports.genres = function (req, res) {
 	}
 	res.render('library/genres', data);
 } 
+
+exports.artist = function (req, res, val) {
+	console.log('hello', val);
+}

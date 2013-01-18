@@ -2,6 +2,6 @@
         <ul id="artists">
             <li class="artist bold"><a href="">All Artists (456)</a></li>
             <li class="artist bold"><a href="">Compilations</a></li>
-            {{#artists}}<li class="artist"><a href="">{{name}}</a></li>{{/artists}}
+            {{#artists}}<li class="artist"><a href="/library/artist/{{_id}}" data-artist-id="{{_id}}">{{name}}</a></li>{{/artists}}
         </ul>
     </nav>

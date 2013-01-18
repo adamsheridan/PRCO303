@@ -1,4 +1,5 @@
 var express = require('express'),
+    params = require('express-params'),
 	events = require('events'),
     http = require('http'),
     fs = require('fs'),
@@ -6,6 +7,8 @@ var express = require('express'),
     app = express(),
     mongoose = require('mongoose'),
     hbs = require('hbs');
+
+    params.extend(app);
     //server = http.createServer(app),
     //mongo = require('mongojs'),
     //ObjectId = mongo.ObjectId;
