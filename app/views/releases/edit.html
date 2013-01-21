@@ -1,0 +1,40 @@
+{{>_header}}
+{{>_menu}}
+	<p>{{locals.message}}</p>
+	<h1>Editing Release</h1>
+
+	<input type="text" id="releaseid" value="{{release.id}}" disabled /><br />
+	<input type="text" id="releasename" name="release_name" value="{{release.title}}" />
+
+	<button id="submit-edit" type="submit">Submit</button>
+
+	<script>
+	$('#submit-edit').click(function(e){
+		e.preventDefault();
+		var id = $('#releaseid').val(),
+			title = $('#releasename').val().toString();
+
+		//console.log(id, name);
+		console.log('title', typeof(title), title.length);
+
+		$.ajax({
+			url: '/releases/'+id,
+			type: 'PUT',
+			data: {
+				title: title
+			},
+			success: function (data, textStatus, jqXHR) {
+				console.log('--------------- DATA SENT ---------------');
+				console.log(textStatus);
+				console.dir(jqXHR);
+			},
+			error: function(jqXHR, textStatus, error) {
+				console.log('--------------- ERROR ---------------');
+				console.log(error);
+				console.log(textStatus);
+				console.dir(jqXHR);
+			}
+		});
+	});
+	</script>
+{{>_footer}}

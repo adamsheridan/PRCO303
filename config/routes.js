@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 //var mongoose = require('mongoose');
 module.exports = function (app, express) {
 	var library = require('../app/controllers/LibraryController'),
-		artists = require('../app/controllers/ArtistController')
+		artists = require('../app/controllers/ArtistController'),
+		releases = require('../app/controllers/ReleaseController'),
 		browse = require('../app/controllers/BrowseController');
 
 	var Artist = mongoose.model('Artist');
@@ -27,7 +28,7 @@ module.exports = function (app, express) {
 	app.put('/artists/:id', artists.update);
 	app.delete('/artists/:id', artists.destroy);
 
-	/*//releases
+	//releases
 	app.get('/releases/', releases.index);
 	app.get('/releases/new', releases.new);
 	app.post('/releases/', releases.create);
@@ -37,6 +38,7 @@ module.exports = function (app, express) {
 	app.delete('/releases/:id', releases.destroy);
 
 	//songs
+	/*
 	app.get('/songs/', songs.index);
 	app.get('/songs/new', songs.new);
 	app.post('/songs/', songs.create);
