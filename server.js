@@ -19,6 +19,9 @@ var express = require('express'),
 //upnp prototype
 //require('./prototypes/upnp/upnp.js');
 
+//batch jobs
+//require('./config/batch.js');
+
 var libraryPath = '/Users/adam/Music/iTunes/iTunes Media/Music/';
 
 // configure application

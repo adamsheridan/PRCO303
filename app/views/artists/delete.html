@@ -1,0 +1,39 @@
+{{>_header}}
+{{>_menu}}
+	<p>{{locals.message}}</p>
+	<h1>Delete Artist</h1>
+
+	<input type="text" id="artistid" value="{{artist.id}}" disabled /><br />
+	<input type="text" id="artistname" name="artist_name" value="{{artist.name}}" />
+
+	<button id="submit-edit" type="submit">Submit</button>
+
+	<script>
+	$('#submit-edit').click(function(e){
+		e.preventDefault();
+		var id = $('#artistid').val(),
+			name = $('#artistname').val();
+
+		//console.log(id, name);
+
+		$.ajax({
+			url: '/artists/'+id,
+			type: 'DELETE',
+			data: {
+				name: name
+			},
+			success: function (data, textStatus, jqXHR) {
+				console.log('--------------- DATA SENT ---------------');
+				console.log(textStatus);
+				console.dir(jqXHR);
+			},
+			error: function(jqXHR, textStatus, error) {
+				console.log('--------------- ERROR ---------------');
+				console.log(error);
+				console.log(textStatus);
+				console.dir(jqXHR);
+			}
+		});
+	});
+	</script>
+{{>_footer}}

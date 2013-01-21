@@ -1,0 +1,9 @@
+{{>_header}}
+{{>_menu}}
+	<p>{{locals.message}}
+	<h1>New Artist</h1>
+	<form method="POST" action="/artists/">
+		<input type="text" name="artist_name" />
+		<button type="submit">Submit</button>
+	</form>
+{{>_footer}}

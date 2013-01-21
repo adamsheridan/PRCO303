@@ -1,6 +1,7 @@
 //artist
 {
 	_id: '50dde48315b58db448000277',
+    type: "artist",
 	name: 'Skream'
     meta: {
 
@@ -10,6 +11,7 @@
 //release
 {
 	_id: "50dde48315b58db448000279",
+    type: "release"
 	artistid: "50dde48315b58db448000277",
 	title: "Outside The Box",
 	discogsid: "267405",
@@ -92,4 +94,14 @@
     	]
 	}
 
+}
+
+song {
+    _id: "50dde48315b58db448005342",
+    type: "song",
+    artistid: "50dde48315b58db448000277",
+    artist_name: "Skream",
+    releaseid: "50dde48315b58db448000279",
+    release_name: "Outside the Box",
+    location: "D:/Skream/Outside the Box/05 Where you should be.mp3"
 }
