@@ -16,6 +16,9 @@ var express = require('express'),
     //sanitize = require('validator').sanitize;
     //$ = require('jquery');
 
+//upnp prototype
+//require('./prototypes/upnp/upnp.js');
+
 var libraryPath = '/Users/adam/Music/iTunes/iTunes Media/Music/';
 
 // configure application
