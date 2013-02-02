@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-	Artist = mongoose.model('Artist');
+	Artist = mongoose.model('Artist'),
+	Song = mongoose.model('Song');
 
 // index
 exports.index = function (req, res) {
@@ -79,6 +80,7 @@ exports.edit = function (req, res) {
 		}
 	});
 }
+
 // update
 exports.update = function (req, res) {
 	console.log('update with: ', req.params.id, req.body.name);
@@ -94,6 +96,7 @@ exports.update = function (req, res) {
 		}
 	});
 }
+
 // destroy
 exports.destroy = function (req, res) {
 	Artist.find({_id: req.params.id}, function(err, artists){

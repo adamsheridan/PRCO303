@@ -19,7 +19,8 @@ exports.new = function(req, res) {
 
 exports.create = function(req, res){
 	song = new Model();
-	song.artist = req.body.song_artist;
+	song.artistid = req.body.song_artist;
+	song.releaseid = req.body.song_releaseid;
 	song.title = req.body.song_title;
 	song.location = req.body.song_location;
 
@@ -91,5 +92,31 @@ exports.update = function (req, res) {
 exports.destroy = function (req, res) {
 	Model.find({_id: req.params.id}, function(err, docs){
 		console.log('deleting', docs);
+	});
+}
+
+// IndexByArtist
+exports.indexByArtist = function (req, res) {
+	Model.find({ artistid: req.params.artistid }, function(err, docs){
+		if (err) { console.log(err) } else {
+			res.writeHead(200, {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"
+			});
+			res.end(JSON.stringify(docs));
+		}
+	});
+}
+
+// IndexByArtist
+exports.indexByRelease = function (req, res) {
+	Model.find({ releaseid: req.params.releaseid }, function(err, docs){
+		if (err) { console.log(err) } else {
+			res.writeHead(200, {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"
+			});
+			res.end(JSON.stringify(docs));
+		}
 	});
 }

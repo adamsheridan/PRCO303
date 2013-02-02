@@ -3,8 +3,8 @@
 	<p>{{locals.message}}</p>
 	<h1>New Release</h1>
 	<form action="/releases/" method="POST">
-	<input type="text" id="releasename" name="release_name" value="{{release.name}}" />
-	<input type="text" id="releaseartistid" name="release_artistid" value="" />
+	Release Name<input type="text" id="releasename" name="release_name" value="{{release.name}}" /><br />
+	Artist Id<input type="text" id="releaseartistid" name="release_artistid" value="" />
 
 	<button id="submit-edit" type="submit">Submit</button>
 	</form>

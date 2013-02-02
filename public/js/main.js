@@ -24,21 +24,29 @@ $(document).ready(function(){
         		var url = State.url;
         		var id = url.substring(url.lastIndexOf('/') + 1);
         		console.log('id is', id);
-	        		$.ajax({
-						url: '/artists/'+id,
-						type: 'GET',
-						success: function (data, textStatus, jqXHR) {
-							//console.log(data)
-							console.log(data[0].name);
-							$('#artist-name').text(data[0].name)
-						},
-						error: function(jqXHR, textStatus, error) {
-							console.log('--------------- ERROR ---------------');
-							console.log(error);
-							console.log(textStatus);
-							console.dir(jqXHR);
+        		$.ajax({
+					url: '/artists/'+id+'/releases',
+					type: 'GET',
+					success: function (data, textStatus, jqXHR) {
+						//console.log(data)
+						//console.log(data[0].name);
+						console.log('printing...');
+						//$('#main-section').text(data[0])
+
+						var releasesContainer = $('#releases');
+
+						for (var i = 0; i < data.length; i++) {
+							releasesContainer.append('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+							console.log(data[i]);
 						}
-					});
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('--------------- ERROR ---------------');
+						console.log(error);
+						console.log(textStatus);
+						console.dir(jqXHR);
+					}
+				});
         	break;
 
         	case 'tv':
@@ -51,7 +59,7 @@ $(document).ready(function(){
         }
 
     });
-    
+
 	function setWidth() {
 		var mainWidth = window.innerWidth - 300;
         $('#main-section').css('width', mainWidth);

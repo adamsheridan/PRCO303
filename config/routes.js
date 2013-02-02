@@ -31,10 +31,10 @@ module.exports = function (app, express) {
 	app.get('/releases/new', releases.new);
 	app.post('/releases/', releases.create);
 	app.get('/releases/:id', releases.show);
-	app.get('/releases/artist/:artistid', releases.indexByArtist);
 	app.get('/releases/:id/edit', releases.edit);
 	app.put('/releases/:id', releases.update);
 	app.delete('/releases/:id', releases.destroy);
+	app.get('/artists/:artistid/releases', releases.indexByArtist);
 
 	//songs
 	app.get('/songs/', songs.index);
@@ -44,6 +44,8 @@ module.exports = function (app, express) {
 	app.get('/songs/:id/edit', songs.edit);
 	app.put('/songs/:id', songs.update);
 	app.delete('/songs/:id', songs.destroy);
+	app.get('/artists/:artistid/songs', songs.indexByArtist);
+	app.get('/releases/:releaseid/songs', songs.indexByRelease);
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)

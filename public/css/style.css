@@ -135,7 +135,7 @@ header#header {
   padding: 20px 0;
   width: 100%; }
 
-h1, h2, h3, .artist a, #switch-media, #main-nav li a {
+h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   font-family: "proxima_nova_ltbold"; }
 
 #menu {
@@ -339,3 +339,24 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a {
       color: #ccc;
       display: block;
       font-size: 0.9em; }
+
+#releases {
+  background: #e4f7ff;
+  height: 300px;
+  width: 100%; }
+  #releases li {
+    list-style: none; }
+    #releases li a {
+      color: #000;
+      display: block;
+      height: 20px;
+      padding: 10px;
+      text-decoration: none;
+      width: 260px; }
+      #releases li a:hover {
+        background: #8bd1ec; }
+
+#songs {
+  background: #c6eeff;
+  height: 600px;
+  width: 100%; }

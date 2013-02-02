@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 var SongSchema = new Schema({
     id: ObjectId,
     type: { type: String, required: true, default: 'song'},
-    artist: { type: String, required: true },
+    artistid: { type: ObjectId, required: true },
+    releaseid: ObjectId,
     title: { type: String, required: true },
     location: { type: String, required: true }
 });

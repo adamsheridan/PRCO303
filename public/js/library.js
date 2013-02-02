@@ -1,9 +1,22 @@
-(function(){
+var Test = {
+	init: function() {
+		alert('surpriseeeee motherfuckkkaaaaaaaaaahhhhhhhhh!!!!!!!!');
+	},
+	hello: function () {
+		alert('test.hello');
+	}
+};
+
+var Library = (function(){
 
 	var init = function (){
 		elements();
 		getArtists();
 		events();
+	};
+
+	var hello = function () {
+		alert('hello');
 	};
 
 	var events = function () {
@@ -20,7 +33,16 @@
 			//document.title = "Fuck World";
 		});
 
+		$(document).on("click", '#releases a', function(e){
+			e.preventDefault();
+			console.log('yoyoyo');
+			var href = $(this).attr('href'),
+				releaseid = $(this).attr('data-release-id'),
+				text = $(this).text();
 
+			History.pushState({ pageType: 'music' }, text, href);
+			//document.title = "Fuck World";
+		});
 
 	};
 
@@ -58,9 +80,14 @@
 
 	var ajaxNav = function () {
 		//console.log('ajaxing');
-	}
+	};
+
+	var test = function (obj) {
+		alert('test called');
+		console.log('test obj: ', obj);
+	};
 
 	//this.init();
 	init();
 
-}).call(this);
+}());

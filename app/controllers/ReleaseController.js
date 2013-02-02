@@ -35,21 +35,8 @@ exports.new = function(req, res) {
 
 exports.create = function(req, res){
 	release = new Release();
-	release.title = req.body.release_name,
-	release.artistid = req.body.relea
-
-
-
-
-
-
-
-
-
-
-
-
-
+	release.title = req.body.release_name;
+	release.artistid = req.body.release_artistid;
 
 	//console.log('artist will be:', artist);
 
@@ -117,5 +104,17 @@ exports.update = function (req, res) {
 exports.destroy = function (req, res) {
 	Release.find({_id: req.params.id}, function(err, docs){
 		console.log('deleting', docs);
+	});
+}
+
+exports.indexByArtist = function (req, res) {
+	Release.find({ artistid: req.params.artistid }, function(err, docs){
+		if (err) { console.log(err) } else {
+			res.writeHead(200, {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"
+			});
+			res.end(JSON.stringify(docs));
+		}
 	});
 }
