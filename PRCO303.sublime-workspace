@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"e",
+				"e"
+			],
+			[
+				"a",
+				"artistname"
+			],
+			[
 				"librar",
 				"libraryPath"
 			],
@@ -35,55 +43,31 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 1515,
+				"buffer_size": 1689,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/controllers/LibraryController.js",
+			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 1405,
+				"buffer_size": 3468,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "config/routes.js",
+			"file": "public/js/library.js",
 			"settings":
 			{
-				"buffer_size": 593,
+				"buffer_size": 986,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/views/library/rescan.html",
+			"file": "app/views/releases/edit.html",
 			"settings":
 			{
-				"buffer_size": 203,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/partials/_header.html",
-			"settings":
-			{
-				"buffer_size": 579,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/partials/_footer.html",
-			"settings":
-			{
-				"buffer_size": 331,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "config/registerPartials.js",
-			"settings":
-			{
-				"buffer_size": 479,
+				"buffer_size": 1176,
 				"line_ending": "Windows"
 			}
 		}
@@ -112,26 +96,55 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Adam/AppData/Local/Temp/Rar$DI22.008/id3.js",
-		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_menu.html",
-		"/C/xampp/htdocs/PRCO303/app/views/_header.html",
-		"/C/xampp/htdocs/PRCO303/apiroutes",
-		"/C/xampp/htdocs/PRCO303/datamodels",
-		"/C/xampp/htdocs/PRCO303/app/views/test.html",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_sidebarArtists.html",
-		"/C/xampp/htdocs/PRCO303/app/views/newArtist.html",
 		"/C/xampp/htdocs/PRCO303/config/routes.js",
-		"/C/xampp/htdocs/PRCO303/config/registerPartials.js",
+		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ReleaseController.js",
+		"/C/xampp/htdocs/PRCO303/app/views/releases/edit.html",
 		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
+		"/C/xampp/htdocs/PRCO303/public/index.html",
+		"/C/xampp/htdocs/PRCO303/config/registerPartials.js",
+		"/C/xampp/htdocs/PRCO303/app/views/artists/new.html",
+		"/C/xampp/htdocs/PRCO303/public/css/main.css",
+		"/C/xampp/htdocs/PRCO303/apiroutes",
+		"/C/xampp/htdocs/PRCO303/config/batch.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
+		"/C/xampp/htdocs/PRCO303/node_modules/sndlsadnsad_node-vlc/package.json",
+		"/C/xampp/htdocs/PRCO303/app/views/releases/new.html",
+		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
+		"/C/xampp/htdocs/PRCO303/app/views/library/artist.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
+		"/C/xampp/htdocs/PRCO303/public/js/vendor/historyjs/History.md",
+		"/C/xampp/htdocs/PRCO303/app/views/songs/edit.html",
+		"/C/xampp/htdocs/PRCO303/app/views/songs/new.html",
+		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
+		"/C/xampp/htdocs/PRCO303/app/views/artists/edit.html",
+		"/C/xampp/htdocs/PRCO303/app/views/songs/delete.html",
+		"/C/xampp/htdocs/PRCO303/app/views/releases/delete.html",
+		"/C/xampp/htdocs/PRCO303/app/views/artists/delete.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
+		"/C/xampp/htdocs/PRCO303/app/views/newArtist.html",
+		"/C/xampp/htdocs/PRCO303/public/js/main.js",
+		"/C/xampp/htdocs/PRCO303/datamodels",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_sidebarArtists.html",
+		"/C/xampp/htdocs/PRCO303/prototypes/upnp/upnp.js",
+		"/C/xampp/htdocs/PRCO303/config/shell.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController",
+		"/C/xampp/htdocs/PRCO303/app/views/library/rescan.html",
+		"/C/xampp/htdocs/PRCO303/app/views/browse/index.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_menu.html",
+		"/C/xampp/htdocs/PRCO303/server - Copy.js",
+		"/C/xampp/htdocs/PRCO303/app/views/browse/playlists.html",
+		"/C/xampp/htdocs/PRCO303/app/views/library/playlists.html",
+		"/C/xampp/htdocs/PRCO303/app/views/library/genres.html",
+		"/C/Users/Adam/AppData/Local/Temp/Rar$DI22.008/id3.js",
+		"/C/xampp/htdocs/PRCO303/app/views/_header.html",
+		"/C/xampp/htdocs/PRCO303/app/views/test.html",
 		"/C/xampp/htdocs/PRCO303/config/config.js",
 		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
-		"/C/xampp/htdocs/PRCO303/public/index.html",
 		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
-		"/C/xampp/htdocs/PRCO303/public/js/main.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/xampp/htdocs/PRCO303/node_modules/mongojs/README.md",
 		"/C/xampp/htdocs/PRCO303/node_modules/express/Readme.md",
@@ -155,7 +168,6 @@
 		"/C/xampp/htdocs/PRCO303/src/sass/boilerplate.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/640",
 		"/C/xampp/htdocs/PRCO303/public/css/normalize.css",
-		"/C/xampp/htdocs/PRCO303/public/css/main.css",
 		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/package.json",
 		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/test.js",
 		"/C/xampp/htdocs/plym/exchange.plymouth.ac.uk -  home .htm",
@@ -211,35 +223,7 @@
 		"/C/Users/Adam/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/sidebar.php",
 		"/C/xampp/htdocs/jgs/sidebar.php",
-		"/C/xampp/htdocs/tinypages/website/admin/js/script.js",
-		"/C/xampp/htdocs/tinypages/website/phpinfo.php",
-		"/C/xampp/htdocs/newdubsilo/wp-content/themes/arthemia/header.php",
-		"/C/xampp/htdocs/newdubsilo/wp-config.php",
-		"/C/Users/Adam/Downloads/localhost (1).sql",
-		"/C/xampp/htdocs/jgs/assets/js/script.js",
-		"/C/xampp/htdocs/jgs/services.php",
-		"/C/xampp/htdocs/dubsilo/wp-config.php",
-		"/C/xampp/htdocs/dubsilo/wp-content/themes/arthemia/index.php",
-		"/C/xampp/htdocs/dubsilo/wp-content/themes/arthemia/header.php",
-		"/C/xampp/htdocs/jgs/gardenregeneration.php",
-		"/C/xampp/htdocs/jgs/adviceandideas.php",
-		"/C/xampp/htdocs/dubsilo/bigdump.php",
-		"/C/xampp/htdocs/newdubsilo/bigdump.php",
-		"/C/xampp/htdocs/dubsilo/wp-content/backup-f5c86/dubsilo_wp_20120212_641.sql",
-		"/C/xampp/htdocs/jgs/gardenplantingplans.php",
-		"/C/xampp/htdocs/jgs/gardendesign.php",
-		"/C/xampp/htdocs/jgs/gardenmaintenance.php",
-		"/C/xampp/htdocs/jgs/testimonials.php",
-		"/C/xampp/htdocs/jgs/gardenregeneration.html",
-		"/C/xampp/htdocs/jgs/services/gardenmaintenance.php",
-		"/C/xampp/htdocs/jgs/services/gardenmaintenance",
-		"/C/xampp/htdocs/jgs/about.php",
-		"/C/xampp/htdocs/jgs/gallery.php",
-		"/C/xampp/htdocs/jgs/contact.php",
-		"/C/xampp/htdocs/jgs/assets/css/gallery.php",
-		"/C/xampp/htdocs/jgs/includes/header.php",
-		"/C/xampp/htdocs/jgs/includes/about.php",
-		"/C/xampp/htdocs/jgs/css/style.css"
+		"/C/xampp/htdocs/tinypages/website/admin/js/script.js"
 	],
 	"find":
 	{
@@ -257,6 +241,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"History",
+			"res",
 			"data",
 			"sendFile",
 			"index",
@@ -334,7 +320,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -342,15 +328,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 1515,
+						"buffer_size": 1689,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								462,
-								523
+								1563,
+								1483
 							]
 						],
 						"settings":
@@ -367,44 +353,45 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/controllers/LibraryController.js",
+					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 1405,
+						"buffer_size": 3468,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1009,
-								1009
+								1238,
+								1238
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 168.0,
+						"translation.y": 84.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "config/routes.js",
+					"file": "public/js/library.js",
 					"settings":
 					{
-						"buffer_size": 593,
+						"buffer_size": 986,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								501,
-								501
+								883,
+								883
 							]
 						],
 						"settings":
@@ -420,103 +407,23 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/views/library/rescan.html",
+					"file": "app/views/releases/edit.html",
 					"settings":
 					{
-						"buffer_size": 203,
+						"buffer_size": 1176,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								117,
-								117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/partials/_header.html",
-					"settings":
-					{
-						"buffer_size": 579,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								399,
-								399
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/views/partials/_footer.html",
-					"settings":
-					{
-						"buffer_size": 331,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								250,
-								250
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "config/registerPartials.js",
-					"settings":
-					{
-						"buffer_size": 479,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								479,
-								479
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -588,6 +495,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 176.0,
+	"side_bar_width": 240.0,
 	"status_bar_visible": true
 }

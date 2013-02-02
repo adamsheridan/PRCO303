@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 var ReleaseSchema = new Schema({
     id: ObjectId,
+    artistid: { type: ObjectId, required: true, default: '50f6b41bd4c2de54b0ffe47a'},
     type: { type: String, required: true, default: 'release'},
     title: { type: String, required: true }
 });

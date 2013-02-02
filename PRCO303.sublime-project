@@ -2,23 +2,31 @@
 	"build_systems":
 	[
 		{
-			"name" : "Build PRCO303",
-			"cmd" : [ "${project_path}/src/build.sh" ],
-			"working_dir": "${project_path}",
+			"cmd":
+			[
+				"${project_path}/src/build.sh"
+			],
+			"name": "Build PRCO303",
 			"windows":
 			{
-				"cmd": ["${project_path}\\src\\build.bat"]
-			}
+				"cmd":
+				[
+					"${project_path}\\src\\build.bat"
+				]
+			},
+			"working_dir": "${project_path}"
 		}
 	],
-
 	"folders":
 	[
 		{
 			"path": "/C/xampp/htdocs/PRCO303"
 		},
 		{
-			"path": "/Applications/MAMP/htdocs/PRCO303/"
+			"path": "/Applications/MAMP/htdocs/PRCO303"
+		},
+		{
+			"path": "/C/Users/Adam/Desktop/demo"
 		}
 	]
 }

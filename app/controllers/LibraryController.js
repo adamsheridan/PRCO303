@@ -14,7 +14,7 @@ exports.index = function (req, res){
 
 	var Artists = mongoose.model('Artist');
 
-	async.parallel({
+	/* async.parallel({
 		artistsAll: function (callback){
 			Artists.find({}, function(err, result){
 				callback(null, result);
@@ -32,6 +32,12 @@ exports.index = function (req, res){
 			},
 			artists: results.artistsAll
 		})
+	}); */
+
+	res.render('library/index', {
+		locals: {
+			title: 'Index'
+		}
 	});
 }
 
@@ -94,5 +100,6 @@ exports.genres = function (req, res) {
 } 
 
 exports.artist = function (req, res, val) {
-	console.log('hello', val);
+	console.log('HELLO ARTIST');
+	res.render('library/artist');
 }

@@ -5,12 +5,27 @@ var mongoose = require('mongoose'),
 exports.index = function (req, res) {
 
 	Release.find({}, function(err, docs){
-		res.send(docs);
+		res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+		res.end(JSON.stringify(docs));
+	});
+}
+
+exports.indexByArtist = function (req, res) {
+
+	Release.find({ artistid: req.params.artistid }, function(err, docs){
+		res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+		res.end(JSON.stringify(docs));
 	});
 }
 
 exports.new = function(req, res) {
-	console.log('new release')
+	console.log('new release');
 	res.render('releases/new', {
 		locals: {
 			title: 'New Release'
@@ -20,7 +35,21 @@ exports.new = function(req, res) {
 
 exports.create = function(req, res){
 	release = new Release();
-	release.title = req.body.release_name;
+	release.title = req.body.release_name,
+	release.artistid = req.body.relea
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	//console.log('artist will be:', artist);
 

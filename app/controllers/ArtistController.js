@@ -4,8 +4,12 @@ var mongoose = require('mongoose'),
 // index
 exports.index = function (req, res) {
 
-	Artist.find({}, function(err, artists){
-		res.send(artists)
+	Artist.find({}, function(err, docs){
+		res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+		res.end(JSON.stringify(docs));
 	});
 }
 
@@ -47,7 +51,11 @@ exports.create = function(req, res){
 // show
 exports.show = function (req, res) {
 	Artist.find({_id: req.params.id}, function(err, artists){
-		res.send(artists);
+		res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+		res.end(JSON.stringify(artists));
 	});
 }
 

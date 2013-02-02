@@ -1,6 +1,85 @@
+(function(){
+
+	var app = {
+		init: function() {
+			console.log('APP INIT');
+		}
+	}
+
+	app.init();
+
+}).call(this);
+
 $(document).ready(function(){
 
-	var socket = io.connect(window.location.protocol + '//' + window.location.host);
+	var History = window.History;
+
+	History.Adapter.bind(window,'statechange', function(){ 
+	    var State = History.getState();
+        History.log(State.data, State.title, State.url);
+
+        switch(State.data.pageType) {
+        	case 'music':
+        		//console.log('music ting', State.url);
+        		var url = State.url;
+        		var id = url.substring(url.lastIndexOf('/') + 1);
+        		console.log('id is', id);
+	        		$.ajax({
+						url: '/artists/'+id,
+						type: 'GET',
+						success: function (data, textStatus, jqXHR) {
+							//console.log(data)
+							console.log(data[0].name);
+							$('#artist-name').text(data[0].name)
+						},
+						error: function(jqXHR, textStatus, error) {
+							console.log('--------------- ERROR ---------------');
+							console.log(error);
+							console.log(textStatus);
+							console.dir(jqXHR);
+						}
+					});
+        	break;
+
+        	case 'tv':
+        		console.log('tv ting');
+        	break;
+
+        	case 'movie':
+        		console.log('movie ting');
+        	break;
+        }
+
+    });
+    
+	function setWidth() {
+		var mainWidth = window.innerWidth - 300;
+        $('#main-section').css('width', mainWidth);
+        console.log('widthSet')
+	}
+
+	setWidth();
+
+	/* console.log('histroy.length: ', history.length);
+
+	checkURL();
+
+	var lastURL;
+
+	function checkURL(hash) {
+		if (!hash) var hash = window.location.hash;
+		console.log('hash=', hash);
+		console.log('window.location.hash', window.location.hash);
+		if (hash != lastURL) {
+			lastURL = hash;
+			loadPage(hash);
+		}
+	}
+
+	function loadPage(url) {
+		console.log('url:', url)
+	}*/
+	/* var socket = io.connect(window.location.protocol + '//' + window.location.host);
 
 	socket.on('connect', function () {
 	    console.log('connected');
@@ -51,5 +130,7 @@ $(document).ready(function(){
 		console.log('emitting', id);
 		socket.emit('getReleases', id);
 	});
+
+*/
 
 });

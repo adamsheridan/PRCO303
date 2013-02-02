@@ -1,0 +1,13 @@
+{{>_header}}
+{{>_menu}}
+	<p>{{locals.message}}</p>
+	<h1>New Songs</h1>
+	<form action="/songs/" method="POST">
+	<label for="song_artist">Artist</label><input type="text" id="songartist" name="song_artist" /><br />
+	<label for="song_title">Title</label><input type="text" id="songtitle" name="song_title" /><br />
+	<label for="song_location">Location</label><input type="text" id="songlocation" name="song_location" /><br />
+
+	<button id="submit-edit" type="submit">Submit</button>
+	</form>
+
+{{>_footer}}

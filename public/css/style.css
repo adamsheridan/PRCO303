@@ -132,7 +132,7 @@ dl, ol, ul {
 header#header {
   background-color: #3a3a3a;
   color: #fff;
-  padding: 20px;
+  padding: 20px 0;
   width: 100%; }
 
 h1, h2, h3, .artist a, #switch-media, #main-nav li a {
@@ -206,7 +206,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a {
   background-position: 20%, 30%;
   color: #fff;
   height: 360px;
-  padding: 20px;
+  padding: 20px 0;
   position: relative;
   width: 100%; }
   #featured-artist #logo {
@@ -292,3 +292,50 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a {
             background-image: url("../images/play-this-icon.png");
             background-position: 160px, -180px;
             background-repeat: no-repeat; }
+
+/* player */
+#player {
+  background: #2f2f2f;
+  bottom: 0;
+  display: block;
+  height: 80px;
+  position: fixed;
+  width: 100%; }
+  #player #controls {
+    color: #fff;
+    height: 100%;
+    float: left; }
+    #player #controls li {
+      float: left;
+      margin: 17px 0 0 0; }
+      #player #controls li a {
+        background: url("../images/play-controls-sprite.png");
+        border: 1px solid lime;
+        display: block;
+        height: 40px;
+        text-indent: -9999px;
+        width: 40px; }
+        #player #controls li a.back {
+          background-position: -81px 0px; }
+        #player #controls li a.forward {
+          background-position: -121px 0px; }
+        #player #controls li a.play {
+          background-position: 0px 0px; }
+  #player #info {
+    height: 100%;
+    float: left; }
+    #player #info #thumb {
+      background: red;
+      float: left;
+      height: 50px;
+      margin: 10px;
+      width: 50px; }
+    #player #info h2 {
+      color: #fff;
+      display: block;
+      font-size: 1.2em;
+      float: left; }
+    #player #info h4 {
+      color: #ccc;
+      display: block;
+      font-size: 0.9em; }
