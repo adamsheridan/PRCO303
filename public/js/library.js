@@ -29,19 +29,38 @@ var Library = (function(){
 				artistid = $(this).attr('data-artist-id'),
 				text = $(this).text();
 
-			History.pushState({ pageType: 'music' }, text, href);
+			History.pushState({ 
+				navigate: true, 
+				source: 'artist-sidebar', 
+				target: '#releases', 
+				contentType: 'artistIndex',
+				meta: {
+					artistid: artistid
+				}
+			}, text, href);
 			//document.title = "Fuck World";
 		});
 
 		$(document).on("click", '#releases a', function(e){
 			e.preventDefault();
-			console.log('yoyoyo');
+
 			var href = $(this).attr('href'),
 				releaseid = $(this).attr('data-release-id'),
 				text = $(this).text();
 
-			History.pushState({ pageType: 'music' }, text, href);
-			//document.title = "Fuck World";
+			History.pushState({ 
+				navigate: true, 
+				source: '#releases a', 
+				target: '#songs', 
+				contentType: 'releaseIndex',
+				meta: {
+					releaseid: releaseid
+				}
+			}, text, href);
+			/* 
+
+			
+			//document.title = "Fuck World"; */
 		});
 
 	};
@@ -72,14 +91,9 @@ var Library = (function(){
 			//console.log($sidebarArtists);
 			for (var i = 0; i < data.length; i++) {
 				//console.log(data[i])
-				$sidebarArtists.append('<li class="artist"><a href="/library/artist/'+data[i]._id+'" data-artist-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
+				$sidebarArtists.append('<li class="artist"><a href="/library/artist/'+data[i]._id+'/releases/" data-artist-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
 			}
-			ajaxNav();
 		}
-	};
-
-	var ajaxNav = function () {
-		//console.log('ajaxing');
 	};
 
 	var test = function (obj) {

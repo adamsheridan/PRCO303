@@ -15,8 +15,7 @@ module.exports = function (app, express) {
 	app.get('/', library.index);
 
 
-	//	API ROUTING	//
-
+	//// API ROUTING ////
 	//artists
 	app.get('/artists/', artists.index);
 	app.get('/artists/new', artists.new);
@@ -49,7 +48,18 @@ module.exports = function (app, express) {
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)
-	
+	app.get('/library/artist/:id/releases/', function(req, res){
+		res.render('library/index');
+	});
+
+	app.get('/library/release/:id', function(req, res){
+		res.render('library/index');
+	});
+
+
+	app.get('/library/artist/:artistid/releases/', function(req, res){
+		res.render('library/index');
+	});
 
 	/* app.get('/library', library.index);
 	app.get('/library/playlists', library.playlists);

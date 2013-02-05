@@ -1,5 +1,8 @@
 	<!-- _footer -->
 	<div id="player">
+		<audio id="html5player" src="/gmusic/VILLAGE%20-%20Takeover.mp3" controls>
+			<!-- <source id="mp3source" type="audio/mpeg"></source> -->
+		</audio>
 		<nav id="controls">
 			<ul>
 				<li><a href="" class="back">Back</a></li>
@@ -12,9 +15,9 @@
 			<h2>Kanye West - Flashing Lights (ft. Dwele)</h2>
 			<h4>Graduation (2006)</h4>
 		</div>
-		<p>0:48</p>
+		<p id="time-current">0:48</p>
 		<div id="seek"></div>
-		<p>3:58</p>
+		<p id="time-remain">3:58</p>
 	</div>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -25,7 +28,8 @@
     </script>
 
     <script src="/js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/library.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/library.js"></script>
+    <script src="/js/audio.js"></script>
 
 </html>

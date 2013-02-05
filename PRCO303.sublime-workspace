@@ -43,7 +43,7 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 1689,
+				"buffer_size": 1684,
 				"line_ending": "Windows"
 			}
 		},
@@ -51,7 +51,7 @@
 			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 3468,
+				"buffer_size": 3495,
 				"line_ending": "Windows"
 			}
 		},
@@ -59,16 +59,41 @@
 			"file": "public/js/library.js",
 			"settings":
 			{
-				"buffer_size": 986,
+				"buffer_size": 1981,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/views/releases/edit.html",
+			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 1176,
+				"buffer_size": 2433,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/sass/main.scss",
+			"settings":
+			{
+				"buffer_size": 4905,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/css/style.css",
+			"settings":
+			{
+				"buffer_size": 9378,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 50,
+				"line_ending": "Windows",
+				"name": "fanart.tv API key 14b4149f558ec78c02c29833e77c0701"
 			}
 		}
 	],
@@ -96,10 +121,20 @@
 	},
 	"file_history":
 	[
-		"/C/xampp/htdocs/PRCO303/config/routes.js",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
+		"/C/xampp/htdocs/PRCO303/app/views/songs/new.html",
 		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
+		"/C/xampp/htdocs/PRCO303/app/views/releases/new.html",
+		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
+		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/ReleaseController.js",
+		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
 		"/C/xampp/htdocs/PRCO303/app/views/releases/edit.html",
+		"/C/Users/Adam/Desktop/demo/index.html",
+		"/C/Users/Adam/Desktop/demo/js/app.js",
+		"/C/xampp/htdocs/PRCO303/config/routes.js",
 		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
 		"/C/xampp/htdocs/PRCO303/public/index.html",
@@ -109,17 +144,10 @@
 		"/C/xampp/htdocs/PRCO303/apiroutes",
 		"/C/xampp/htdocs/PRCO303/config/batch.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
 		"/C/xampp/htdocs/PRCO303/node_modules/sndlsadnsad_node-vlc/package.json",
-		"/C/xampp/htdocs/PRCO303/app/views/releases/new.html",
-		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
 		"/C/xampp/htdocs/PRCO303/app/views/library/artist.html",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
 		"/C/xampp/htdocs/PRCO303/public/js/vendor/historyjs/History.md",
 		"/C/xampp/htdocs/PRCO303/app/views/songs/edit.html",
-		"/C/xampp/htdocs/PRCO303/app/views/songs/new.html",
-		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
 		"/C/xampp/htdocs/PRCO303/app/views/artists/edit.html",
 		"/C/xampp/htdocs/PRCO303/app/views/songs/delete.html",
 		"/C/xampp/htdocs/PRCO303/app/views/releases/delete.html",
@@ -144,7 +172,6 @@
 		"/C/xampp/htdocs/PRCO303/app/views/test.html",
 		"/C/xampp/htdocs/PRCO303/config/config.js",
 		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
-		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/xampp/htdocs/PRCO303/node_modules/mongojs/README.md",
 		"/C/xampp/htdocs/PRCO303/node_modules/express/Readme.md",
@@ -221,9 +248,7 @@
 		"/C/xampp/htdocs/jgs/assets/js/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.pack.js",
 		"/C/xampp/htdocs/jgs/assets/js/plugins.js",
 		"/C/Users/Adam/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/sidebar.php",
-		"/C/xampp/htdocs/jgs/sidebar.php",
-		"/C/xampp/htdocs/tinypages/website/admin/js/script.js"
+		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/sidebar.php"
 	],
 	"find":
 	{
@@ -320,7 +345,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -328,15 +353,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 1689,
+						"buffer_size": 1684,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1563,
-								1483
+								1684,
+								1684
 							]
 						],
 						"settings":
@@ -346,7 +371,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 84.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -356,15 +381,69 @@
 					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 3468,
+						"buffer_size": 3495,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1238,
-								1238
+								1001,
+								1001
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 328.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/js/library.js",
+					"settings":
+					{
+						"buffer_size": 1981,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								924,
+								928
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 126.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "config/routes.js",
+					"settings":
+					{
+						"buffer_size": 2433,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1014,
+								1014
 							]
 						],
 						"settings":
@@ -379,24 +458,24 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "public/js/library.js",
+					"buffer": 4,
+					"file": "src/sass/main.scss",
 					"settings":
 					{
-						"buffer_size": 986,
+						"buffer_size": 4905,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								883,
-								883
+								4710,
+								4710
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -406,25 +485,53 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/views/releases/edit.html",
+					"buffer": 5,
+					"file": "public/css/style.css",
 					"settings":
 					{
-						"buffer_size": 1176,
+						"buffer_size": 9378,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
+								2879,
+								2879
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1373.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "README.md",
+					"settings":
+					{
+						"buffer_size": 50,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								50,
 								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "fanart.tv API key 14b4149f558ec78c02c29833e77c0701",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

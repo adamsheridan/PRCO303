@@ -16,6 +16,11 @@ header#header {
 	color: #fff;
 	padding: 20px 0;
 	width: 100%;
+
+	h1 {
+		display: block;
+		margin: 0 0 0 20px;
+	}
 }
 
 h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
@@ -59,6 +64,10 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 				height: 30px;
 				padding: 10px 0 0 0;
 				width: 100px;
+
+				&:hover {
+					background: #1399ce;
+				}
 				
 				&.current {
 					background: #0b4f6a;
@@ -263,7 +272,6 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 			a {
 				background: url('../images/play-controls-sprite.png');
-				border: 1px solid lime;
 				display: block;
 				height: 40px;
 				text-indent: -9999px;
@@ -280,6 +288,10 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 				&.play {
 					background-position: 0px 0px;
 				}
+
+				&.pause {
+					background-position: -40px 0px;
+				}
 			}
 		}
 	}
@@ -289,7 +301,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 		float: left;
 
 		#thumb {
-			background: red;
+			background: #6b6b6b;
 			float: left;
 			height: 50px;
 			margin: 10px;
@@ -301,13 +313,30 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 			display: block;
 			font-size: 1.2em;
 			float: left;
+			margin: 20px 20px 0 20px;		
 		}
 
 		h4 {
 			color: #ccc;
 			display: block;
 			font-size: 0.9em;
+			margin: 0px 20px 20px 20px;
 		}
+	}
+
+	#time-current, 
+	#time-remain {
+		color: #fff;
+		height: 100%;
+		float: left;
+		margin: 0 20px;
+		padding: 30px 0;
+		width: 40px;
+
+	}
+
+	#html5player {
+		float: right;
 	}
 }
 
@@ -338,4 +367,21 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 	background: #c6eeff;
 	height: 600px;
 	width: 100%;
+
+	li {
+		list-style: none;
+
+		a {
+			color: #000;
+			display: block;
+			height: 20px;
+			padding: 10px;
+			text-decoration: none;
+			width: 260px;
+
+			&:hover {
+				background: #8bd1ec;
+			}
+		}
+	}
 }

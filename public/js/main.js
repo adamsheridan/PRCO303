@@ -12,11 +12,28 @@
 
 $(document).ready(function(){
 
+	$(document).on("click", '.playable', function(e){
+		e.preventDefault();
+		var $this = $(this)
+			href = $this.attr('href').replace('D:', '/media/');
+
+		$('#html5player').attr('src', href)
+		
+	});
+
 	var History = window.History;
 
 	History.Adapter.bind(window,'statechange', function(){ 
 	    var State = History.getState();
         History.log(State.data, State.title, State.url);
+
+        console.log('pushState stuff: ', State.data, State.title, State.url);
+
+        handleURL(State);
+
+        // logic to handle pushState Object
+
+        /*
 
         switch(State.data.pageType) {
         	case 'music':
@@ -24,29 +41,7 @@ $(document).ready(function(){
         		var url = State.url;
         		var id = url.substring(url.lastIndexOf('/') + 1);
         		console.log('id is', id);
-        		$.ajax({
-					url: '/artists/'+id+'/releases',
-					type: 'GET',
-					success: function (data, textStatus, jqXHR) {
-						//console.log(data)
-						//console.log(data[0].name);
-						console.log('printing...');
-						//$('#main-section').text(data[0])
-
-						var releasesContainer = $('#releases');
-
-						for (var i = 0; i < data.length; i++) {
-							releasesContainer.append('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
-							console.log(data[i]);
-						}
-					},
-					error: function(jqXHR, textStatus, error) {
-						console.log('--------------- ERROR ---------------');
-						console.log(error);
-						console.log(textStatus);
-						console.dir(jqXHR);
-					}
-				});
+        		
         	break;
 
         	case 'tv':
@@ -58,7 +53,45 @@ $(document).ready(function(){
         	break;
         }
 
+        */
+
     });
+
+	function handleURL(State) {
+		console.log('pushObj: ', State.data);
+
+		if (State.data.contentType == 'artistIndex') {
+			$.ajax({
+				url: '/artists/'+State.data.meta.artistid+'/releases',
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					var t = State.data.target; // eg '#releases'
+					for (var i = 0; i < data.length; i++) {
+						$(t).html('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+					}
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('AJAX Error: ', error, textStatus, jqXHR);
+				}
+			});
+		} else if (State.data.contentType == 'releaseIndex') {
+			console.log(State.data.target)
+			$.ajax({
+				url: '/releases/'+State.data.meta.releaseid+'/songs',
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					var t = State.data.target; // eg '#releases'
+					console.log('data returned', data);
+					for (var i = 0; i < data.length; i++) {
+						$(t).append('<li><a href="'+data[i].location+'" class="playable" data-song-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+					}
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('AJAX Error: ', error, textStatus, jqXHR);
+				}
+			});
+		}
+	}
 
 	function setWidth() {
 		var mainWidth = window.innerWidth - 300;
