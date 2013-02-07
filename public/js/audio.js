@@ -111,10 +111,16 @@ var Audio = {
 
 		play: function (obj) {
 			Audio.elements.$audioPlayer.attr('src', obj.location);
+			//Audio.eq.setupWebAudio();
 			Audio.player.updateUI(obj.songid);
 			Audio.elements.audioPlayer.play();
 			Audio.player.status = 'playing';
 			Audio.elements.$btnPlay.removeClass('play').addClass('pause');
+			//Audio.eq.draw();
+		},
+
+		stop: function () {
+			Audio.elements.audioPlayer.stop();
 		},
 
 		updateUI: function (songid) {
@@ -136,10 +142,48 @@ var Audio = {
 				}
 			});
 		}
-	}
+	},
 
+	eq: {
+		
+		analyser: '',
+
+		init: function () {
+			Audio.eq.setupCanvas();
+		},
+
+		setupCanvas: function () {
+			$('#header').prepend('<canvas id="eq">Canvas not Supported</canvas>');
+			console.log('audio canvas created');
+		},
+
+		setupWebAudio: function () {
+			var audio = Audio.elements.audioPlayer,
+				audioCtx = new webkitAudioContext();
+			var analyser = audioCtx.createAnalyser();
+			var source = audioCtx.createMediaElementSource(audio);
+
+			source.connect(analyser);
+			analyser.connect(audioCtx.destination);
+
+			console.log(analyser);
+
+			var freqByteData = new Uint8Array(analyser.frequencyBinCount);
+			analyser.getByteFrequencyData(freqByteData);
+			console.log(freqByteData);
+			
+		},
+
+		draw: function() {
+			window.webkitRequestAnimationFrame(Audio.eq.draw);
+			var freqByteData = new Uint8Array(Audio.eq.analyser.frequencyBinCount);
+			Audio.eq.analyser.getByteFrequencyData(freqByteData);
+			console.log(freqByteData);
+		}
+	}
 };
 
 $(function(){
 	Audio.init();
+	Audio.eq.setupCanvas();
 });

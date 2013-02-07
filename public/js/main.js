@@ -12,6 +12,24 @@
 
 $(document).ready(function(){
 
+	var analyser;
+
+	function setupCanvas() {
+		
+	}
+
+	function setupWebAudio() {
+		
+	}
+
+	function draw() {
+		
+	}
+
+	setupCanvas();
+	setupWebAudio();
+	draw();
+
 	$(document).on("click", '.playable', function(e){
 		e.preventDefault();
 		var $this = $(this),

@@ -15,6 +15,7 @@ header#header {
 	background-color: #3a3a3a;
 	color: #fff;
 	padding: 20px 0;
+	position: relative;
 	width: 100%;
 
 	#logo {
@@ -22,6 +23,7 @@ header#header {
 		display: block;
 		height: 40px;
 		margin: 0 0 0 20px;
+		position: relative;
 		text-indent: -999px;
 		width: 175px;
 	}
@@ -388,4 +390,12 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 			}
 		}
 	}
+}
+
+#eq {
+	height: 80px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
