@@ -49,8 +49,6 @@ var Library = (function(){
 				}
 			}, text, href);
 			/* 
-
-			
 			//document.title = "Fuck World"; */
 		});
 

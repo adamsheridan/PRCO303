@@ -90,6 +90,8 @@ $(document).ready(function(){
 				type: 'GET',
 				success: function (data, textStatus, jqXHR) {
 					var t = State.data.target; // eg '#releases'
+					$(t).html('');
+					$('#songs').html('');
 					for (var i = 0; i < data.length; i++) {
 						$(t).html('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
 					}
@@ -106,6 +108,7 @@ $(document).ready(function(){
 				success: function (data, textStatus, jqXHR) {
 					var t = State.data.target; // eg '#releases'
 					console.log('data returned', data);
+					$(t).html('');
 					for (var i = 0; i < data.length; i++) {
 						$(t).append('<li><a href="'+data[i].location+'" class="playable" data-song-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
 					}

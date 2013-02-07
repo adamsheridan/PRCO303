@@ -41,6 +41,10 @@ var Audio = {
 			
 		});
 
+		Audio.elements.$btnPlay.click(function(){
+			Audio.queue.play();
+		});
+
 		Audio.elements.$btnNext.click(function(){
 			Audio.queue.next();
 		});
@@ -91,12 +95,21 @@ var Audio = {
 		},
 
 		next: function () {
+			console.log('next');
 			if (Audio.player.status = 'playing') {
-
+				Audio.player.stop();
+				Audio.queue.position += 1;
+				Audio.player.play(Audio.queue.queue[Audio.queue.position]);
 			}
 		},
 
 		back: function () {
+			console.log('back');
+			if (Audio.player.status = 'playing') {
+				Audio.player.stop();
+				Audio.queue.position -= 1;
+				Audio.player.play(Audio.queue.queue[Audio.queue.position]);
+			}
 		},
 
 		start: function () {
@@ -120,7 +133,11 @@ var Audio = {
 		},
 
 		stop: function () {
-			Audio.elements.audioPlayer.stop();
+			console.log('stopping');
+			Audio.elements.audioPlayer.pause();
+			Audio.elements.$audioPlayer.attr('src', '');
+			Audio.player.status = 'paused';
+			Audio.elements.$btnPlay.removeClass('pause').addClass('play');
 		},
 
 		updateUI: function (songid) {
