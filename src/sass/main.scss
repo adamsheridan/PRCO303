@@ -17,9 +17,13 @@ header#header {
 	padding: 20px 0;
 	width: 100%;
 
-	h1 {
+	#logo {
+		background: url('../images/logo.png') no-repeat;
 		display: block;
+		height: 40px;
 		margin: 0 0 0 20px;
+		text-indent: -999px;
+		width: 175px;
 	}
 }
 

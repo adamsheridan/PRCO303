@@ -1,12 +1,3 @@
-var Test = {
-	init: function() {
-		alert('surpriseeeee motherfuckkkaaaaaaaaaahhhhhhhhh!!!!!!!!');
-	},
-	hello: function () {
-		alert('test.hello');
-	}
-};
-
 var Library = (function(){
 
 	var init = function (){

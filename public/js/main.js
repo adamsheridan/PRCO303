@@ -14,12 +14,18 @@ $(document).ready(function(){
 
 	$(document).on("click", '.playable', function(e){
 		e.preventDefault();
-		var $this = $(this)
+		var $this = $(this),
+			songid = $this.attr('data-song-id'),
 			href = $this.attr('href').replace('D:', '/media/');
 
-		$('#html5player').attr('src', href)
-		
+		Audio.queue.add(songid, href);
+	
 	});
+
+	function addToQueue(songid, href) {
+		//$('#html5player').attr('src', href);
+
+	}
 
 	var History = window.History;
 

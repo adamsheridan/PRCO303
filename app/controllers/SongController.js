@@ -1,5 +1,9 @@
 var mongoose = require('mongoose'),
-	Model = mongoose.model('Song');
+	Model = mongoose.model('Song'),
+	Artist = mongoose.model('Artist'),
+	Release = mongoose.model('Release'),
+	async = require('async');
+
 
 // index
 exports.index = function (req, res) {
@@ -43,8 +47,60 @@ exports.create = function(req, res){
 
 // show
 exports.show = function (req, res) {
+	/*
+	async.parallel({
+		artistsAll: function (callback){
+			Artists.find({}, function(err, result){
+				callback(null, result);
+			});
+		},
+		artistsOne: function (callback){
+			Artists.find({name: 'Adam'}, function(err, result){
+				callback(null, result);
+			});
+		}
+	}, function(err, results){
+		res.render('library/index', {
+			locals: {
+				title: 'Library Index'
+			},
+			artists: results.artistsAll
+		})
+	});
+	*/
+
 	Model.find({_id: req.params.id}, function(err, docs){
-		res.send(docs);
+		console.log(docs[0]);
+		//res.send(docs[0])
+
+		async.parallel({
+			artistid: function(callback){
+				Artist.find({ _id: docs[0].artistid }, function(err, result){
+					callback(null, result[0]);
+				});
+			},
+			releaseid: function(callback){
+				Release.find({ _id: docs[0].releaseid }, function(err, result){
+					callback(null, result[0]);
+				});
+			}
+		}, function (err, results) {
+			if (err) { console.log(err) } else {
+				//console.log('async results:', results, docs[0]);
+				var obj = {};
+				obj._id = docs[0]._id;
+				obj.artistid = docs[0].artistid;
+				obj.artistname = results.artistid.name;
+				obj.releaseid = docs[0].releaseid;
+				obj.releasetitle = results.releaseid.title;
+				obj.songtitle = docs[0].title;
+				obj.location = docs[0].location;
+				console.log('obj is: ', obj)
+				res.send(JSON.stringify(obj));
+
+			}
+		});
+
 	});
 }
 
