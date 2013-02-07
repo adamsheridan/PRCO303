@@ -53,6 +53,15 @@ var Audio = {
 			Audio.queue.back();
 		});
 
+		Audio.queue.elements.$btnQueue.click(function(e){
+			e.preventDefault();
+			if (Audio.queue.displayed == false) {
+				Audio.queue.fx.showQueue();
+			} else {
+				Audio.queue.fx.hideQueue();
+			}	
+		});
+
 		Audio.elements.$audioPlayer.bind('timeupdate', function() {
 			var audio = Audio.elements.audioPlayer;
 			var t = Math.floor(audio.currentTime).toString();
@@ -65,12 +74,38 @@ var Audio = {
 		queue: [],
 		history: [],
 		position: 0,
+		displayed: false,
 
 		init: function(){ 
 		},
 
+		elements: {
+			$queue: $('#queue'),
+			$btnQueue: $('#queue-icon')
+		},
+
+		fx: {
+			showQueue: function () {
+				Audio.queue.elements.$queue.animate({ 'bottom': '80px'});
+				Audio.queue.displayed = true;
+			},
+
+			hideQueue: function(){
+				Audio.queue.elements.$queue.animate({ 'bottom': '0'});
+				Audio.queue.displayed = false;
+			}
+		},
+
 		events: {
 			updated: function(){
+
+				Audio.queue.elements.$queue.html('');
+
+				for (var i = 0; i < Audio.queue.queue.length; i++) {
+					Audio.queue.elements.$queue.append('<li>'+Audio.queue.queue[i].songid+'</li>');
+				}
+
+
 				if (Audio.queue.queue.length > 1) {
 					console.log('not first entry to queue', Audio.queue.queue);
 				} else {

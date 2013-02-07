@@ -423,3 +423,19 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   position: absolute;
   top: 0;
   width: 100%; }
+
+#queue {
+  background: red;
+  bottom: 0;
+  display: block;
+  height: 80px;
+  left: 0;
+  position: fixed;
+  width: 100%; }
+
+#queue-icon {
+  background: lime;
+  display: block;
+  float: left;
+  height: 50px;
+  width: 50px; }
