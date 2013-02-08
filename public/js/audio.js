@@ -127,7 +127,7 @@ var Audio = {
 		updateUI: function(){
 			Audio.queue.elements.$queue.html('');
 			for (var i = 0; i < Audio.queue.queue.length; i++) {
-				Audio.queue.elements.$queue.append('<li>'+Audio.queue.queue[i].artistname+' - '+Audio.queue.queue[i].songtitle+'</li>');
+				Audio.queue.elements.$queue.append('<li data-position="'+i+'">'+Audio.queue.queue[i].artistname+' - '+Audio.queue.queue[i].songtitle+'</li>');
 			}
 		},
 
@@ -207,6 +207,9 @@ var Audio = {
 				Audio.queue.position = parseInt(pos);
 				console.log('obj empty, playing:', obj);
 			}
+
+			$('.current').removeClass('current');
+			$('#queue li[data-position='+Audio.queue.position+']').addClass('current');
 
 			//console.log('queue-position:', Audio.queue.position);
 			console.log('playing: ' +obj.songtitle+' with queue-position: ', Audio.queue.position);

@@ -417,6 +417,10 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 		padding: 10px;
 		margin: 10px;
 		width: 200px;
+
+		&.current {
+			background: yellow;
+		}
 	}
 }
 
