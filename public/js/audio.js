@@ -44,7 +44,7 @@ var Audio = {
 		});
 
 		Audio.elements.$btnPlay.click(function(){
-			Audio.queue.play();
+			Audio.player.play();
 		});
 
 		Audio.elements.$btnNext.click(function(){
@@ -101,7 +101,7 @@ var Audio = {
 		events: {
 			updated: function(){
 
-				Utils.addLocalStorage("queue", JSON.stringify(Audio.queue.queue));
+				Utils.setLocalStorage("queue", JSON.stringify(Audio.queue.queue));
 
 				Audio.queue.updateUI();
 				
@@ -164,7 +164,9 @@ var Audio = {
 			if (Audio.player.status = 'playing') {
 				Audio.player.stop();
 				Audio.queue.position += 1;
-				Audio.player.play(Audio.queue.queue[Audio.queue.position]);
+				var pos = Audio.queue.position,
+					song = Audio.queue.queue[pos];
+				Audio.player.play(song);
 			}
 		},
 
@@ -188,6 +190,21 @@ var Audio = {
 		status: 'paused',
 
 		play: function (obj) {
+
+			if (obj === undefined) {
+
+				console.log('play obj not set');
+				var pos = Utils.getLocalStorage('queue-position'),
+					obj = Audio.queue.queue[pos];
+
+				Audio.queue.position = parseInt(pos);
+				console.log('obj empty, playing:', obj);
+			}
+
+			//console.log('queue-position:', Audio.queue.position);
+			console.log('playing: ' +obj.songtitle+' with queue-position: ', Audio.queue.position);
+			Utils.setLocalStorage('queue-position', Audio.queue.position);
+
 			Audio.elements.$audioPlayer.attr('src', obj.location);
 			//Audio.eq.setupWebAudio();
 			Audio.player.updateUI(obj.songid);

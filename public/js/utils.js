@@ -4,7 +4,7 @@ var Utils = {
 		alert('test');
 	},
 
-	addLocalStorage: function (key, val) {
+	setLocalStorage: function (key, val) {
 		if (Modernizr.localstorage) {
 			localStorage.setItem(key, val);
 		} else {
