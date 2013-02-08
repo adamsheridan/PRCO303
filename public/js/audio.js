@@ -13,6 +13,7 @@ var Audio = {
 		audioPlayer: document.getElementById('html5player'),
 		$audioPlayer: $('#html5player'),
 		$btnPlay: $('#controls .play'),
+		$btnPause: $('#controls .pause'),
 		$btnNext: $('#controls .forward'),
 		$btnBack: $('#controls .back')
 	},
@@ -47,6 +48,10 @@ var Audio = {
 			Audio.player.play();
 		});
 
+		Audio.elements.$btnPause.click(function(e){
+			Audio.player.pause();
+		});
+
 		Audio.elements.$btnNext.click(function(){
 			Audio.queue.next();
 		});
@@ -64,6 +69,12 @@ var Audio = {
 			}	
 		});
 
+		$(document).on("click", "#queue li .delete", function(e){
+			e.preventDefault();
+			var pos = $(this).parent('li').attr('data-position');
+			Audio.queue.remove(parseInt(pos));
+		});
+
 		Audio.elements.$audioPlayer.bind('timeupdate', function() {
 			var audio = Audio.elements.audioPlayer;
 			var t = Math.floor(audio.currentTime).toString();
@@ -71,9 +82,9 @@ var Audio = {
 			$('#player #time-current').html(Utils.formatSecondsAsTime(t));
 		});
 
-		Audio.elements.$audioPlayer.bind('ended', function() {
+		/* Audio.elements.$audioPlayer.bind('ended', function() {
 			Audio.queue.next();
-		});
+		}); */
 	},
 
 	queue: {
@@ -82,12 +93,10 @@ var Audio = {
 		position: 0,
 		displayed: false,
 
-		init: function(){ 
-		},
-
 		elements: {
 			$queue: $('#queue'),
-			$btnQueue: $('#queue-icon')
+			$btnQueue: $('#queue-icon'),
+			$btnDelete: $('#queue li .delete')
 		},
 
 		fx: {
@@ -105,7 +114,7 @@ var Audio = {
 		events: {
 			updated: function(){
 
-				Utils.setLocalStorage("queue", JSON.stringify(Audio.queue.queue));
+				Audio.queue.save();
 
 				Audio.queue.updateUI();
 				
@@ -114,21 +123,29 @@ var Audio = {
 				} else {
 					console.log('first entry to queue! starting audio..');
 					Audio.queue.start();
-				}
-					
+				}	
 			}
 		},
 
 		persist: function () {
-			Audio.queue.queue = JSON.parse(Utils.getLocalStorage("queue"));
-			Audio.queue.updateUI();
+			var savedQueue = JSON.parse(Utils.getLocalStorage("queue"));
+			if (savedQueue.length > 0) {
+				Audio.queue.queue = savedQueue;
+				Audio.queue.updateUI();
+				Audio.queue.fx.showQueue();
+			}
 		},
 
 		updateUI: function(){
 			Audio.queue.elements.$queue.html('');
 			for (var i = 0; i < Audio.queue.queue.length; i++) {
-				Audio.queue.elements.$queue.append('<li data-position="'+i+'">'+Audio.queue.queue[i].artistname+' - '+Audio.queue.queue[i].songtitle+'</li>');
+				Audio.queue.elements.$queue.append('<li data-position="'+i+'">'+Audio.queue.queue[i].artistname+' - '+Audio.queue.queue[i].songtitle+'<a href="" class="delete">x</a></li>');
 			}
+		},
+
+		save: function () {
+			Utils.setLocalStorage("queue", JSON.stringify(Audio.queue.queue));
+			console.log('queue saved');
 		},
 
 		add: function (songid, href) {
@@ -159,8 +176,18 @@ var Audio = {
 			});
 		},
 
-		remove: function (obj) {
-			// write this
+		remove: function (pos) {
+			console.log('queue is:', Audio.queue.queue);
+			console.log('removing: ', Audio.queue.queue[pos]);
+			Audio.queue.queue.remove(pos);
+			console.log('queue is now:', Audio.queue.queue);
+			Audio.queue.updateUI();
+			Audio.queue.save();
+			//$('#queue li[data-position='+pos+']').remove();
+			//Audio.queue.save();
+			//
+			//Audio.queue.position -= 1;
+			//console.log('queue is now: ', Audio.queue.queue, ' at pos: ', Audio.queue.position);
 		},
 
 		next: function () {
@@ -222,6 +249,10 @@ var Audio = {
 			Audio.player.status = 'playing';
 			Audio.elements.$btnPlay.removeClass('play').addClass('pause');
 			//Audio.eq.draw();
+		},
+
+		pause: function () {
+			Audio.elements.audioPlayer.pause();
 		},
 
 		stop: function () {

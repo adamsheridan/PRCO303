@@ -56,67 +56,27 @@
 			}
 		},
 		{
-			"file": "public/js/main.js",
-			"settings":
-			{
-				"buffer_size": 4499,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "public/js/audio.js",
 			"settings":
 			{
-				"buffer_size": 2920,
+				"buffer_size": 7071,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/utils.js",
+			"file": "public/js/fx.js",
 			"settings":
 			{
-				"buffer_size": 372,
+				"buffer_size": 222,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/fonts/Merienda/stylesheet.css",
+			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 86,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/sass/main.scss",
-			"settings":
-			{
-				"buffer_size": 5577,
+				"buffer_size": 4720,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/sass/640.scss",
-			"settings":
-			{
-				"buffer_size": 3118,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/fonts/Merinda_One/stylesheet.css",
-			"settings":
-			{
-				"buffer_size": 86,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Adam/AppData/Local/Temp/Rar$DR11.032/stylesheet.css",
-			"settings":
-			{
-				"buffer_size": 86,
-				"line_ending": "Unix"
 			}
 		},
 		{
@@ -128,10 +88,34 @@
 			}
 		},
 		{
-			"file": "app/views/songs/new.html",
+			"file": "src/sass/main.scss",
 			"settings":
 			{
-				"buffer_size": 1708,
+				"buffer_size": 6079,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/library.js",
+			"settings":
+			{
+				"buffer_size": 2019,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/partials/_footer.html",
+			"settings":
+			{
+				"buffer_size": 1091,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/utils.js",
+			"settings":
+			{
+				"buffer_size": 737,
 				"line_ending": "Windows"
 			}
 		}
@@ -160,20 +144,25 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
+		"/C/xampp/htdocs/PRCO303/public/fonts/Merienda/stylesheet.css",
+		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
+		"/C/xampp/htdocs/PRCO303/public/fonts/Merinda_One/stylesheet.css",
+		"/C/Users/Adam/AppData/Local/Temp/Rar$DR11.032/stylesheet.css",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
+		"/C/xampp/htdocs/PRCO303/app/views/songs/new.html",
 		"/C/xampp/htdocs/PRCO303/src/sass/style.scss",
 		"/C/xampp/htdocs/PRCO303/public/css/style.css",
 		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
-		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
 		"/C/xampp/htdocs/PRCO303/public/js/library.js",
 		"/C/xampp/htdocs/PRCO303/config/routes.js",
 		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/768.scss",
 		"/C/xampp/htdocs/PRCO303/README.md",
-		"/C/xampp/htdocs/PRCO303/app/views/songs/new.html",
 		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
 		"/C/xampp/htdocs/PRCO303/app/views/releases/new.html",
 		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
@@ -217,7 +206,6 @@
 		"/C/xampp/htdocs/PRCO303/app/views/test.html",
 		"/C/xampp/htdocs/PRCO303/config/config.js",
 		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
-		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/xampp/htdocs/PRCO303/node_modules/mongojs/README.md",
 		"/C/xampp/htdocs/PRCO303/node_modules/express/Readme.md",
 		"/C/xampp/htdocs/PRCO303/models/ArtistModel.js",
@@ -283,11 +271,7 @@
 		"/C/xampp/htdocs/jgs/blog/wp-config.php",
 		"/C/xampp/htdocs/jgs/footer.php",
 		"/C/xampp/htdocs/jgs/blog/index.php",
-		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/really-simple-captcha.php",
-		"/C/xampp/htdocs/scudworks/index2.html",
-		"/C/themehospital/HOSPITAL.CFG",
-		"/C/xampp/htdocs/jgs/assets/js/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.js",
-		"/C/xampp/htdocs/jgs/assets/js/jquery.fancybox/fancybox/jquery.easing-1.3.pack.js"
+		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/really-simple-captcha.php"
 	],
 	"find":
 	{
@@ -305,6 +289,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Audio.queue.position",
+			"Localstorage",
+			"next",
 			"font-face",
 			"font",
 			"Audio.elements",
@@ -390,7 +377,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -405,8 +392,8 @@
 						"selection":
 						[
 							[
-								744,
-								744
+								1280,
+								1280
 							]
 						],
 						"settings":
@@ -416,25 +403,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 126.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "public/js/main.js",
+					"file": "public/js/audio.js",
 					"settings":
 					{
-						"buffer_size": 4499,
+						"buffer_size": 7071,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								367,
-								367
+								4723,
+								4723
 							]
 						],
 						"settings":
@@ -442,53 +429,26 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 154.0,
+						"translation.y": 2268.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "public/js/audio.js",
+					"file": "public/js/fx.js",
 					"settings":
 					{
-						"buffer_size": 2920,
+						"buffer_size": 222,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2305,
-								2305
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/js/utils.js",
-					"settings":
-					{
-						"buffer_size": 372,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								372,
-								372
+								121,
+								121
 							]
 						],
 						"settings":
@@ -502,97 +462,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "public/fonts/Merienda/stylesheet.css",
+					"buffer": 3,
+					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 86,
+						"buffer_size": 4720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								86,
-								86
+								1757,
+								1757
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/sass/main.scss",
-					"settings":
-					{
-						"buffer_size": 5577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								197,
-								197
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 126.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/sass/640.scss",
-					"settings":
-					{
-						"buffer_size": 3118,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2696,
-								2696
-							],
-							[
-								2754,
-								2754
-							],
-							[
-								2847,
-								2847
-							],
-							[
-								2921,
-								2921
-							],
-							[
-								2998,
-								2998
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 336.0,
@@ -601,61 +489,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "public/fonts/Merinda_One/stylesheet.css",
-					"settings":
-					{
-						"buffer_size": 86,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								86,
-								86
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/C/Users/Adam/AppData/Local/Temp/Rar$DR11.032/stylesheet.css",
-					"settings":
-					{
-						"buffer_size": 86,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								86,
-								86
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
+					"buffer": 4,
 					"file": "app/views/partials/_header.html",
 					"settings":
 					{
@@ -666,8 +500,8 @@
 						"selection":
 						[
 							[
-								574,
-								574
+								0,
+								0
 							]
 						],
 						"settings":
@@ -683,24 +517,105 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "app/views/songs/new.html",
+					"buffer": 5,
+					"file": "src/sass/main.scss",
 					"settings":
 					{
-						"buffer_size": 1708,
+						"buffer_size": 6079,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								975,
-								975
+								5941,
+								5941
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5284.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/js/library.js",
+					"settings":
+					{
+						"buffer_size": 2019,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1037,
+								1037
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/partials/_footer.html",
+					"settings":
+					{
+						"buffer_size": 1091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								984,
+								984
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "public/js/utils.js",
+					"settings":
+					{
+						"buffer_size": 737,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -744,7 +659,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 109.0
+		"height": 94.0
 	},
 	"replace":
 	{

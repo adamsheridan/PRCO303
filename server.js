@@ -19,6 +19,9 @@ var express = require('express'),
 //upnp prototype
 //require('./prototypes/upnp/upnp.js');
 
+//upnp prototype
+require('./prototypes/id3/id3.js');
+
 //batch jobs
 //require('./config/batch.js');
 

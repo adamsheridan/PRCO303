@@ -421,6 +421,16 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 		&.current {
 			background: yellow;
 		}
+
+		a.delete {
+			background: #000;
+			color: #fff;
+			display: block;
+			height: 100%;
+			float: right;
+			text-decoration: none;
+			width: 30px;
+		}
 	}
 }
 
