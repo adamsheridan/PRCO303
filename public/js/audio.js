@@ -70,6 +70,10 @@ var Audio = {
 	
 			$('#player #time-current').html(Utils.formatSecondsAsTime(t));
 		});
+
+		Audio.elements.$audioPlayer.bind('ended', function() {
+			Audio.queue.next();
+		});
 	},
 
 	queue: {
@@ -167,6 +171,9 @@ var Audio = {
 				var pos = Audio.queue.position,
 					song = Audio.queue.queue[pos];
 				Audio.player.play(song);
+			} else {
+				Audio.queue.position -= 1;
+				Audio.player.play(Audio.queue.queue[Audio.queue.position]);
 			}
 		},
 
