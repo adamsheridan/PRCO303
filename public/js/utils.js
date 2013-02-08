@@ -4,6 +4,23 @@ var Utils = {
 		alert('test');
 	},
 
+	addLocalStorage: function (key, val) {
+		if (Modernizr.localstorage) {
+			localStorage.setItem(key, val);
+		} else {
+			console.log('Local Storage not supported!');
+		}
+	},
+
+	getLocalStorage: function (key) {
+		if (Modernizr.localstorage) {
+			var val = localStorage.getItem(key);
+			return val;
+		} else {
+			console.log('Local Storage not supported!');
+		}
+	},
+
 	formatSecondsAsTime: function (secs, format) {
 		var hr  = Math.floor(secs / 3600);
 		var min = Math.floor((secs - (hr * 3600))/60);

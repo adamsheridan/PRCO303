@@ -6,7 +6,7 @@ var Fx = {
 
 	animateQueue: function () {
 		queue.animate({ 'bottom': '80px'});
-	}
+	},
 
 	flashQueue: function() {
 		console.log('audio init');

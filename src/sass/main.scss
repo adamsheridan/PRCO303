@@ -408,6 +408,16 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 	left: 0;
 	position: fixed;
 	width: 100%;
+
+	li {
+		background: #000;
+		color: #fff;
+		display: block;
+		float: left;
+		padding: 10px;
+		margin: 10px;
+		width: 200px;
+	}
 }
 
 #queue-icon {

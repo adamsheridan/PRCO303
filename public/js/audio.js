@@ -4,6 +4,8 @@ var Audio = {
 		console.log('audio init');
 		//Audio.elements();
 		Audio.events();
+		Audio.queue.persist();
+
 	},
 	
 	elements: {
@@ -99,19 +101,29 @@ var Audio = {
 		events: {
 			updated: function(){
 
-				Audio.queue.elements.$queue.html('');
+				Utils.addLocalStorage("queue", JSON.stringify(Audio.queue.queue));
 
-				for (var i = 0; i < Audio.queue.queue.length; i++) {
-					Audio.queue.elements.$queue.append('<li>'+Audio.queue.queue[i].songid+'</li>');
-				}
-
-
+				Audio.queue.updateUI();
+				
 				if (Audio.queue.queue.length > 1) {
 					console.log('not first entry to queue', Audio.queue.queue);
 				} else {
-					console.log('first entry to queue!');
+					console.log('first entry to queue! starting audio..');
 					Audio.queue.start();
 				}
+					
+			}
+		},
+
+		persist: function () {
+			Audio.queue.queue = JSON.parse(Utils.getLocalStorage("queue"));
+			Audio.queue.updateUI();
+		},
+
+		updateUI: function(){
+			Audio.queue.elements.$queue.html('');
+			for (var i = 0; i < Audio.queue.queue.length; i++) {
+				Audio.queue.elements.$queue.append('<li>'+Audio.queue.queue[i].artistname+' - '+Audio.queue.queue[i].songtitle+'</li>');
 			}
 		},
 
@@ -119,10 +131,28 @@ var Audio = {
 			var obj = {};
 			obj.songid = songid,
 			obj.location = href;
+			obj.queuePosition = Audio.queue.queue.length;
 
-			Audio.queue.queue.push(obj);
-			Audio.queue.events.updated();
-			console.log('added: ', obj);
+			$.ajax({
+				url: '/songs/'+songid,
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					var data = JSON.parse(data);
+					obj.artistname = data.artistname;
+					obj.songtitle = data.songtitle;
+					obj.releasetitle = data.releasetitle;
+
+					Audio.queue.queue.push(obj);
+					Audio.queue.events.updated();
+					console.log('added: ', obj);
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
 		},
 
 		remove: function (obj) {
