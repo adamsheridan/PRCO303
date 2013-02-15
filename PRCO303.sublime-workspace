@@ -51,71 +51,47 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 1798,
+				"buffer_size": 2101,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/audio.js",
+			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 7071,
+				"buffer_size": 2779,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/fx.js",
+			"file": "app/controllers/LibraryController.js",
 			"settings":
 			{
-				"buffer_size": 222,
+				"buffer_size": 3690,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/main.js",
+			"file": "app/controllers/ArtistController.js",
 			"settings":
 			{
-				"buffer_size": 4720,
+				"buffer_size": 2178,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/views/partials/_header.html",
+			"file": "app/models/ArtistModel.js",
 			"settings":
 			{
-				"buffer_size": 603,
+				"buffer_size": 514,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/main.scss",
+			"file": "src/sass/640.scss",
 			"settings":
 			{
-				"buffer_size": 6079,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/library.js",
-			"settings":
-			{
-				"buffer_size": 2019,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/partials/_footer.html",
-			"settings":
-			{
-				"buffer_size": 1091,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/utils.js",
-			"settings":
-			{
-				"buffer_size": 737,
+				"buffer_size": 3118,
 				"line_ending": "Windows"
 			}
 		}
@@ -144,34 +120,40 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
+		"/C/xampp/htdocs/PRCO303/prototypes/id3/id3.js",
+		"/C/xampp/htdocs/PRCO303/app/views/library/scan.html",
+		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
 		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
-		"/C/xampp/htdocs/PRCO303/public/fonts/Merienda/stylesheet.css",
+		"/C/xampp/htdocs/PRCO303/app/views/library/artist.html",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
+		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
+		"/C/xampp/htdocs/PRCO303/public/js/fx.js",
+		"/C/xampp/htdocs/PRCO303/public/js/main.js",
+		"/C/xampp/htdocs/PRCO303/public/js/library.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
+		"/C/xampp/htdocs/PRCO303/prototypes/upnp/upnp.js",
+		"/C/xampp/htdocs/PRCO303/public/fonts/Merienda/stylesheet.css",
 		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/xampp/htdocs/PRCO303/public/fonts/Merinda_One/stylesheet.css",
 		"/C/Users/Adam/AppData/Local/Temp/Rar$DR11.032/stylesheet.css",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
 		"/C/xampp/htdocs/PRCO303/app/views/songs/new.html",
 		"/C/xampp/htdocs/PRCO303/src/sass/style.scss",
 		"/C/xampp/htdocs/PRCO303/public/css/style.css",
 		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
-		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
-		"/C/xampp/htdocs/PRCO303/public/js/library.js",
 		"/C/xampp/htdocs/PRCO303/config/routes.js",
-		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/768.scss",
 		"/C/xampp/htdocs/PRCO303/README.md",
 		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
 		"/C/xampp/htdocs/PRCO303/app/views/releases/new.html",
-		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
-		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/ReleaseController.js",
 		"/C/xampp/htdocs/PRCO303/app/views/releases/edit.html",
 		"/C/Users/Adam/Desktop/demo/index.html",
 		"/C/Users/Adam/Desktop/demo/js/app.js",
-		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
 		"/C/xampp/htdocs/PRCO303/public/index.html",
 		"/C/xampp/htdocs/PRCO303/config/registerPartials.js",
@@ -180,7 +162,6 @@
 		"/C/xampp/htdocs/PRCO303/apiroutes",
 		"/C/xampp/htdocs/PRCO303/config/batch.js",
 		"/C/xampp/htdocs/PRCO303/node_modules/sndlsadnsad_node-vlc/package.json",
-		"/C/xampp/htdocs/PRCO303/app/views/library/artist.html",
 		"/C/xampp/htdocs/PRCO303/public/js/vendor/historyjs/History.md",
 		"/C/xampp/htdocs/PRCO303/app/views/songs/edit.html",
 		"/C/xampp/htdocs/PRCO303/app/views/artists/edit.html",
@@ -188,10 +169,8 @@
 		"/C/xampp/htdocs/PRCO303/app/views/releases/delete.html",
 		"/C/xampp/htdocs/PRCO303/app/views/artists/delete.html",
 		"/C/xampp/htdocs/PRCO303/app/views/newArtist.html",
-		"/C/xampp/htdocs/PRCO303/public/js/main.js",
 		"/C/xampp/htdocs/PRCO303/datamodels",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_sidebarArtists.html",
-		"/C/xampp/htdocs/PRCO303/prototypes/upnp/upnp.js",
 		"/C/xampp/htdocs/PRCO303/config/shell.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController",
 		"/C/xampp/htdocs/PRCO303/app/views/library/rescan.html",
@@ -268,10 +247,7 @@
 		"/C/xampp/htdocs/jgs/index.php",
 		"/C/xampp/htdocs/jgs/assets/css/style.css",
 		"/C/xampp/htdocs/jgs/header.php",
-		"/C/xampp/htdocs/jgs/blog/wp-config.php",
-		"/C/xampp/htdocs/jgs/footer.php",
-		"/C/xampp/htdocs/jgs/blog/index.php",
-		"/C/Users/Adam/AppData/Local/Temp/fz3temp-1/really-simple-captcha.php"
+		"/C/xampp/htdocs/jgs/blog/wp-config.php"
 	],
 	"find":
 	{
@@ -289,6 +265,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"musicmetadata",
+			"Audio.player.stop",
 			"Audio.queue.position",
 			"Localstorage",
 			"next",
@@ -385,15 +363,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 1798,
+						"buffer_size": 2101,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1280,
-								1280
+								492,
+								492
 							]
 						],
 						"settings":
@@ -410,18 +388,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "public/js/audio.js",
+					"file": "config/routes.js",
 					"settings":
 					{
-						"buffer_size": 7071,
+						"buffer_size": 2779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4723,
-								4723
+								751,
+								751
 							]
 						],
 						"settings":
@@ -429,26 +407,80 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 154.0,
-						"translation.y": 2268.0,
+						"translation.x": 0.0,
+						"translation.y": 238.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "public/js/fx.js",
+					"file": "app/controllers/LibraryController.js",
 					"settings":
 					{
-						"buffer_size": 222,
+						"buffer_size": 3690,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								121,
-								121
+								2134,
+								2134
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 798.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/controllers/ArtistController.js",
+					"settings":
+					{
+						"buffer_size": 2178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1017,
+								1017
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/models/ArtistModel.js",
+					"settings":
+					{
+						"buffer_size": 514,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								218
 							]
 						],
 						"settings":
@@ -462,160 +494,26 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "public/js/main.js",
+					"buffer": 5,
+					"file": "src/sass/640.scss",
 					"settings":
 					{
-						"buffer_size": 4720,
+						"buffer_size": 3118,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1757,
-								1757
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 336.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/partials/_header.html",
-					"settings":
-					{
-						"buffer_size": 603,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
+								1685,
 								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/sass/main.scss",
-					"settings":
-					{
-						"buffer_size": 6079,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5941,
-								5941
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5284.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "public/js/library.js",
-					"settings":
-					{
-						"buffer_size": 2019,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1037,
-								1037
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/views/partials/_footer.html",
-					"settings":
-					{
-						"buffer_size": 1091,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								984,
-								984
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "public/js/utils.js",
-					"settings":
-					{
-						"buffer_size": 737,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								62,
-								62
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

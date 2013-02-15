@@ -20,10 +20,17 @@ var express = require('express'),
 //require('./prototypes/upnp/upnp.js');
 
 //upnp prototype
-require('./prototypes/id3/id3.js');
+//require('./prototypes/id3/id3.js');
 
 //batch jobs
 //require('./config/batch.js');
+
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
 
 var libraryPath = '/Users/adam/Music/iTunes/iTunes Media/Music/';
 

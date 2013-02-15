@@ -6,7 +6,9 @@ var ReleaseSchema = new Schema({
     id: ObjectId,
     artistid: { type: ObjectId, required: true },
     type: { type: String, required: true, default: 'release'},
-    title: { type: String, required: true }
+    title: { type: String, required: true },
+    year: { type: String },
+    id3image: { type: String }
 });
 
 /* ReleaseSchema.path('title').validate(function (name){

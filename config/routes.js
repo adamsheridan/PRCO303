@@ -61,8 +61,10 @@ module.exports = function (app, express) {
 		res.render('library/index');
 	});
 
-	/* app.get('/library', library.index);
-	app.get('/library/playlists', library.playlists);
+	app.get('/library/scan', library.scan);
+	app.post('/library/scan', library.scanDir);
+	
+	/* app.get('/library/playlists', library.playlists);
 	app.get('/library/genres', library.genres);
 	app.get('/library/rescan', library.rescan);
 	app.post('/library/rescan', library.rescannow); */

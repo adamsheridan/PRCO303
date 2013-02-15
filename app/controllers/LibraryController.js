@@ -8,37 +8,184 @@ var hbs = require('hbs'),
 	libraryPath = 'D:/Music/',
 	ID3 = require('id3'),
 	mongoose = require('mongoose'),
-	async = require('async');
+	ObjectId = require('mongoose').Types.ObjectId,
+	async = require('async'),
+	mm = require('musicmetadata'),
+	Artist = mongoose.model('Artist'),
+	Release = mongoose.model('Release'),
+	step = require('Step');
 
 exports.index = function (req, res){
 
 	var Artists = mongoose.model('Artist');
-
-	/* async.parallel({
-		artistsAll: function (callback){
-			Artists.find({}, function(err, result){
-				callback(null, result);
-			});
-		},
-		artistsOne: function (callback){
-			Artists.find({name: 'Adam'}, function(err, result){
-				callback(null, result);
-			});
-		}
-	}, function(err, results){
-		res.render('library/index', {
-			locals: {
-				title: 'Library Index'
-			},
-			artists: results.artistsAll
-		})
-	}); */
 
 	res.render('library/index', {
 		locals: {
 			title: 'Index'
 		}
 	});
+}
+
+exports.scan = function (req, res) {
+	res.render('library/scan');
+}
+
+exports.scanDir = function (req, res) {
+	var dir = req.body.directory;
+	var songs = [];
+
+	console.log('scanning:', req.body.directory);
+
+	wrench.readdirRecursive(dir, function(err, files){
+		if (err) { console.log(err) } else {
+			process(files);
+		}
+	});
+
+	function process(arr) {
+		//console.log('arr', arr);
+		if (!arr) return false;
+		for (var i = 0; i < arr.length; i++) {
+			//console.log('loop', arr[i]);
+			var n = arr[i].lastIndexOf('.'),
+				split = arr[i].substring(n);
+			if (split == '.mp3') {
+				console.log('processing ', arr[i]);
+				getID3(arr[i]);
+			}
+		}
+		/* var format = arr[0].lastIndexOf('.');
+		console.log('format', format); */
+	}
+
+	function getID3(url) {
+		var path = dir + url;
+		//console.log('get ID3 of: ', path);
+		var parser = new mm(fs.createReadStream(path));
+		parser.on('metadata', function(result){
+			addToLibrary(result);
+		});
+	}
+
+	function addToLibrary(obj) {
+		//var artist = {};
+		//artist.name = obj.artist[0];
+		//console.log(obj);
+		//console.log(artist);
+		//addArtist(artist);
+		addRelease(obj);
+	}
+
+	function addArtist(obj) {
+		console.log(obj);
+		Artist.find(obj, function(err, artists) {
+			if (err) { console.log(err) } else if (artists.length < 1) {
+				var artist = new Artist();
+				artist.name = obj.name;
+				artist.save(obj, function(err){
+					if (err) { console.log(err) } else {
+						console.log(obj, ' saved to database')
+					}
+				});
+			} else {
+				console.log(obj, ' already exists')
+			}
+		});
+	}
+
+	function addRelease(obj) {
+
+		//console.log(obj);
+		//var artistid;
+		//console.log('adding release', obj);
+
+		/* stackoverflow: async.waterfall allows each function to pass its results 
+		on to the next function, while async.series passes all results to the final 
+		callback. At a higher level, async.waterfall would be for a data pipeline 
+		("given 2, multiply it by 3, add 2, and divide by 17"), while async.series 
+		would be for discrete tasks that must be performed in order, but are otherwise 
+		separate. */
+
+		console.log('attempt waterfall');
+
+		async.waterfall(
+			[
+				// getArtistId
+				function(callback) {
+					Artist.find({ name: obj.albumartist[0] }, function(err, artist){
+						if (err) { console.log(err) } else {
+							//console.log('artist found');
+							/* var release = {};
+							release.artistid = artist[0]._id;
+							release.artistname = artist[0].name;
+							release.title = obj.album;
+							release.year = obj.year; */
+							//console.log('Adding', release);
+							var artistid = artist[0]._id;
+							//console.log('found artist: "',artist[0].name,'" with id: ', artistid);
+							callback(null, artistid);
+						}
+					});
+				},
+
+				// checkExists
+				function(artistid, callback) {
+					//console.log('checkExists:', artistid);
+					Release.find({ 'title': obj.album, 'artistid': artistid }, function (err, docs){
+						if (err) { console.log(err) } else if (docs.length < 1) { 
+							console.log('release not found');
+							callback(null, artistid);
+						} else {
+							//console.log('found', docs[0]);
+							callback('Release already exists');
+						}
+					});
+				},
+
+				function(artistid, callback){
+					var release = new Release();
+					release.artistid = artistid;
+					release.title = obj.album;
+					release.year = obj.year;
+
+					release.save(release, function(err){
+						if (err) { console.log(err) } else {
+							console.log('inserted: ', release);
+						}
+					});
+				}
+			], 
+
+			function(err, status) {
+				console.log('error: ', err, status);
+			}
+		);
+
+		
+		//release.id3image = obj.picture;
+
+		/* function checkExists(artistid) {
+			console.log('artistid: ', artistid)
+			Release.find({ artistid: artistid }, function(err, docs) {
+				if (err) { console.log(err) } else {
+					console.log('found doc', docs);
+					//console.log(docs);
+					/* release.save(release, function(err){
+						if (err) { console.log(err) } else {
+							console.log(release, ' saved to database')
+						}
+					}); */
+		//		} 
+	//		});
+	//	}
+		
+	}
+
+	/*var parser = new mm(fs.createReadStream('D:/Music/Burial & Four Tet/Moth/01 Moth.mp3'));
+
+	parser.on('metadata', function(result){
+	    console.log('mm result: ', result);
+	});*/
 }
 
 exports.rescan = function (req, res) {
