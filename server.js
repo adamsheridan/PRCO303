@@ -22,8 +22,12 @@ var express = require('express'),
 //upnp prototype
 //require('./prototypes/id3/id3.js');
 
+var file = "D:\\test.mp4";
+
 //batch jobs
-//require('./config/batch.js');
+//require('./config/batch.js')(file);
+
+//require('./config/vlc.js')(file);
 
 // Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {

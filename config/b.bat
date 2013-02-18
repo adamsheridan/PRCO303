@@ -1,0 +1,1 @@
+"C:/Program Files (x86)/VideoLAN/VLC/vlc.exe" -I dummy --fullscreen D:\test.mp4

@@ -67,7 +67,7 @@
 			"file": "app/controllers/LibraryController.js",
 			"settings":
 			{
-				"buffer_size": 3690,
+				"buffer_size": 6520,
 				"line_ending": "Windows"
 			}
 		},
@@ -80,10 +80,18 @@
 			}
 		},
 		{
+			"file": "app/models/ReleaseModel.js",
+			"settings":
+			{
+				"buffer_size": 536,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "app/models/ArtistModel.js",
 			"settings":
 			{
-				"buffer_size": 514,
+				"buffer_size": 499,
 				"line_ending": "Windows"
 			}
 		},
@@ -92,6 +100,22 @@
 			"settings":
 			{
 				"buffer_size": 3118,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/BrowseController.js",
+			"settings":
+			{
+				"buffer_size": 150,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/ReleaseController.js",
+			"settings":
+			{
+				"buffer_size": 2529,
 				"line_ending": "Windows"
 			}
 		}
@@ -265,6 +289,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"async",
 			"musicmetadata",
 			"Audio.player.stop",
 			"Audio.queue.position",
@@ -355,7 +380,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -408,7 +433,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 238.0,
+						"translation.y": 490.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -418,15 +443,15 @@
 					"file": "app/controllers/LibraryController.js",
 					"settings":
 					{
-						"buffer_size": 3690,
+						"buffer_size": 6520,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2134,
-								2134
+								4612,
+								4612
 							]
 						],
 						"settings":
@@ -435,7 +460,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 798.0,
+						"translation.y": 1613.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -452,8 +477,8 @@
 						"selection":
 						[
 							[
-								1017,
-								1017
+								1497,
+								1497
 							]
 						],
 						"settings":
@@ -462,25 +487,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 210.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "app/models/ArtistModel.js",
+					"file": "app/models/ReleaseModel.js",
 					"settings":
 					{
-						"buffer_size": 514,
+						"buffer_size": 536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								218,
-								218
+								199,
+								199
 							]
 						],
 						"settings":
@@ -495,6 +520,32 @@
 				},
 				{
 					"buffer": 5,
+					"file": "app/models/ArtistModel.js",
+					"settings":
+					{
+						"buffer_size": 499,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								203,
+								203
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "src/sass/640.scss",
 					"settings":
 					{
@@ -505,8 +556,8 @@
 						"selection":
 						[
 							[
-								1685,
-								0
+								1784,
+								1784
 							]
 						],
 						"settings":
@@ -517,6 +568,59 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/controllers/BrowseController.js",
+					"settings":
+					{
+						"buffer_size": 150,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/controllers/ReleaseController.js",
+					"settings":
+					{
+						"buffer_size": 2529,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1150,
+								1150
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 252.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -584,6 +688,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 241.0,
+	"side_bar_width": 152.0,
 	"status_bar_visible": true
 }

@@ -14,12 +14,19 @@ s.exec('"C:/Program Files (x86)/VideoLAN/VLC/vlc.exe"', function(){
 });
 //s.exec('" "D:/test.mp4"');
 */
+module.exports = function (file) {
 
-/*
-var exec = require('child_process')
-	.spawn('C:/Program Files (x86)/VideoLAN/VLC/vlc.exe', 
-		['-I dummy', 'D:/test.mp4']);
-*/
+	var spawn = require('child_process').spawn,
+		vlc = spawn('C:/Program Files (x86)/VideoLAN/VLC/vlc.exe', 
+			[file]);
 
-var vlc = require('node-vlc');
-console.log(vlc)
+	//'-I dummy --fullscreen',
+
+	vlc.on('exit', function(code){
+		console.log('Exited with code ', code);
+	});
+
+}
+
+/* var vlc = require('node-vlc');
+console.log(vlc) */

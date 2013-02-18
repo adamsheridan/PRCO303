@@ -8,7 +8,8 @@ module.exports = function (app, express) {
 		artists = require('../app/controllers/ArtistController'),
 		releases = require('../app/controllers/ReleaseController'),
 		songs = require('../app/controllers/SongController'),
-		browse = require('../app/controllers/BrowseController');
+		browse = require('../app/controllers/BrowseController'),
+		videos = require('../app/controllers/VideoController');
 
 	var Artist = mongoose.model('Artist');
 
@@ -45,6 +46,10 @@ module.exports = function (app, express) {
 	app.delete('/songs/:id', songs.destroy);
 	app.get('/artists/:artistid/songs', songs.indexByArtist);
 	app.get('/releases/:releaseid/songs', songs.indexByRelease);
+
+	//videos
+	app.get('/tvshows/', videos.index);
+	app.get('/tvshows/new', videos.new);
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)

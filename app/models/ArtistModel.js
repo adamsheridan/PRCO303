@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 var ArtistSchema = new Schema({
     id: ObjectId,
-    name: { type: String, required: true, unique: true, dropDup: true }
+    name: { type: String, required: true, unique: true }
 });
 
 ArtistSchema.path('name').validate(function (name){

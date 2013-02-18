@@ -60,9 +60,11 @@ exports.scanDir = function (req, res) {
 
 	function getID3(url) {
 		var path = dir + url;
-		//console.log('get ID3 of: ', path);
+		//path = "D:/Music/Addison Groove/Transistor Rhythm/01 Savage Henry.mp3";
+		console.log('get ID3 of: ', path);
 		var parser = new mm(fs.createReadStream(path));
 		parser.on('metadata', function(result){
+			//console.log(result);
 			addToLibrary(result);
 		});
 	}
@@ -72,23 +74,42 @@ exports.scanDir = function (req, res) {
 		//artist.name = obj.artist[0];
 		//console.log(obj);
 		//console.log(artist);
+
+		async.series([
+			function(callback) {
+				addArtist(obj);
+			},
+			function(callback) {
+				//addRelease(obj);
+				console.log('addRelease');
+				callback(null);
+			}
+		], function(err, result){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(result);
+			}
+		});
 		//addArtist(artist);
-		addRelease(obj);
+		//addRelease(obj);
 	}
 
 	function addArtist(obj) {
-		console.log(obj);
 		Artist.find(obj, function(err, artists) {
 			if (err) { console.log(err) } else if (artists.length < 1) {
 				var artist = new Artist();
-				artist.name = obj.name;
+				artist.name = obj.artist[0];
+				console.log('inserting artist: ', artist);
 				artist.save(obj, function(err){
-					if (err) { console.log(err) } else {
+					if (err) { console.log(err); } else {
 						console.log(obj, ' saved to database')
+						callback(null, 'artist saved');
 					}
 				});
 			} else {
 				console.log(obj, ' already exists')
+				callback('artist already exists');
 			}
 		});
 	}
@@ -108,10 +129,9 @@ exports.scanDir = function (req, res) {
 
 		console.log('attempt waterfall');
 
-		async.waterfall(
-			[
+		async.waterfall([
 				// getArtistId
-				function(callback) {
+				function getArtistId(callback) {
 					Artist.find({ name: obj.albumartist[0] }, function(err, artist){
 						if (err) { console.log(err) } else {
 							//console.log('artist found');
@@ -129,7 +149,7 @@ exports.scanDir = function (req, res) {
 				},
 
 				// checkExists
-				function(artistid, callback) {
+				function checkExists(artistid, callback) {
 					//console.log('checkExists:', artistid);
 					Release.find({ 'title': obj.album, 'artistid': artistid }, function (err, docs){
 						if (err) { console.log(err) } else if (docs.length < 1) { 
@@ -142,7 +162,7 @@ exports.scanDir = function (req, res) {
 					});
 				},
 
-				function(artistid, callback){
+				function createRelease(artistid, callback){
 					var release = new Release();
 					release.artistid = artistid;
 					release.title = obj.album;
