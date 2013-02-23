@@ -9,7 +9,8 @@ module.exports = function (app, express) {
 		releases = require('../app/controllers/ReleaseController'),
 		songs = require('../app/controllers/SongController'),
 		browse = require('../app/controllers/BrowseController'),
-		videos = require('../app/controllers/VideoController');
+		tvshows = require('../app/controllers/TVShowController'),
+		movies = require('../app/controllers/MovieController');
 
 	var Artist = mongoose.model('Artist');
 
@@ -47,9 +48,23 @@ module.exports = function (app, express) {
 	app.get('/artists/:artistid/songs', songs.indexByArtist);
 	app.get('/releases/:releaseid/songs', songs.indexByRelease);
 
-	//videos
-	app.get('/tvshows/', videos.index);
-	app.get('/tvshows/new', videos.new);
+	//tvshows
+	app.get('/tvshows/', tvshows.index);
+	app.get('/tvshows/new', tvshows.new);
+	app.post('/tvshows/', tvshows.create);/*
+	app.get('/tvshows/:id', tvshows.show);
+	app.get('/tvshows/:id/edit', tvshows.edit);
+	app.put('/tvshows/:id', tvshows.update);
+	app.delete('/tvshows/:id', tvshows.destroy); */
+
+	//movies
+	/* app.get('/movies/', movies.index);
+	app.get('/movies/new', movies.new);
+	app.post('/movies/', movies.create);
+	app.get('/movies/:id', movies.show);
+	app.get('/movies/:id/edit', movies.edit);
+	app.put('/movies/:id', movies.update);
+	app.delete('/movies/:id', movies.destroy); */
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)

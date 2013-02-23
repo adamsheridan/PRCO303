@@ -12,6 +12,17 @@ var Library = (function(){
 
 	var events = function () {
 
+		$('#switch-media').click(function(e){
+			e.preventDefault();
+			var tab = $(this).children('ul');
+			if (tab.hasClass('closed')) {
+				tab.removeClass('closed').addClass('open');
+			} else {
+				tab.removeClass('open').addClass('closed');
+			}
+			
+		});
+
 		// artist sidebar pushState event handler
 		$(document).on("click", '.artist a', function(e){
 			e.preventDefault();
