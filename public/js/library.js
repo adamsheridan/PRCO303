@@ -1,29 +1,23 @@
-var Library = (function(){
+var Library = {
+	
+	init: function() {
+		Library.getArtists();
+		Library.events();
+	},
 
-	var init = function (){
-		elements();
-		getArtists();
-		events();
-	};
-
-	var hello = function () {
-		alert('hello');
-	};
-
-	var events = function () {
-
+	events: function() {
+		console.log('events loaded');
 		$('#switch-media').click(function(e){
 			e.preventDefault();
 			var tab = $(this).children('ul');
 			if (tab.hasClass('closed')) {
 				tab.removeClass('closed').addClass('open');
 			} else {
-				tab.removeClass('open').addClass('closed');
+				tab.removeClass('open').addClass('artist');
 			}
-			
 		});
 
-		// artist sidebar pushState event handler
+			// closed sidebar pushState event handler
 		$(document).on("click", '.artist a', function(e){
 			e.preventDefault();
 
@@ -59,8 +53,115 @@ var Library = (function(){
 					releaseid: releaseid
 				}
 			}, text, href);
-			/* 
-			//document.title = "Fuck World"; */
+			
+		});
+	},
+
+	elements: {
+		$sidebarArtists: $('.sidebar #artists')
+	},
+
+	getArtists: function (){
+		$.ajax({
+			url: '/artists/',
+			type: 'GET',
+			success: function (data, textStatus, jqXHR) {
+				//console.log(data)
+				Library.populateArtists(data);
+			},
+			error: function(jqXHR, textStatus, error) {
+				console.log('--------------- ERROR ---------------');
+				console.log(error);
+				console.log(textStatus);
+				console.dir(jqXHR);
+			}
+		});
+	},
+
+	populateArtists: function (data) {
+		console.log('populate artists data: ', data);
+		console.log(Library.elements.$sidebarArtists);
+		if (Library.elements.$sidebarArtists) {
+			//console.log($sidebarArtists);
+			for (var i = 0; i < data.length; i++) {
+				//console.log(data[i])
+				Library.elements.$sidebarArtists.append('<li class="artist"><a href="/library/artist/'+data[i]._id+'/releases/" data-artist-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
+			}
+		}
+	},
+
+	test: function (obj) {
+		alert('test called');
+		console.log('test obj: ', obj);
+	}
+}
+
+
+$(function(){
+	Library.init();
+});
+/*
+var Library = (function(){
+
+	var init = function (){
+		elements();
+		getArtists();
+		events();
+	};
+
+	var hello = function () {
+		alert('hello');
+	};
+
+	var events = function () {
+
+		$('#switch-media').click(function(e){
+			e.preventDefault();
+			var tab = $(this).children('ul');
+			if (tab.hasClass('closed')) {
+				tab.removeClass('closed').addClass('open');
+			} else {
+				tab.removeClass('open').addClass('artist');
+			}
+			
+		});
+
+		// closed sidebar pushState event handler
+		$(document).on("click", '.artist a', function(e){
+			e.preventDefault();
+
+			var href = $(this).attr('href'),
+				artistid = $(this).attr('data-artist-id'),
+				text = $(this).text();
+
+			History.pushState({ 
+				navigate: true, 
+				source: 'artist-sidebar', 
+				target: '#releases', 
+				contentType: 'artistIndex',
+				meta: {
+					artistid: artistid
+				}
+			}, text, href);
+			//document.title = "Fuck World";
+		});
+
+		$(document).on("click", '#releases a', function(e){
+			e.preventDefault();
+
+			var href = $(this).attr('href'),
+				releaseid = $(this).attr('data-release-id'),
+				text = $(this).text();
+
+			History.pushState({ 
+				navigate: true, 
+				source: '#releases a', 
+				target: '#songs', 
+				contentType: 'releaseIndex',
+				meta: {
+					releaseid: releaseid
+				}
+			}, text, href);
 		});
 
 	};
@@ -101,7 +202,6 @@ var Library = (function(){
 		console.log('test obj: ', obj);
 	};
 
-	//this.init();
 	init();
 
-}());
+}()); */
