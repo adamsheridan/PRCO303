@@ -5,7 +5,9 @@ var mongoose = require('mongoose'),
 var MovieSchema = new Schema({
     id: ObjectId,
     title: { type: String, required: true },
-    location: { type: String, required: true }
+    thumb: { type: String, required: true },
+    rating: { type: Number, reqired: true },
+    src: { type: String, required: true }
 });
 
 mongoose.model('Movie', MovieSchema);

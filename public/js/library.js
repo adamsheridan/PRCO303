@@ -7,14 +7,33 @@ var Library = {
 
 	events: function() {
 		console.log('events loaded');
+
 		$('#switch-media').click(function(e){
 			e.preventDefault();
 			var tab = $(this).children('ul');
 			if (tab.hasClass('closed')) {
 				tab.removeClass('closed').addClass('open');
 			} else {
-				tab.removeClass('open').addClass('artist');
+				tab.removeClass('open').addClass('closed');
 			}
+		});
+
+		$('#switch-media a').click(function(e){
+			e.preventDefault();
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				contentType = href.split('/')[2];
+
+			if ($(this).parents('ul').hasClass('open')) {
+				console.log();
+				History.pushState({ 
+					navigate: true, 
+					source: 'switch-media', 
+					target: '', 
+					contentType: contentType+'Index',
+				}, text, href); 
+			}
+
 		});
 
 			// closed sidebar pushState event handler
@@ -26,7 +45,7 @@ var Library = {
 				text = $(this).text();
 
 			History.pushState({ 
-				navigate: true, 
+				navigate: false, 
 				source: 'artist-sidebar', 
 				target: '#releases', 
 				contentType: 'artistIndex',
@@ -45,7 +64,7 @@ var Library = {
 				text = $(this).text();
 
 			History.pushState({ 
-				navigate: true, 
+				navigate: false, 
 				source: '#releases a', 
 				target: '#songs', 
 				contentType: 'releaseIndex',
@@ -79,8 +98,8 @@ var Library = {
 	},
 
 	populateArtists: function (data) {
-		console.log('populate artists data: ', data);
-		console.log(Library.elements.$sidebarArtists);
+		//console.log('populate artists data: ', data);
+		//console.log(Library.elements.$sidebarArtists);
 		if (Library.elements.$sidebarArtists) {
 			//console.log($sidebarArtists);
 			for (var i = 0; i < data.length; i++) {
@@ -93,6 +112,34 @@ var Library = {
 	test: function (obj) {
 		alert('test called');
 		console.log('test obj: ', obj);
+	},
+
+	movies: {
+		init: function() {
+			Library.movies.populateView();
+		},
+
+		populateView: function(){
+			$.ajax({
+				url: '/movies/',
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					console.log('loop', data[0].title)
+					//Library.populateArtists(data);
+
+					for (var i = 0; i < data.length; i++) {
+						console.log(data);
+						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+data[i].thumb+'" /><h1 class="title">'+data[i].title+'</h1><h2 class="year">'+data[i].year+'</h2><h3 class="rating">'+data[i].rating+'</h3></li>');
+					}
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
+		}
 	}
 }
 

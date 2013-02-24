@@ -51,7 +51,7 @@ $(document).ready(function(){
 	    var State = History.getState();
         History.log(State.data, State.title, State.url);
 
-        console.log('pushState stuff: ', State.data, State.title, State.url);
+        //console.log('pushState stuff: ', State.data, State.title, State.url);
 
         handleURL(State);
 
@@ -82,8 +82,8 @@ $(document).ready(function(){
     });
 
 	function handleURL(State) {
-		console.log('pushObj: ', State.data);
-
+		//console.log('pushObj: ', State.data);
+		// replace with switch statement soon
 		if (State.data.contentType == 'artistIndex') {
 			$.ajax({
 				url: '/artists/'+State.data.meta.artistid+'/releases',
@@ -115,6 +115,29 @@ $(document).ready(function(){
 				},
 				error: function(jqXHR, textStatus, error) {
 					console.log('AJAX Error: ', error, textStatus, jqXHR);
+				}
+			});
+		} else if (State.data.contentType == 'moviesIndex') {
+			$.ajax({
+				url: '/views/movies.html',
+				type: 'GET',
+				success: function(data){
+					$('#page').html(data);
+					Library.movies.init();
+				},
+				error: function(error){
+					console.log('error: ', error);
+				}
+			});
+		} else if (State.data.contentType == 'tvshowsIndex') {
+			$.ajax({
+				url: '/views/tvshows.html',
+				type: 'GET',
+				success: function(data){
+					$('#page').html(data);
+				},
+				error: function(error){
+					console.log('error: ', error);
 				}
 			});
 		}

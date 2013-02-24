@@ -1,1 +1,1 @@
-"C:/Program Files (x86)/VideoLAN/VLC/vlc.exe" --fullscreen D:\test.mp4
+"C:/Program Files (x86)/VideoLAN/VLC/vlc.exe" --fullscreen D:/Movies/Iron Man 2/Iron Man 2.mkv

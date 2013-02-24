@@ -58,10 +58,11 @@ module.exports = function (app, express) {
 	app.delete('/tvshows/:id', tvshows.destroy); */
 
 	//movies
-	/* app.get('/movies/', movies.index);
+	app.get('/movies/', movies.index);
 	app.get('/movies/new', movies.new);
 	app.post('/movies/', movies.create);
-	app.get('/movies/:id', movies.show);
+	app.get('/movies/play/:id', movies.play);
+	/*app.get('/movies/:id', movies.show);
 	app.get('/movies/:id/edit', movies.edit);
 	app.put('/movies/:id', movies.update);
 	app.delete('/movies/:id', movies.destroy); */

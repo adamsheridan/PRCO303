@@ -53,6 +53,7 @@ app.configure(function(){
     app.use('/fonts', express.static(__dirname + '/public/fonts'));
     app.use('/music', express.static(__dirname + '/public/music'));
     app.use('/media', express.static('D:/'));
+    app.use('/views', express.static(__dirname + '/public/views'));
 
     console.log('views: ', app.get('views'));
 
