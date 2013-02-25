@@ -40,6 +40,12 @@ var Utils = {
 		}
 		
 		return min + ':' + sec;
+	},
+
+	setMainSectionWidth: function () {
+		var mainWidth = window.innerWidth - 300;
+        $('#main-section').css('width', mainWidth);
+        console.log('widthSet');
 	}
 }
 

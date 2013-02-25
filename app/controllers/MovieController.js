@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
 	Movie = mongoose.model('Movie'),
-	async = require('async');
+	async = require('async'),
+	request = require('request');
 
 
 // index
@@ -32,9 +33,17 @@ exports.create = function(req, res){
 	movie.thumb = req.body.thumb;
 	movie.src = req.body.src;
 
+	request('http://api.themoviedb.org/3/search/movie?api_key=d2033b71b41ec5c5e9be31423c0e8598&query='+movie.title, function (error, response, body){
+		if (error) {
+			console.log(response, error);
+		} else {
+			console.log(response, body);
+		}
+	});
+
 	//console.log('artist will be:', artist);
 
-	movie.save(function(err){
+	/* movie.save(function(err){
 		if (err) {
 			console.log(err);
 		} else {
@@ -46,7 +55,7 @@ exports.create = function(req, res){
 				}
 			});
 		}
-	});
+	}); */
 }
 
 exports.play = function(req, res) {

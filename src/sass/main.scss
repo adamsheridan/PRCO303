@@ -139,6 +139,32 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 			}
 		}
 	}
+
+	#sources {
+
+		.source {
+
+			.bold a {
+				font-family: "proxima_nova_rgbold";
+				font-weight: bold;
+			}
+
+			a {
+				background: #c6e5f1;
+				color: #000;
+				display: block;
+				font-family: "proxima_nova_ltbold";
+				height: 20px;
+				padding: 10px;
+				text-decoration: none;
+				width: 260px;
+
+				&:hover {
+					background: #8bd1ec;
+				}
+			}
+		}
+	}
 }
 
 #main-section {
@@ -146,6 +172,29 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 	float: left;
 	height: 100%;
 	width: 100%;
+}
+
+#trending {
+
+	.song {
+		background: #000;
+		float: left;
+		height: 200px;
+		list-style: none;
+		width: 200px;
+
+		a {
+			background-size: 200px 200px;
+			display: block;
+			height: 200px;
+			width: 200px;
+			
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+
 }
 
 @-webkit-keyframes spinner {
@@ -478,6 +527,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 .movie {
 	background: #c6e3f1;
 	border-radius: 10px;
+	float: left;
 	list-style: none;
 	margin: 40px 0 40px 40px;
 	padding: 15px;

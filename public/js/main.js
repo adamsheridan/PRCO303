@@ -1,14 +1,61 @@
-(function(){
+var app = {
+	init: function() {
+		console.log('APP INIT');
+		Library.music.init();
+		app.events();
+	},
 
-	var app = {
-		init: function() {
-			console.log('APP INIT');
-		}
+	// terrible place to keep these but it will do for now
+	keys: {
+		tmdb: 'd2033b71b41ec5c5e9be31423c0e8598',
+		fanarttv: '14b4149f558ec78c02c29833e77c0701'
+	},
+
+	events: function(){
+
+		$('#main-nav #browse').click(function(e){
+			e.preventDefault();
+			console.log('browse click');
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				History = window.History;
+				
+			History.pushState({ 
+				navigate: true, 
+				source: 'main-nav', 
+				target: '#page', 
+				contentType: 'browseIndex',
+			}, text, href);
+		});
+
+		$('#main-nav #library').click(function(e){
+			e.preventDefault();
+			console.log('library click');
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				History = window.History;
+				
+			History.pushState({ 
+				navigate: true, 
+				source: 'main-nav', 
+				target: '#page', 
+				contentType: 'libraryIndex',
+			}, text, href);
+		});
+
+	},
+
+	elements: {
+		//menu
+		$menuBrowse: $('#main-nav #browse'),
+		$menuLibrary: $('#main-nav #library'),
+		$menuGenres: $('#main-nav #genres'),
+		$menuPlaylists: $('#main-nav #playlists')
 	}
+}
 
-	app.init();
+app.init();
 
-}).call(this);
 
 $(document).ready(function(){
 
@@ -117,6 +164,11 @@ $(document).ready(function(){
 					console.log('AJAX Error: ', error, textStatus, jqXHR);
 				}
 			});
+
+		} else if (State.data.contentType == 'libraryIndex') {
+			console.log(State.data.target)
+			Library.music.init();
+
 		} else if (State.data.contentType == 'moviesIndex') {
 			$.ajax({
 				url: '/views/movies.html',
@@ -124,6 +176,7 @@ $(document).ready(function(){
 				success: function(data){
 					$('#page').html(data);
 					Library.movies.init();
+					Audio.queue.fx.hideQueue();
 				},
 				error: function(error){
 					console.log('error: ', error);
@@ -140,16 +193,28 @@ $(document).ready(function(){
 					console.log('error: ', error);
 				}
 			});
+		} else if (State.data.contentType == 'browseIndex') {
+			$.ajax({
+				url: '/views/browse.html',
+				type: 'GET',
+				success: function(data){
+					$('#page').html(data);
+					Browse.init();
+				},
+				error: function(error){
+					console.log('error: ', error);
+				}
+			});
+		} else if (State.data.contentType == 'browseTrending') {
+			Browse.sources.exfm.trending();
+			Utils.setMainSectionWidth();
+		} else if (State.data.contentType == 'browseReddit') {
+			Browse.sources.reddit();
+			Utils.setMainSectionWidth();
 		}
 	}
 
-	function setWidth() {
-		var mainWidth = window.innerWidth - 300;
-        $('#main-section').css('width', mainWidth);
-        console.log('widthSet')
-	}
-
-	setWidth();
+	Utils.setMainSectionWidth();
 
 	/* console.log('histroy.length: ', history.length);
 

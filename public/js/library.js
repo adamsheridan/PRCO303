@@ -1,12 +1,34 @@
 var Library = {
 	
 	init: function() {
-		Library.getArtists();
+		//Library.getArtists();
 		Library.events();
 	},
 
 	events: function() {
 		console.log('events loaded');
+
+		$(document).on("click", '.movie .play', function(e){
+			e.preventDefault();
+			
+			var id = $(this).parent('li').attr('data-id');
+			console.log(id);
+
+			$.ajax({
+				url: '/movies/play/'+id,
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					console.log(data)
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
+			
+		});
 
 		$('#switch-media').click(function(e){
 			e.preventDefault();
@@ -85,7 +107,6 @@ var Library = {
 			url: '/artists/',
 			type: 'GET',
 			success: function (data, textStatus, jqXHR) {
-				//console.log(data)
 				Library.populateArtists(data);
 			},
 			error: function(jqXHR, textStatus, error) {
@@ -104,7 +125,7 @@ var Library = {
 			//console.log($sidebarArtists);
 			for (var i = 0; i < data.length; i++) {
 				//console.log(data[i])
-				Library.elements.$sidebarArtists.append('<li class="artist"><a href="/library/artist/'+data[i]._id+'/releases/" data-artist-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
+				$('.sidebar #artists').append('<li class="artist"><a href="/library/artist/'+data[i]._id+'/releases/" data-artist-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
 			}
 		}
 	},
@@ -125,12 +146,39 @@ var Library = {
 				type: 'GET',
 				success: function (data, textStatus, jqXHR) {
 					console.log('loop', data[0].title)
+
 					//Library.populateArtists(data);
 
 					for (var i = 0; i < data.length; i++) {
 						console.log(data);
-						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+data[i].thumb+'" /><h1 class="title">'+data[i].title+'</h1><h2 class="year">'+data[i].year+'</h2><h3 class="rating">'+data[i].rating+'</h3></li>');
+						var thumb = data[i].thumb,
+							thumbx = thumb.replace("C:/xampp/htdocs/prco303/public", "")
+						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+thumbx+'" /><h1 class="title">'+data[i].title+'</h1><h2 class="year">'+data[i].year+'</h2><h3 class="rating">'+data[i].rating+'</h3><a href="" class="cta play">Play</a></li>');
 					}
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
+		}
+	},
+
+	music: {
+		init: function() {
+			Library.music.populateView();
+			Library.getArtists();
+		},
+
+		populateView: function() {
+			$.ajax({
+				url: '/views/music.html',
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					$('#page').html(data);
+					Utils.setMainSectionWidth();
 				},
 				error: function(jqXHR, textStatus, error) {
 					console.log('--------------- ERROR ---------------');

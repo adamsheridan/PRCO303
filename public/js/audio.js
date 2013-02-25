@@ -149,9 +149,10 @@ var Audio = {
 		},
 
 		add: function (songid, href) {
+
 			var obj = {};
 			obj.songid = songid,
-			obj.location = href;
+			obj.location = href,
 			obj.queuePosition = Audio.queue.queue.length;
 
 			$.ajax({
@@ -174,6 +175,8 @@ var Audio = {
 					console.dir(jqXHR);
 				}
 			});
+
+
 		},
 
 		remove: function (pos) {

@@ -90,9 +90,6 @@ module.exports = function (app, express) {
 	app.get('/library/rescan', library.rescan);
 	app.post('/library/rescan', library.rescannow); */
 
-
-	app.get('/browse', browse.index);
-
 	app.param('artistid', function(req, res, next, id){
 		Artist.find({ _id: id}, function(err, result){
 			console.log('param result: ', result[0]);

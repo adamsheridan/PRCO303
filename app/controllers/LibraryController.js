@@ -15,15 +15,17 @@ var hbs = require('hbs'),
 	Release = mongoose.model('Release'),
 	step = require('Step');
 
-exports.index = function (req, res){
+exports.index = function (req, res) {
 
-	var Artists = mongoose.model('Artist');
+	console.log(__dirname);
 
-	res.render('library/index', {
+	res.render('../../public/views/_main.html');
+
+	/* res.render('library/index', {
 		locals: {
 			title: 'Index'
 		}
-	});
+	}); */
 }
 
 exports.scan = function (req, res) {
