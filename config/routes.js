@@ -10,7 +10,8 @@ module.exports = function (app, express) {
 		songs = require('../app/controllers/SongController'),
 		browse = require('../app/controllers/BrowseController'),
 		tvshows = require('../app/controllers/TVShowController'),
-		movies = require('../app/controllers/MovieController');
+		movies = require('../app/controllers/MovieController'),
+		phantom = require('../app/controllers/PhantomController');
 
 	var Artist = mongoose.model('Artist');
 
@@ -66,6 +67,10 @@ module.exports = function (app, express) {
 	app.get('/movies/:id/edit', movies.edit);
 	app.put('/movies/:id', movies.update);
 	app.delete('/movies/:id', movies.destroy); */
+
+	app.get('/phantom/:href', function(r){
+		phantom.go(r.params);
+	});
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)

@@ -5,7 +5,6 @@ var Browse = {
 	//youtube rss
 	
 	init: function() {
-		Audio.queue.fx.hideQueue();
 		Browse.events();
 	},
 
@@ -19,8 +18,40 @@ var Browse = {
 			History.pushState({ 
 				navigate: true, 
 				source: '#sidebar', 
-				target: '#page', 
+				target: '#main-section', 
 				contentType: 'browseTrending',
+			}, text, href);
+			
+		});
+
+		$('#sources .source .youtube').click(function(e){
+			e.preventDefault();
+			console.log('youtube');
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				History = window.History;
+				
+			History.pushState({ 
+				navigate: true, 
+				source: '#sidebar', 
+				target: '#main-section', 
+				contentType: 'browseYoutube',
+			}, text, href);
+			
+		});
+
+		$('#sources .source .hypem').click(function(e){
+			e.preventDefault();
+			console.log('hypem');
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				History = window.History;
+				
+			History.pushState({ 
+				navigate: true, 
+				source: '#sidebar', 
+				target: '#main-section', 
+				contentType: 'browseHypem',
 			}, text, href);
 			
 		});
@@ -57,10 +88,45 @@ var Browse = {
 
 						$('#main-section').append('<ul id="trending" class="clearfix"></ul>');
 
-						for (var i = 0; i < data.length; i++) {
+						for (var i = 0; i < 20; i++) {
 							console.log(data[i]);
-							$('#trending').append('<li class="song"><a href="'+data[i].url+'" data-artistname="'+data[i].artist+'" data-songtitle="'+data[i].title+'" data-releasetitle="'+data[i].album+'" style="background-image: url('+data[i].image.large+')"></a></li>');
+							$('#trending').append('<li class="song"><a class="fadeLoad" href="'+data[i].url+'" data-artistname="'+data[i].artist+'" data-songtitle="'+data[i].title+'" data-releasetitle="'+data[i].album+'" style="background-image: url('+data[i].image.large+')"></a></li>');
 						}
+
+						Library.music.fx.fadeLoad();
+					},
+					error: function(error){
+						console.log('error: ', error);
+					}
+				});
+			}
+		},
+		youtube: {
+			loadChannel: function(State){
+				//console.log(State);
+				$.ajax({
+					url: 'http://www.youtube.com/user/'+State.title,
+					type: 'GET',
+					success: function(data){
+						$('#page').html(data);
+						
+					},
+					error: function(error){
+						console.log('error: ', error);
+					}
+				});
+			}
+			//
+		},
+		hypem: {
+			ajax: function(State){
+				$.ajax({
+					url: 'http://hypem.com/playlist/popular/3day/json/1/data.js',
+					type: 'GET',
+					success: function(data){
+						console.log('hypem trending', data);
+						$('#page').html(data);
+						
 					},
 					error: function(error){
 						console.log('error: ', error);

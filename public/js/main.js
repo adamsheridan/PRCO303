@@ -211,7 +211,15 @@ $(document).ready(function(){
 		} else if (State.data.contentType == 'browseReddit') {
 			Browse.sources.reddit();
 			Utils.setMainSectionWidth();
-		}
+		} else if (State.data.contentType == 'browseYoutube') {
+			Browse.sources.youtube.loadChannel(State);
+			Utils.setMainSectionWidth();
+		} else if (State.data.contentType == 'browseHypem') {
+			Browse.sources.hypem.ajax(State);
+			Utils.setMainSectionWidth();
+		}  
+
+		
 	}
 
 	Utils.setMainSectionWidth();

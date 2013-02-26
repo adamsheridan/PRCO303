@@ -153,7 +153,7 @@ var Library = {
 						console.log(data);
 						var thumb = data[i].thumb,
 							thumbx = thumb.replace("C:/xampp/htdocs/prco303/public", "")
-						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+thumbx+'" /><h1 class="title">'+data[i].title+'</h1><h2 class="year">'+data[i].year+'</h2><h3 class="rating">'+data[i].rating+'</h3><a href="" class="cta play">Play</a></li>');
+						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+thumbx+'" /><h3 class="rating">'+data[i].rating+'</h3><a href="" class="cta play">Play</a></li>');
 					}
 				},
 				error: function(jqXHR, textStatus, error) {
@@ -170,6 +170,20 @@ var Library = {
 		init: function() {
 			Library.music.populateView();
 			Library.getArtists();
+		},
+
+		fx: {
+			fadeLoad: function() {
+				//console.log('fadeLoad called');
+
+				var $elm = $('#trending .song');
+				console.log('elm', $elm);
+
+				$elm.each(function(i){
+					console.log('elm', $(this));
+					$elm.animate('opacity', '1');
+				});
+			}
 		},
 
 		populateView: function() {
