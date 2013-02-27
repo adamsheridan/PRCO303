@@ -77,6 +77,7 @@ var Browse = {
 					obj.artistname = $this.attr('data-artistname'),
 					obj.songtitle = $this.attr('data-songtitle'),
 					obj.releasetitle = $this.attr('data-releasetitle');
+					obj.source = $this.attr('data-source');
 
 					Audio.queue.queue.push(obj);
 					Audio.queue.events.updated();
@@ -98,7 +99,7 @@ var Browse = {
 
 						for (var i = 0; i < 20; i++) {
 							console.log(data[i]);
-							$('#trending').append('<li class="song"><a class="fadeLoad" href="'+data[i].url+'" data-artistname="'+data[i].artist+'" data-songtitle="'+data[i].title+'" data-releasetitle="'+data[i].album+'" style="background-image: url('+data[i].image.large+')"></a></li>');
+							$('#trending').append('<li class="song"><a class="fadeLoad" href="'+data[i].url+'" data-artistname="'+data[i].artist+'" data-songtitle="'+data[i].title+'" data-releasetitle="'+data[i].album+'" data-source="'+data[i].sources[0]+'" style="background-image: url('+data[i].image.large+')"></a></li>');
 						}
 
 						Library.music.fx.fadeLoad();

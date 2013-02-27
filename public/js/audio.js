@@ -280,22 +280,31 @@ var Audio = {
 
 		updateUI: function (songid) {
 			console.log('updateUI', songid);
-			$.ajax({
-				url: '/songs/'+songid,
-				type: 'GET',
-				success: function (data, textStatus, jqXHR) {
-					var data = JSON.parse(data);
-					//console.log('updating ui with: ', data);
-					$('#info h2').html(data.artistname+' - '+data.songtitle);
-					$('#info h4').html(data.releasetitle);
-				},
-				error: function(jqXHR, textStatus, error) {
-					console.log('--------------- ERROR ---------------');
-					console.log(error);
-					console.log(textStatus);
-					console.dir(jqXHR);
-				}
-			});
+			var curSong = Audio.queue.queue[Audio.queue.position];
+			
+			if (!curSong.api) {
+				$.ajax({
+					url: '/songs/'+songid,
+					type: 'GET',
+					success: function (data, textStatus, jqXHR) {
+						var data = JSON.parse(data);
+						//console.log('updating ui with: ', data);
+						Utils.notifications.create('Now Playing:', data.artistname+' - '+data.songtitle);
+						$('#info h2').html(data.artistname+' - '+data.songtitle);
+						$('#info h4').html(data.releasetitle);
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('--------------- ERROR ---------------');
+						console.log(error);
+						console.log(textStatus);
+						console.dir(jqXHR);
+					}
+				});
+			} else {
+				Utils.notifications.create('Now Playing:', curSong.artistname+' - '+curSong.songtitle);
+				$('#info h2').html(curSong.artistname+' - '+curSong.songtitle);
+				$('#info h4').html('<a href="'+curSong.source+'">'+curSong.source+'</a>');
+			}
 		}
 	},
 
