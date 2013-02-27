@@ -11,7 +11,8 @@ module.exports = function (app, express) {
 		browse = require('../app/controllers/BrowseController'),
 		tvshows = require('../app/controllers/TVShowController'),
 		movies = require('../app/controllers/MovieController'),
-		phantom = require('../app/controllers/PhantomController');
+		phantom = require('../app/controllers/PhantomController'),
+		playlists = require('../app/controllers/PlaylistController');
 
 	var Artist = mongoose.model('Artist');
 
@@ -68,9 +69,13 @@ module.exports = function (app, express) {
 	app.put('/movies/:id', movies.update);
 	app.delete('/movies/:id', movies.destroy); */
 
-	app.get('/phantom/:href', function(r){
-		phantom.go(r.params);
-	});
+	//playlists
+	app.get('/playlists/', playlists.index);
+	app.post('/playlists/', playlists.create);
+	app.get('/playlists/:id', playlists.show);
+
+	app.get('/scrape/:href', phantom.go);
+	app.get('/scrape/youtube/:channel', phantom.youtube);
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)

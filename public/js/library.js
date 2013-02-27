@@ -58,6 +58,13 @@ var Library = {
 
 		});
 
+		$(document).on("click", '.playlist a', function(e){
+			e.preventDefault();
+			var id = $(this).attr('data-id');
+			//console.log('clicked', id);
+			Library.playlist.queue(id);
+		});
+
 			// closed sidebar pushState event handler
 		$(document).on("click", '.artist a', function(e){
 			e.preventDefault();
@@ -145,15 +152,13 @@ var Library = {
 				url: '/movies/',
 				type: 'GET',
 				success: function (data, textStatus, jqXHR) {
-					console.log('loop', data[0].title)
+					//console.log('loop', data[0].title)
 
 					//Library.populateArtists(data);
 
 					for (var i = 0; i < data.length; i++) {
-						console.log(data);
-						var thumb = data[i].thumb,
-							thumbx = thumb.replace("C:/xampp/htdocs/prco303/public", "")
-						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+thumbx+'" /><h3 class="rating">'+data[i].rating+'</h3><a href="" class="cta play">Play</a></li>');
+						console.log(data[i].title);
+						$('#movies').append('<li class="movie" data-id="'+data[i]._id+'"><img class="thumb" src="'+data[i].poster+'" /><h3 class="rating">'+data[i].rating+'</h3><a href="" class="cta play">Play</a></li>');
 					}
 				},
 				error: function(jqXHR, textStatus, error) {
@@ -193,6 +198,84 @@ var Library = {
 				success: function (data, textStatus, jqXHR) {
 					$('#page').html(data);
 					Utils.setMainSectionWidth();
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
+		}
+	},
+
+	playlist: {
+		init: function() {
+			Library.playlist.populate();
+		},
+
+		populate: function(){
+			$.ajax({
+				url: '/playlists/',
+				type: 'GET',
+				success: function (data, textStatus, jqXHR) {
+					//console.log('playlists: ', data);
+					Utils.setMainSectionWidth();
+					for (var i = 0; i < data.length; i++) {
+						$('.sidebar #playlists').append('<li class="playlist bold"><a href="" data-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
+					}
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
+		},
+
+		save: function(obj) {
+			console.log('saving:', obj);
+			var playlist = {};
+			playlist.name = obj.name;
+			playlist.obj = [];
+
+			for (var i = 0; i < obj.length; i++) {
+				playlist.obj.push(obj[i]);
+			}
+
+			playlist.obj = JSON.stringify(playlist.obj);
+
+			console.log('stringify: ', playlist.obj);
+
+			$.ajax({
+				url: '/playlists/',
+				type: 'POST',
+				data: playlist,
+				success: function (data, textStatus, jqXHR) {
+					console.log('POSTed: ', data);
+				},
+				error: function(jqXHR, textStatus, error) {
+					console.log('--------------- ERROR ---------------');
+					console.log(error);
+					console.log(textStatus);
+					console.dir(jqXHR);
+				}
+			});
+		},
+
+		queue: function(id) {
+			console.log('queing', id);
+			$.ajax({
+				url: '/playlists/'+id,
+				type: 'get',
+				success: function (data, textStatus, jqXHR) {
+					//console.log('queueing: ', JSON.parse(data[0].obj));
+					Audio.queue.queue = JSON.parse(data[0].obj);
+					console.log('current queue:', Audio.queue.queue);
+					Audio.queue.events.updated();
+					
+					//
 				},
 				error: function(jqXHR, textStatus, error) {
 					console.log('--------------- ERROR ---------------');

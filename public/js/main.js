@@ -13,9 +13,26 @@ var app = {
 
 	events: function(){
 
+		function highlight(element){
+			console.log('highlighting ', element);
+			$('#main-nav .current').removeClass('current');
+			var $self = element,
+				current = $self.hasClass('current');
+
+			if (!current) {
+				$self.addClass('current');
+			} else {
+				console.log('has current', $self);
+			}
+
+		}
+
 		$('#main-nav #browse').click(function(e){
 			e.preventDefault();
 			console.log('browse click');
+
+			highlight($(this));
+
 			var href = $(this).attr('href'),
 				text = $(this).text(),
 				History = window.History;
@@ -31,6 +48,7 @@ var app = {
 		$('#main-nav #library').click(function(e){
 			e.preventDefault();
 			console.log('library click');
+			highlight($(this));
 			var href = $(this).attr('href'),
 				text = $(this).text(),
 				History = window.History;
@@ -41,6 +59,27 @@ var app = {
 				target: '#page', 
 				contentType: 'libraryIndex',
 			}, text, href);
+		});
+
+		$('#main-nav #playlists').click(function(e){
+			e.preventDefault();
+			console.log('playlists click');
+			highlight($(this));
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				History = window.History;
+				
+			History.pushState({ 
+				navigate: true, 
+				source: 'main-nav', 
+				target: '#page', 
+				contentType: 'playlistsIndex',
+			}, text, href);
+		});
+
+		$('#notifications').click(function(e){
+			e.preventDefault();
+			Utils.notifications.requestPermission();
 		});
 
 	},
@@ -166,7 +205,7 @@ $(document).ready(function(){
 			});
 
 		} else if (State.data.contentType == 'libraryIndex') {
-			console.log(State.data.target)
+			//console.log(State.data.target)
 			Library.music.init();
 
 		} else if (State.data.contentType == 'moviesIndex') {
@@ -200,6 +239,22 @@ $(document).ready(function(){
 				success: function(data){
 					$('#page').html(data);
 					Browse.init();
+					Browse.sources.exfm.trending();
+					Utils.setMainSectionWidth();
+				},
+				error: function(error){
+					console.log('error: ', error);
+				}
+			});
+
+		} else if (State.data.contentType == 'playlistsIndex') {
+			$.ajax({
+				url: '/views/playlists.html',
+				type: 'GET',
+				success: function(data){
+					$('#page').html(data);
+					Library.playlist.init();
+					Utils.setMainSectionWidth();
 				},
 				error: function(error){
 					console.log('error: ', error);

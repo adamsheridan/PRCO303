@@ -28,34 +28,54 @@ exports.new = function(req, res) {
 exports.create = function(req, res){
 
 	movie = new Movie();
-	movie.title = req.body.title;
-	movie.rating = req.body.rating;
-	movie.thumb = req.body.thumb;
 	movie.src = req.body.src;
 
-	request('http://api.themoviedb.org/3/search/movie?api_key=d2033b71b41ec5c5e9be31423c0e8598&query='+movie.title, function (error, response, body){
-		if (error) {
-			console.log(response, error);
-		} else {
-			console.log(response, body);
+	request({
+		method: 'GET',
+		uri: 'http://api.themoviedb.org/3/search/movie?api_key=d2033b71b41ec5c5e9be31423c0e8598&query='+req.body.title,
+		headers: {
+			"Accept": "application/json"
 		}
-	});
+	}, function(err, response, body){
+		if (err) console.log('error', err);
 
-	//console.log('artist will be:', artist);
+		var body = JSON.parse(body);
+		
+		console.log(body.results[0]);
+		
+		movie.title = body.results[0].title;
+		movie.rating = body.results[0].vote_average;
+		movie.release_date = body.results[0].release_date;
+		movie.poster_path = body.results[0].poster_path;
 
-	/* movie.save(function(err){
-		if (err) {
-			console.log(err);
-		} else {
-			console.log('saved', movie);
-			res.render('movies/new', {
-				locals: {
-					title: 'New Movie',
-					message: 'Successfully created!'
+		// grab config data for full image urls
+		request({
+			uri: 'http://api.themoviedb.org/3/configuration?api_key=d2033b71b41ec5c5e9be31423c0e8598',
+			headers: {
+				"Accept": "application/json"
+			}
+		}, function(err, response, body){
+			if (err) console.log(err);
+			var body = JSON.parse(body);
+			movie.poster = body.images.base_url +'original'+ movie.poster_path;
+
+			movie.save(function(err){
+				if (err) {
+					console.log(err);
+				} else {
+					console.log('saved', movie);
+					res.render('movies/new', {
+						locals: {
+							title: 'New Movie',
+							message: 'Successfully created!'
+						}
+					});
 				}
 			});
-		}
-	}); */
+
+		}); 
+
+	});
 }
 
 exports.play = function(req, res) {

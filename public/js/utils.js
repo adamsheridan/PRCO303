@@ -46,6 +46,78 @@ var Utils = {
 		var mainWidth = window.innerWidth - 300;
         $('#main-section').css('width', mainWidth);
         console.log('widthSet');
+	},
+
+	dialog: {
+		elements: {
+			overlay: '<div id="overlay"></div>',
+			modal: '<div id="modal"><h1 id="message"></h1><form id="data"></form><button type="submit" id="submit-modal">Submit</button></div>'
+		},
+
+		custom: function(message, values, callback){
+			//console.log(values);
+			$('body').prepend(Utils.dialog.elements.overlay);
+			$('#overlay').html(Utils.dialog.elements.modal);
+			$('#message').html(message);
+			
+			for (var key in values) {
+				console.log(values[key], key);
+
+				//create dom element from object literal values[key]
+				var element = $('<'+key+'>', values[key]);
+				$('#data').append(element);
+			}
+
+			$('#submit-modal').click(function(e){
+				e.preventDefault();
+				console.log($('#data').serialize(), callback);
+			});
+		},
+
+		savePlaylist: function (queue){
+			$('body').prepend(Utils.dialog.elements.overlay);
+			$('#overlay').html(Utils.dialog.elements.modal);
+			$('#message').html('Playlist Name?');
+			$('#data').append('<input type="text" name="name" id="name" />');
+			$('#submit-modal').click(function(e){
+				e.preventDefault();
+				queue.name = $('#name').val();
+				console.log(queue);
+				Library.playlist.save(queue);
+				$('#overlay').remove();
+			});
+		}
+	},
+
+	notifications: {
+
+		requestPermission: function() {
+
+			if (window.webkitNotifications.checkPermission() == 0) { 
+				Utils.notifications.create('Shambala', 'Notifications Enabled');
+			} else {
+			    window.webkitNotifications.requestPermission();
+			}
+
+		},
+
+		create: function(title, message){
+			if (window.webkitNotifications.checkPermission() == 0) {
+				//permission is enabled
+			    notif = window.webkitNotifications.createNotification(
+			      'icon.png', title, message);
+
+			    notif.ondisplay = function() {
+			    	setTimeout(function(){
+			    		notif.close();
+			    	}, 3000);
+			    };
+
+			    notif.show();
+			} else {
+				window.webkitNotifications.requestPermission();
+			}
+		}
 	}
 }
 

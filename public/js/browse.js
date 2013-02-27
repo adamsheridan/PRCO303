@@ -56,28 +56,34 @@ var Browse = {
 			
 		});
 
-		$(document).on("click", "#trending .song a", function(e){
-			e.preventDefault();
-
-			var $this = $(this);
-
-			var obj = {}
-			obj.location = $this.attr('href'),
-			obj.api = 'exfm',
-			obj.songid = $this.attr('data-songid'),
-			obj.queuePosition = Audio.queue.queue.length,
-			obj.artistname = $this.attr('data-artistname'),
-			obj.songtitle = $this.attr('data-songtitle'),
-			obj.releasetitle = $this.attr('data-releasetitle');
-
-			Audio.queue.queue.push(obj);
-			Audio.queue.events.updated();
-			console.log('added to queue', Audio.queue.queue);
-		});
+		
 	},
 
 	sources: {
 		exfm: {
+			events: function() {
+				$('#trending .song a').click(function(e){
+					e.preventDefault();
+
+					var $this = $(this);
+
+					console.log('fuck');
+
+					var obj = {}
+					obj.location = $this.attr('href'),
+					obj.api = 'exfm',
+					obj.songid = $this.attr('data-songid'),
+					obj.queuePosition = Audio.queue.queue.length,
+					obj.artistname = $this.attr('data-artistname'),
+					obj.songtitle = $this.attr('data-songtitle'),
+					obj.releasetitle = $this.attr('data-releasetitle');
+
+					Audio.queue.queue.push(obj);
+					Audio.queue.events.updated();
+					//console.log('added to queue', Audio.queue.queue);
+				});
+			},
+
 			trending: function(){
 				$.ajax({
 					url: 'http://ex.fm/api/v3/trending',
@@ -88,12 +94,15 @@ var Browse = {
 
 						$('#main-section').append('<ul id="trending" class="clearfix"></ul>');
 
+						$('#trending').html('');
+
 						for (var i = 0; i < 20; i++) {
 							console.log(data[i]);
 							$('#trending').append('<li class="song"><a class="fadeLoad" href="'+data[i].url+'" data-artistname="'+data[i].artist+'" data-songtitle="'+data[i].title+'" data-releasetitle="'+data[i].album+'" style="background-image: url('+data[i].image.large+')"></a></li>');
 						}
 
 						Library.music.fx.fadeLoad();
+						Browse.sources.exfm.events();
 					},
 					error: function(error){
 						console.log('error: ', error);
@@ -105,10 +114,10 @@ var Browse = {
 			loadChannel: function(State){
 				//console.log(State);
 				$.ajax({
-					url: 'http://www.youtube.com/user/'+State.title,
+					url: '/scrape/youtube/'+State.title,
 					type: 'GET',
 					success: function(data){
-						$('#page').html(data);
+						$('#main-section').html(data);
 						
 					},
 					error: function(error){
@@ -130,6 +139,7 @@ var Browse = {
 					},
 					error: function(error){
 						console.log('error: ', error);
+						$('#page').html(data);
 					}
 				});
 			}

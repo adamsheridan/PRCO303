@@ -249,6 +249,20 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
     width: 260px; }
     .sidebar #sources .source a:hover {
       background: #8bd1ec; }
+  .sidebar #playlists .playlist .bold a {
+    font-family: "proxima_nova_rgbold";
+    font-weight: bold; }
+  .sidebar #playlists .playlist a {
+    background: #c6e5f1;
+    color: #000;
+    display: block;
+    font-family: "proxima_nova_ltbold";
+    height: 20px;
+    padding: 10px;
+    text-decoration: none;
+    width: 260px; }
+    .sidebar #playlists .playlist a:hover {
+      background: #8bd1ec; }
 
 #main-section {
   background: #e4f7ff;
@@ -502,6 +516,13 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   height: 50px;
   width: 50px; }
 
+#save-playlist {
+  background: cyan;
+  display: block;
+  float: left;
+  height: 50px;
+  width: 50px; }
+
 .movie {
   background: #c6e3f1;
   border-radius: 10px;
@@ -512,3 +533,19 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   width: 200px; }
   .movie .thumb {
     width: 200px; }
+
+#overlay {
+  background: rgba(0, 0, 0, 0.8);
+  height: 1000px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100; }
+  #overlay #modal {
+    background: #fff;
+    border-radius: 10px;
+    margin: 150px auto;
+    min-height: 100px;
+    padding: 30px;
+    width: 400px; }

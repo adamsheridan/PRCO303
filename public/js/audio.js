@@ -15,7 +15,8 @@ var Audio = {
 		$btnPlay: $('#controls .play'),
 		$btnPause: $('#controls .pause'),
 		$btnNext: $('#controls .forward'),
-		$btnBack: $('#controls .back')
+		$btnBack: $('#controls .back'),
+		$btnSavePlaylist: $('#save-playlist')
 	},
 
 	events: function () {
@@ -67,6 +68,12 @@ var Audio = {
 			} else {
 				Audio.queue.fx.hideQueue();
 			}	
+		});
+
+		Audio.elements.$btnSavePlaylist.click(function(e){
+			e.preventDefault();
+			console.log('sup bitchezz');
+			Audio.queue.saveAsPlaylist();
 		});
 
 		$(document).on("click", "#queue li .delete", function(e){
@@ -128,12 +135,12 @@ var Audio = {
 		},
 
 		persist: function () {
-			var savedQueue = JSON.parse(Utils.getLocalStorage("queue"));
+			var savedQueue = JSON.parse(Utils.getLocalStorage("queue")) || "";
 			if (savedQueue.length > 0) {
 				Audio.queue.queue = savedQueue;
 				Audio.queue.updateUI();
 				Audio.queue.fx.showQueue();
-			}
+			} 
 		},
 
 		updateUI: function(){
@@ -219,6 +226,11 @@ var Audio = {
 		start: function () {
 			var song = Audio.queue.queue[0];
 			Audio.player.play(song);
+		},
+
+		saveAsPlaylist: function() {
+			console.log('saveAsPlaylist');
+			Utils.dialog.savePlaylist(Audio.queue.queue);
 		}
 	},
 
