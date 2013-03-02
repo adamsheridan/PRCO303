@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"q",
+				"queuePosition"
+			],
+			[
 				"e",
 				"e"
 			],
@@ -59,7 +63,7 @@
 			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 7188,
+				"buffer_size": 8433,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,34 +71,31 @@
 			"file": "public/js/library.js",
 			"settings":
 			{
-				"buffer_size": 7041,
+				"buffer_size": 9080,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "var Browse = {\n\n	//exfm trending\n	//subreddit\n	//youtube rss\n	\n	init: function() {\n		Browse.events();\n	},\n\n	events: function(){\n		$('#sources .source .exfm-trending').click(function(e){\n			e.preventDefault();\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseTrending',\n			}, text, href);\n			\n		});\n\n		$('#sources .source .youtube').click(function(e){\n			e.preventDefault();\n			console.log('youtube');\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseYoutube',\n			}, text, href);\n			\n		});\n\n		$('#sources .source .hypem').click(function(e){\n			e.preventDefault();\n			console.log('hypem');\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseHypem',\n			}, text, href);\n			\n		});\n\n		$(document).on(\"click\", \"#trending .song a\", function(e){\n			e.preventDefault();\n\n			var $this = $(this);\n\n			var obj = {}\n			obj.location = $this.attr('href'),\n			obj.api = 'exfm',\n			obj.songid = $this.attr('data-songid'),\n			obj.queuePosition = Audio.queue.queue.length,\n			obj.artistname = $this.attr('data-artistname'),\n			obj.songtitle = $this.attr('data-songtitle'),\n			obj.releasetitle = $this.attr('data-releasetitle');\n\n			Audio.queue.queue.push(obj);\n			Audio.queue.events.updated();\n			console.log('added to queue', Audio.queue.queue);\n		});\n	},\n\n	sources: {\n		exfm: {\n			trending: function(){\n				$.ajax({\n					url: 'http://ex.fm/api/v3/trending',\n					type: 'GET',\n					success: function(data){\n						console.log('exfm trending ', data);\n						var data = data.songs\n\n						$('#main-section').append('<ul id=\"trending\" class=\"clearfix\"></ul>');\n\n						for (var i = 0; i < 20; i++) {\n							console.log(data[i]);\n							$('#trending').append('<li class=\"song\"><a class=\"fadeLoad\" href=\"'+data[i].url+'\" data-artistname=\"'+data[i].artist+'\" data-songtitle=\"'+data[i].title+'\" data-releasetitle=\"'+data[i].album+'\" style=\"background-image: url('+data[i].image.large+')\"></a></li>');\n						}\n\n						Library.music.fx.fadeLoad();\n					},\n					error: function(error){\n						console.log('error: ', error);\n					}\n				});\n			}\n		},\n		youtube: {\n			loadChannel: function(State){\n				//console.log(State);\n				$.ajax({\n					url: 'http://www.youtube.com/user/'+State.title,\n					type: 'GET',\n					success: function(data){\n						$('#page').html(data);\n						\n					},\n					error: function(error){\n						console.log('error: ', error);\n					}\n				});\n			}\n			//\n		},\n		hypem: {\n			ajax: function(State){\n				$.ajax({\n					url: 'http://hypem.com/playlist/popular/3day/json/1/data.js',\n					type: 'GET',\n					success: function(data){\n						console.log('hypem trending', data);\n						$('#page').html(data);\n						\n					},\n					error: function(error){\n						console.log('error: ', error);\n						$('#page').html(data);\n					}\n				});\n			}\n		}\n	}\n}\n\nBrowse.init();",
+			"file": "app/controllers/MovieController.js",
+			"settings":
+			{
+				"buffer_size": 2055,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/movies/new.html",
+			"settings":
+			{
+				"buffer_size": 278,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "public/js/browse.js",
-			"file_size": 3361,
-			"file_write_time": 130063235625683930,
 			"settings":
 			{
-				"buffer_size": 3251,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/views/_main.html",
-			"settings":
-			{
-				"buffer_size": 2569,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/sass/main.scss",
-			"settings":
-			{
-				"buffer_size": 7359,
+				"buffer_size": 3474,
 				"line_ending": "Windows"
 			}
 		},
@@ -102,7 +103,50 @@
 			"file": "public/js/audio.js",
 			"settings":
 			{
-				"buffer_size": 8097,
+				"buffer_size": 8858,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/utils.js",
+			"settings":
+			{
+				"buffer_size": 3096,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/C/xampp/htdocs/deadlines/.git/config",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/views/_main.html",
+			"settings":
+			{
+				"buffer_size": 2692,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/ArtistController.js",
+			"settings":
+			{
+				"buffer_size": 2178,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/batch.js",
+			"settings":
+			{
+				"buffer_size": 650,
 				"line_ending": "Windows"
 			}
 		},
@@ -110,39 +154,7 @@
 			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 3633,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/LibraryController.js",
-			"settings":
-			{
-				"buffer_size": 6558,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/mylibrary.html",
-			"settings":
-			{
-				"buffer_size": 11844,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/views/browse.html",
-			"settings":
-			{
-				"buffer_size": 607,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/PhantomController.js",
-			"settings":
-			{
-				"buffer_size": 492,
+				"buffer_size": 3866,
 				"line_ending": "Windows"
 			}
 		}
@@ -171,44 +183,56 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/deadlines-master/index.html",
+		"/C/xampp/htdocs/deadlines-master/css/main.css",
+		"/C/xampp/htdocs/deadlines-master/js/main.js",
+		"/C/xampp/htdocs/deadlines-master/js/deadlines.js",
+		"/C/xampp/htdocs/PRCO303/config/routes.js",
+		"/C/xampp/htdocs/PRCO303/config/shell.js",
+		"/C/xampp/htdocs/PRCO303/config/vlc.bat",
+		"/C/xampp/htdocs/PRCO303/config/vlc.js",
+		"/C/xampp/htdocs/PRCO303/config/batch.js",
+		"/C/xampp/htdocs/PRCO303/config/b.bat",
+		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
+		"/C/xampp/htdocs/PRCO303/public/views/browse.html",
+		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
+		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/PlaylistController.js",
+		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/PhantomController.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ReleaseController.js",
+		"/C/xampp/htdocs/PRCO303/public/js/browse.js",
+		"/C/xampp/htdocs/PRCO303/prototypes/soundcloud/index.html",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
+		"/C/xampp/htdocs/PRCO303/public/views/playlists.html",
+		"/C/xampp/htdocs/PRCO303/app/models/PlaylistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
+		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
 		"/C/xampp/htdocs/PRCO303/public/css/style.css",
 		"/C/xampp/htdocs/PRCO303/public/css/main.css",
-		"/C/xampp/htdocs/PRCO303/public/views/browse.html",
-		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
-		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
 		"/C/xampp/htdocs/PRCO303/public/js/main.js",
-		"/C/xampp/htdocs/PRCO303/config/routes.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
 		"/C/xampp/htdocs/PRCO303/index.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_menu.html",
 		"/C/Users/Adam/Desktop/demo/index.html",
-		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
 		"/C/xampp/htdocs/PRCO303/public/views/library.html",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ReleaseController.js",
 		"/C/xampp/htdocs/PRCO303/README.md",
 		"/C/xampp/htdocs/PRCO303/app/controllers/MovieController.js",
 		"/C/xampp/htdocs/PRCO303/app/views/library/index.html",
-		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
-		"/C/xampp/htdocs/PRCO303/config/batch.js",
-		"/C/xampp/htdocs/PRCO303/config/vlc.js",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_header.html",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
 		"/C/xampp/htdocs/PRCO303/public/views/movies.html",
 		"/C/xampp/htdocs/PRCO303/app/views/library/artist.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_sidebarArtists.html",
 		"/C/xampp/htdocs/PRCO303/public/js/fx.js",
-		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/boilerplate.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
-		"/C/xampp/htdocs/PRCO303/config/vlc.bat",
 		"/C/xampp/htdocs/PRCO303/app/views/movies/new.html",
 		"/C/xampp/htdocs/PRCO303/app/models/MovieModel.js",
 		"/C/xampp/htdocs/PRCO303/app/views/tvshows/new.html",
 		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/TVShowController.js",
 		"/C/xampp/htdocs/PRCO303/public/js/library.js",
 		"/C/xampp/htdocs/PRCO303/public/tvshows.html",
@@ -219,11 +243,8 @@
 		"/C/xampp/htdocs/PRCO303/public/js/plugins.js",
 		"/C/xampp/htdocs/PRCO303/config/mongo.bat",
 		"/C/Windows/System32/drivers/etc/hosts",
-		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
-		"/C/xampp/htdocs/PRCO303/config/b.bat",
 		"/C/xampp/htdocs/PRCO303/hello.txt",
 		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
-		"/C/xampp/htdocs/PRCO303/config/shell.js",
 		"/C/xampp/htdocs/PRCO303/prototypes/id3/id3.js",
 		"/C/xampp/htdocs/PRCO303/app/views/library/scan.html",
 		"/C/xampp/htdocs/PRCO303/prototypes/upnp/upnp.js",
@@ -289,16 +310,7 @@
 		"/C/Users/Adam/Documents/NetBeansProjects/Blog/config.ru",
 		"/C/Users/Adam/Desktop/recrack.bat",
 		"/C/xampp/htdocs/AINT304/src/sass/640.scss",
-		"/C/xampp/htdocs/AINT304/src/sass/main.scss",
-		"/C/xampp/htdocs/AINT304/public/css/main.css",
-		"/C/xampp/htdocs/AINT304/public/index.html",
-		"/C/xampp/htdocs/AINT304/src/sass/768.scss",
-		"/C/xampp/htdocs/AINT304/public/results.html",
-		"/C/xampp/htdocs/AINT304/src/sass/style.scss",
-		"/C/xampp/htdocs/AINT304/src/sass/boilerplate.scss",
-		"/C/xampp/htdocs/AINT304/src/sass/helpers.scss",
-		"/C/Users/Adam/.gitconfig",
-		"/C/xampp/htdocs/AINT304/public/images/preview.png"
+		"/C/xampp/htdocs/AINT304/src/sass/main.scss"
 	],
 	"find":
 	{
@@ -317,6 +329,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#trending .song",
+			".song",
+			"show",
 			"							\n",
 			"#main-nav",
 			"params",
@@ -414,7 +429,7 @@
 	"groups":
 	[
 		{
-			"selected": 11,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -440,7 +455,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 336.0,
+						"translation.y": 432.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -450,15 +465,15 @@
 					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 7188,
+						"buffer_size": 8433,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5273,
-								5273
+								1686,
+								1686
 							]
 						],
 						"settings":
@@ -467,7 +482,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2451.0,
+						"translation.y": 756.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -477,15 +492,15 @@
 					"file": "public/js/library.js",
 					"settings":
 					{
-						"buffer_size": 7041,
+						"buffer_size": 9080,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3707,
-								3707
+								2351,
+								2351
 							]
 						],
 						"settings":
@@ -494,30 +509,57 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2069.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "public/js/browse.js",
+					"file": "app/controllers/MovieController.js",
 					"settings":
 					{
-						"buffer_size": 3251,
+						"buffer_size": 2055,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3206,
-								3206
+								1751,
+								1751
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/movies/new.html",
+					"settings":
+					{
+						"buffer_size": 278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -526,56 +568,28 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "public/views/_main.html",
-					"settings":
-					{
-						"buffer_size": 2569,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2560,
-								2560
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 453.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 5,
-					"file": "src/sass/main.scss",
+					"file": "public/js/browse.js",
 					"settings":
 					{
-						"buffer_size": 7359,
+						"buffer_size": 3474,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2528,
-								2528
+								1753,
+								1753
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 2167.0,
+						"translation.x": 33.0,
+						"translation.y": 1011.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -585,15 +599,15 @@
 					"file": "public/js/audio.js",
 					"settings":
 					{
-						"buffer_size": 8097,
+						"buffer_size": 8858,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6604,
-								6604
+								6602,
+								6602
 							]
 						],
 						"settings":
@@ -601,26 +615,26 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 3274.0,
+						"translation.x": 216.0,
+						"translation.y": 3944.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "config/routes.js",
+					"file": "public/js/utils.js",
 					"settings":
 					{
-						"buffer_size": 3633,
+						"buffer_size": 3096,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2498,
-								2498
+								2467,
+								2467
 							]
 						],
 						"settings":
@@ -629,30 +643,30 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 546.0,
+						"translation.y": 1109.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "app/controllers/LibraryController.js",
+					"file": "/C/xampp/htdocs/deadlines/.git/config",
 					"settings":
 					{
-						"buffer_size": 6558,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								637,
-								447
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -663,18 +677,18 @@
 				},
 				{
 					"buffer": 9,
-					"file": "public/mylibrary.html",
+					"file": "public/views/_main.html",
 					"settings":
 					{
-						"buffer_size": 11844,
+						"buffer_size": 2692,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11128,
-								11196
+								2119,
+								2119
 							]
 						],
 						"settings":
@@ -684,32 +698,31 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3455.0,
+						"translation.y": 240.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 10,
-					"file": "public/views/browse.html",
+					"file": "app/controllers/ArtistController.js",
 					"settings":
 					{
-						"buffer_size": 607,
+						"buffer_size": 2178,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								192,
-								192
+								193,
+								329
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -719,18 +732,18 @@
 				},
 				{
 					"buffer": 11,
-					"file": "app/controllers/PhantomController.js",
+					"file": "config/batch.js",
 					"settings":
 					{
-						"buffer_size": 492,
+						"buffer_size": 650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								226,
-								226
+								603,
+								603
 							]
 						],
 						"settings":
@@ -739,6 +752,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "config/routes.js",
+					"settings":
+					{
+						"buffer_size": 3866,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 597.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -806,6 +846,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 237.0,
+	"side_bar_width": 217.0,
 	"status_bar_visible": true
 }

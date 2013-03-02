@@ -74,8 +74,10 @@ module.exports = function (app, express) {
 	app.post('/playlists/', playlists.create);
 	app.get('/playlists/:id', playlists.show);
 
+	//scraper
 	app.get('/scrape/:href', phantom.go);
 	app.get('/scrape/youtube/:channel', phantom.youtube);
+	app.get('/scrape/rinsefm/:content', phantom.rinsefm);
 
 	// APPLICATION ROUTING //
 	//app.get('/#/artist/:artistid', library.artist)

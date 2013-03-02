@@ -272,6 +272,9 @@ $(document).ready(function(){
 		} else if (State.data.contentType == 'browseHypem') {
 			Browse.sources.hypem.ajax(State);
 			Utils.setMainSectionWidth();
+		} else if (State.data.contentType == 'browseRinse') {
+			Browse.sources.rinse.ajax(State);
+			Utils.setMainSectionWidth();
 		}  
 
 		

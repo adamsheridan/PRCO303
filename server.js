@@ -36,6 +36,11 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
+// Trim by Mozilla Developer Network
+String.prototype.trim = function () {
+    return this.replace(/^\s+/, '').replace(/\s+$/, '');
+};
+
 var libraryPath = '/Users/adam/Music/iTunes/iTunes Media/Music/';
 
 // configure application

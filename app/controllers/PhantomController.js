@@ -1,5 +1,8 @@
 var request = require('request'),
-	cheerio = require('cheerio');
+	cheerio = require('cheerio'),
+	async = require('async'),
+	sanitize = require('validator').sanitize;
+
 
 exports.go = function (req, res) {
 	
@@ -50,4 +53,109 @@ exports.youtube = function (req, res) {
 		var channelFeed = $('#channel-feed');
 		res.send(body);
 	});
+}
+
+exports.rinsefm = function (req, res) {
+
+	function trim1 (str) {
+	    return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+	}
+
+	if (req.params.content = 'podcasts') {
+		console.log('gotta get dat podkarstz');
+
+		res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+
+		var podcasts = [];
+
+		async.series([
+			function(callback) {
+				request('http://rinse.fm/podcasts/?page=1', function(error, response, body){
+					$ = cheerio.load(body);
+					var podcasts = $('#podcasts-listing');
+					callback(null, podcasts);
+				});
+			},
+			function(callback) {
+				request('http://rinse.fm/podcasts/?page=2', function(error, response, body){
+					$ = cheerio.load(body);
+					var podcasts = $('#podcasts-listing');
+					callback(null, podcasts);
+				});
+			}
+		], function(err, result){
+			var data;
+
+			if (err) {
+				console.log(err);
+			} else { 
+				for (var i = 0; i < result.length; i++){
+					data+=result[i];
+				}
+				parse(data);
+			}
+		});
+
+		function parse(data) {
+			$ = cheerio.load(data);
+			var $podcast = $('.podcasts .podcast-list-item'),
+				podcasts = [];
+
+			$podcast.each(function(i, e){
+				var podcast = {};
+				podcast.image = $(this)[0].attribs['data-img-src'];
+				podcast.name = $(this).find('.headline').text().trim();
+				podcast.date = $(this).attr('data-air_day');
+				podcast.time = $(this).attr('data-airtime');
+				podcast.url = $(this).find('.download a').attr('href');
+				podcasts.push(podcast);
+			})
+
+			res.end(JSON.stringify(podcasts));
+		}
+
+		/*
+			var podcast = {};
+			podcast.image = $(this)[0].attribs['data-img-src'];
+			podcast.name = $(this).find('.headline').text().trim();
+			podcast.date = $(this).attr('data-air_day');
+			podcast.time = $(this).attr('data-airtime');
+			podcast.url = $(this).find('.download a').attr('href');
+		*/
+
+		/* for (var i = 0; i < 10; i++){
+
+			request('http://rinse.fm/podcasts/?page='+i, function(error, response, body){
+				//console.log('######################## PAGE: '+i);
+				$ = cheerio.load(body);
+				var $podcast = $('.podcasts .podcast-list-item');
+					$podcast.each(function(k,v){
+					var podcast = {};
+					podcast.image = $(this)[0].attribs['data-img-src'];
+					podcast.name = $(this).find('.headline').text().trim();
+					podcast.date = $(this).attr('data-air_day');
+					podcast.time = $(this).attr('data-airtime');
+					podcast.url = $(this).find('.download a').attr('href');
+
+					//console.log(podcast);
+					podcasts.push(podcast);
+
+					res.write(JSON.stringify(podcast));
+
+				});
+
+			});
+
+		} */
+
+		
+		console.log(podcasts);
+
+		/* 
+
+		res.end(podcasts); */
+	}
 }

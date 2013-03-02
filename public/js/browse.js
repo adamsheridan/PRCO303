@@ -56,6 +56,22 @@ var Browse = {
 			
 		});
 
+		$('#sources .source .rinse').click(function(e){
+			e.preventDefault();
+			console.log('rinse');
+			var href = $(this).attr('href'),
+				text = $(this).text(),
+				History = window.History;
+				
+			History.pushState({ 
+				navigate: true, 
+				source: '#sidebar', 
+				target: '#main-section', 
+				contentType: 'browseRinse',
+			}, text, href);
+			
+		});
+
 		
 	},
 
@@ -141,6 +157,50 @@ var Browse = {
 					error: function(error){
 						console.log('error: ', error);
 						$('#page').html(data);
+					}
+				});
+			}
+		},
+		rinse: {
+			events: function() {
+				$('#trending .song a').click(function(e){
+					e.preventDefault();
+
+					var $this = $(this);
+
+					var obj = {}
+					obj.location = $this.attr('href'),
+					obj.api = 'rinsefm',
+					//obj.songid = $this.attr('data-songid'),
+					obj.queuePosition = Audio.queue.queue.length,
+					obj.artistname = $this.attr('data-name'),
+					obj.songtitle = $this.attr('data-date'),
+					obj.releasetitle = 'http://rinse.fm';
+					//obj.source = $this.attr('data-source');
+
+					console.log('wut', obj);
+
+					Audio.queue.queue.push(obj);
+					Audio.queue.events.updated();
+					//console.log('added to queue', Audio.queue.queue);
+				});
+			},
+			ajax: function(Stat){
+				$.ajax({
+					url: '/scrape/rinsefm/podcasts',
+					type: 'GET',
+					success: function(data){
+						console.log('hypem trending', data);
+						$('#main-section').append('<ul id="trending" class="clearfix"></ul>');
+						$('#trending').html('');
+						for (var i = 0; i < data.length; i++) {
+							//console.log(data[i]);
+							$('#trending').append('<li class="song"><a class="fadeLoad" href="'+data[i].url+'" data-name="'+data[i].name+'" data-date="'+data[i].date+'" data-time="'+data[i].time+'" style="background-image: url('+data[i].image+')"></a></li>');
+						}
+						Browse.sources.rinse.events();
+					},
+					error: function(error){
+						console.log('error: ', error);
 					}
 				});
 			}
