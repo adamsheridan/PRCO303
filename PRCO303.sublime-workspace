@@ -55,7 +55,7 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 2240,
+				"buffer_size": 2376,
 				"line_ending": "Windows"
 			}
 		},
@@ -63,7 +63,7 @@
 			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 8433,
+				"buffer_size": 8558,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,7 +95,7 @@
 			"file": "public/js/browse.js",
 			"settings":
 			{
-				"buffer_size": 3474,
+				"buffer_size": 5238,
 				"line_ending": "Windows"
 			}
 		},
@@ -154,7 +154,31 @@
 			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 3866,
+				"buffer_size": 3932,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/PhantomController.js",
+			"settings":
+			{
+				"buffer_size": 3892,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/LibraryController.js",
+			"settings":
+			{
+				"buffer_size": 6558,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/ArtistModel.js",
+			"settings":
+			{
+				"buffer_size": 499,
 				"line_ending": "Windows"
 			}
 		}
@@ -183,6 +207,8 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
+		"/C/xampp/htdocs/PRCO303/npm-debug.log",
 		"/C/xampp/htdocs/deadlines-master/index.html",
 		"/C/xampp/htdocs/deadlines-master/css/main.css",
 		"/C/xampp/htdocs/deadlines-master/js/main.js",
@@ -193,7 +219,6 @@
 		"/C/xampp/htdocs/PRCO303/config/vlc.js",
 		"/C/xampp/htdocs/PRCO303/config/batch.js",
 		"/C/xampp/htdocs/PRCO303/config/b.bat",
-		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
 		"/C/xampp/htdocs/PRCO303/public/views/browse.html",
 		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
 		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
@@ -309,8 +334,7 @@
 		"/C/xampp/htdocs/PRCO303/PRCO303.sublime-project",
 		"/C/Users/Adam/Documents/NetBeansProjects/Blog/config.ru",
 		"/C/Users/Adam/Desktop/recrack.bat",
-		"/C/xampp/htdocs/AINT304/src/sass/640.scss",
-		"/C/xampp/htdocs/AINT304/src/sass/main.scss"
+		"/C/xampp/htdocs/AINT304/src/sass/640.scss"
 	],
 	"find":
 	{
@@ -429,7 +453,7 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -437,15 +461,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 2240,
+						"buffer_size": 2376,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								663,
-								663
+								1080,
+								1080
 							]
 						],
 						"settings":
@@ -455,7 +479,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 432.0,
+						"translation.y": 252.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -465,15 +489,15 @@
 					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 8433,
+						"buffer_size": 8558,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1686,
-								1686
+								6643,
+								6643
 							]
 						],
 						"settings":
@@ -482,7 +506,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 756.0,
+						"translation.y": 3492.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -536,7 +560,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -572,15 +596,15 @@
 					"file": "public/js/browse.js",
 					"settings":
 					{
-						"buffer_size": 3474,
+						"buffer_size": 5238,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1753,
-								1753
+								5109,
+								5109
 							]
 						],
 						"settings":
@@ -588,8 +612,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 33.0,
-						"translation.y": 1011.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -633,8 +657,8 @@
 						"selection":
 						[
 							[
-								2467,
-								2467
+								662,
+								662
 							]
 						],
 						"settings":
@@ -643,7 +667,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1109.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -725,7 +749,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -761,7 +785,88 @@
 					"file": "config/routes.js",
 					"settings":
 					{
-						"buffer_size": 3866,
+						"buffer_size": 3932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2784,
+								2784
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 507.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/controllers/PhantomController.js",
+					"settings":
+					{
+						"buffer_size": 3892,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2765,
+								2765
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1260.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/controllers/LibraryController.js",
+					"settings":
+					{
+						"buffer_size": 6558,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1814,
+								2093
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 921.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/models/ArtistModel.js",
+					"settings":
+					{
+						"buffer_size": 499,
 						"regions":
 						{
 						},
@@ -774,11 +879,10 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 597.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
