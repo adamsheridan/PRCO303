@@ -86,7 +86,8 @@ var Utils = {
 				Library.playlist.save(queue);
 				$('#overlay').remove();
 			});
-		}
+		},
+		
 	},
 
 	notifications: {
@@ -116,6 +117,21 @@ var Utils = {
 			    notif.show();
 			} else {
 				window.webkitNotifications.requestPermission();
+			}
+		}
+	},
+
+	objLiteralConvert: function(lit) {
+		var obj = {};
+		for (var key in lit) {
+			if (lit.hasOwnProperty(key)) {
+				var obj = lit[key]
+				return obj;
+				/* for (var prop in obj) {
+					if (obj.hasOwnProperty(prop)) {
+						console.log('obj[prop]', obj[prop]);
+					}
+				} */
 			}
 		}
 	}

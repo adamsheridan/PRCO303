@@ -232,16 +232,32 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 #featured-artist {
 	background-position: 20%, 30%;
 	color: #fff;
-	height: 360px;
-	padding: 20px 0;
+	height: 460px;
+	padding: 0;
 	position: relative;
 	width: 100%;
+
+	h1 {
+		background: rgba(0,0,0,0.8);
+		padding: 20px 0;
+		text-indent: 20px;
+		width: 100%;
+	}
 
 	#logo {
 		bottom: 20px;
 		left: 20px;
 		position: absolute;
 
+	}
+
+	h1#logo {
+		background: rgba(0,0,0,0.8);
+		bottom: 0;
+		left: 0;
+		padding: 20px 0;
+		text-indent: 20px;
+		width: 100%;
 	}
 
 	.show-stats {
@@ -289,20 +305,20 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 			}
 
 			.artist-title {
+				background: rgba(0,0,0, 0.8);
 				bottom: 0px;
 				color: #fff;
-				left: 5px;
+				left: 0px;
 				margin: 0;
 				position: absolute;
-				text-decoration: none
+				text-decoration: none;
+				text-indent: 5px;
+				width: 100%;
 			}
 
-			&.item:hover .overlay {
-				opacity: 1;
-			}
-
-			&.item:hover h3 {
-				opacity: 0;
+			.thumb {
+				height: 200px;
+				width: 200px;
 			}
 
 			.overlay {
@@ -574,6 +590,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 #overlay {
 	background: rgba(0,0,0,0.8);
+	display: none;
 	height: 1000px;
 	left: 0;
 	position: absolute;

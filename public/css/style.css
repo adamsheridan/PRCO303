@@ -25,7 +25,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
   margin: 1em 0;
   padding: 0; }
 
@@ -295,14 +295,26 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 #featured-artist {
   background-position: 20%, 30%;
   color: #fff;
-  height: 360px;
-  padding: 20px 0;
+  height: 460px;
+  padding: 0;
   position: relative;
   width: 100%; }
+  #featured-artist h1 {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    text-indent: 20px;
+    width: 100%; }
   #featured-artist #logo {
     bottom: 20px;
     left: 20px;
     position: absolute; }
+  #featured-artist h1#logo {
+    background: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    left: 0;
+    padding: 20px 0;
+    text-indent: 20px;
+    width: 100%; }
   #featured-artist .show-stats#stats {
     display: block;
     bottom: 0;
@@ -335,16 +347,18 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
       height: 100%;
       -webkit-transition: opacity 100ms linear; }
     .module.thumb-list li .artist-title {
+      background: rgba(0, 0, 0, 0.8);
       bottom: 0px;
       color: #fff;
-      left: 5px;
+      left: 0px;
       margin: 0;
       position: absolute;
-      text-decoration: none; }
-    .module.thumb-list li.item:hover .overlay {
-      opacity: 1; }
-    .module.thumb-list li.item:hover h3 {
-      opacity: 0; }
+      text-decoration: none;
+      text-indent: 5px;
+      width: 100%; }
+    .module.thumb-list li .thumb {
+      height: 200px;
+      width: 200px; }
     .module.thumb-list li .overlay {
       color: #fff;
       display: block;
@@ -536,6 +550,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 #overlay {
   background: rgba(0, 0, 0, 0.8);
+  display: none;
   height: 1000px;
   left: 0;
   position: absolute;

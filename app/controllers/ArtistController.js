@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	utils = require('../../config/utils.js'),
 	Artist = mongoose.model('Artist'),
 	Song = mongoose.model('Song');
 

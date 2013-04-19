@@ -12,7 +12,8 @@ module.exports = function (app, express) {
 		tvshows = require('../app/controllers/TVShowController'),
 		movies = require('../app/controllers/MovieController'),
 		phantom = require('../app/controllers/PhantomController'),
-		playlists = require('../app/controllers/PlaylistController');
+		playlists = require('../app/controllers/PlaylistController'),
+		artwork = require('../app/controllers/ArtworkController');
 
 	var Artist = mongoose.model('Artist');
 
@@ -20,6 +21,7 @@ module.exports = function (app, express) {
 
 
 	//// API ROUTING ////
+
 	//artists
 	app.get('/artists/', artists.index);
 	app.get('/artists/new', artists.new);
@@ -79,37 +81,44 @@ module.exports = function (app, express) {
 	app.get('/scrape/youtube/:channel', phantom.youtube);
 	app.get('/scrape/rinsefm/:content', phantom.rinsefm);
 
+	//artwork
+	app.get('/artwork/:id', artwork.getArtistArtwork);
+
 	// APPLICATION ROUTING //
+	app.get('/library/*', library.index);
+	app.get('/browse/*', library.index);
+	app.get('/playlists/*', library.index);
+	app.get('/search/*', library.index);
+
 	//app.get('/#/artist/:artistid', library.artist)
-	app.get('/library/artist/:id/releases/', function(req, res){
-		res.render('library/index');
-	});
+	//app.get('/library/artist/:id/releases/', function(req, res){
+	//	res.render('library/index');
+	//});
 
-	app.get('/library/release/:id', function(req, res){
-		res.render('library/index');
-	});
+	//app.get('/library/release/:id', function(req, res){
+	//	res.render('library/index');
+	//});
 
 
-	app.get('/library/artist/:artistid/releases/', function(req, res){
-		res.render('library/index');
-	});
+	//app.get('/library/artist/:artistid/releases/', function(req, res){
+	//	res.render('library/index');
+	//});
 
-	app.get('/library/scan', library.scan);
-	app.post('/library/scan', library.scanDir);
+	//app.get('/library/scan', library.scan);
+	//app.post('/library/scan', library.scanDir);
 	
 	/* app.get('/library/playlists', library.playlists);
 	app.get('/library/genres', library.genres);
 	app.get('/library/rescan', library.rescan);
 	app.post('/library/rescan', library.rescannow); */
 
-	app.param('artistid', function(req, res, next, id){
-		Artist.find({ _id: id}, function(err, result){
-			console.log('param result: ', result[0]);
-			req.artist = result[0];
-			req.artist.name = result[0].name
-			next();
-		});
-	});
+	//	Artist.find({ _id: id}, function(err, result){
+	//		console.log('param result: ', result[0]);
+	//		req.artist = result[0];
+	//		req.artist.name = result[0].name
+	//		next();
+	//	});
+	//});
 
 	/* app.get('/library/artist/:artistid', function(req, res, next){
 		console.log(req.artist);

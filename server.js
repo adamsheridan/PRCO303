@@ -1,13 +1,17 @@
 var express = require('express'),
-    params = require('express-params'),
-	events = require('events'),
     http = require('http'),
+    app = express(),
+    server = http.createServer(app),
+    io = require('socket.io').listen(server, {origins: '*:*'}),
+    params = require('express-params'),
+	//events = require('events'),
+    
     fs = require('fs'),
     file = require('file'),
-    app = express(),
+    
     mongoose = require('mongoose'),
     hbs = require('hbs');
-
+    
     params.extend(app);
     //server = http.createServer(app),
     //mongo = require('mongojs'),
@@ -16,6 +20,20 @@ var express = require('express'),
     //sanitize = require('validator').sanitize;
     //$ = require('jquery');
 
+var clients = {};
+
+io.sockets.on('connection', function(socket){
+    //console.log('session id', socket.handshake.sessionID);
+
+    var address = socket.handshake.address,
+        ip = address.address + ":" + address.port;
+
+    clients[address.address] = address.port;
+    
+    console.log('current connected clients: ', clients);
+    socket.emit('updateClients', ip, clients);
+
+});
 //upnp prototype
 //require('./prototypes/upnp/upnp.js');
 
@@ -80,4 +98,10 @@ require('./config/registerPartials.js')(app, express);
 mongoose.connect('mongodb://localhost/prco303');
 
 // start application
-app.listen(8080);
+//var server = app.listen(8080);
+
+/* io.sockets.on('connect', function(socket){
+    console.log('socket connected!', socket);
+}); */
+
+server.listen(8080);

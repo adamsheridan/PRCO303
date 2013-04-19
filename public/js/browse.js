@@ -71,7 +71,6 @@ var Browse = {
 			}, text, href);
 			
 		});
-
 		
 	},
 

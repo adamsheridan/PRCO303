@@ -198,6 +198,7 @@ var Library = {
 				success: function (data, textStatus, jqXHR) {
 					$('#page').html(data);
 					Utils.setMainSectionWidth();
+					Library.music.getHomeScreenData();
 				},
 				error: function(jqXHR, textStatus, error) {
 					console.log('--------------- ERROR ---------------');
@@ -206,7 +207,120 @@ var Library = {
 					console.dir(jqXHR);
 				}
 			});
+		},
+
+		getHomeScreenData: function(){
+
+			var homeScreenData = {}
+
+			function getArtists(){
+				$.ajax({
+					async: false,
+					url: '/artists/',
+					type: 'GET',
+					success: function (data, textStatus, jqXHR) {
+						var artists = {};
+						for (var i = 0; i<data.length; i++){
+							homeScreenData['artists'] = data;
+							$('#recently-added ul').append('<li class="item" data-mbid='+data[i].musicbrainzId+'><img src="/images/bauuer.jpg" class="thumb" /><h3 class="artist-title">'+data[i].name+'</h3></li>');
+						}
+						//console.log('homeScreen', homeScreenData);
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('--------------- ERROR ---------------');
+						console.log(error);
+						console.log(textStatus);
+						console.dir(jqXHR);
+					}
+				});
+			}
+
+			function getArtwork() {
+				$('#recently-added ul .item').each(function(){
+					var $this = $(this),
+						mbid = $(this).data('mbid');
+
+					$.ajax({
+						async: true,
+						url: '/artwork/'+mbid,
+						type: 'GET',
+						success: function (data, textStatus, jqXHR) {
+
+							var obj = Utils.objLiteralConvert(data);	
+
+							//console.log('obj still is: ', obj);
+
+							if (obj.artistthumb) {
+								$this.children('.thumb').attr('src', obj.artistthumb[0].url);
+							}
+							
+						},
+						error: function(jqXHR, textStatus, error) {
+							console.log('--------------- ERROR ---------------');
+							console.log(error);
+							console.log(textStatus);
+							console.dir(jqXHR);
+						}
+					});
+				});
+			}
+
+			function featuredArtist() {
+				$.ajax({
+					async: true,
+					url: '/artists/',
+					type: 'GET',
+					success: function (data, textStatus, jqXHR) {
+
+						var rand = Math.floor((Math.random()*data.length)+1),
+							artistMbid = data[rand].musicbrainzId,
+							artistName = data[rand].name,
+							$featuredArtist = $('#featured-artist');
+
+						$.ajax({
+							url: '/artwork/'+artistMbid,
+							type: 'GET',
+							success: function(data){
+								var obj = Utils.objLiteralConvert(data);
+								$featuredArtist.css({
+									'background-image': 'url('+obj.artistbackground[0].url+')',
+									'background-size':  $('#main-section').css('width'),
+									'background-repeat': 'no-repeat',
+									'background-position':'top left'
+								});
+
+								if (!obj.musiclogo) {
+									$featuredArtist.find('#logo').remove();
+									$featuredArtist.append('<h1 id="logo">'+artistName+'</h1>');
+								} else {
+									$featuredArtist.find('#logo').attr('src', obj.musiclogo[0].url);
+								}
+							},
+							error: function(jqXHR, textStatus, error) {
+								console.log('--------------- ERROR ---------------');
+								console.log(error);
+								console.log(textStatus);
+								console.dir(jqXHR);
+							}
+						});
+						
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('--------------- ERROR ---------------');
+						console.log(error);
+						console.log(textStatus);
+						console.dir(jqXHR);
+					}
+				});
+			}
+
+
+			featuredArtist();
+			getArtists();
+			getArtwork();
 		}
+
+
 	},
 
 	playlist: {

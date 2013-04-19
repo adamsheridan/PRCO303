@@ -1,6 +1,7 @@
 var app = {
 	init: function() {
 		console.log('APP INIT');
+		console.log(Library);
 		Library.music.init();
 		app.events();
 	},
@@ -97,6 +98,13 @@ app.init();
 
 
 $(document).ready(function(){
+
+	var n = navigator;
+        socket = io.connect('http://localhost/');
+
+    socket.on('connect', function () {
+        console.log('connected');
+    });
 
 	var analyser;
 

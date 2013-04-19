@@ -8,7 +8,9 @@ var SongSchema = new Schema({
     artistid: { type: ObjectId, required: true },
     releaseid: ObjectId,
     title: { type: String, required: true },
-    location: { type: String, required: true }
+    location: { type: String, required: true },
+    plays: { type: Number, required: true, default: '0'},
+    lastPlay: { type: Number }
 });
 
 /* ReleaseSchema.path('title').validate(function (name){
