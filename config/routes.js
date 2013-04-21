@@ -88,7 +88,7 @@ module.exports = function (app, express) {
 	app.get('/library/*', library.index);
 	app.get('/browse/*', library.index);
 	app.get('/playlists/*', library.index);
-	app.get('/search/*', library.index);
+	app.get('/search/:query', library.search);
 
 	//app.get('/#/artist/:artistid', library.artist)
 	//app.get('/library/artist/:id/releases/', function(req, res){

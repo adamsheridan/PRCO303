@@ -3,6 +3,7 @@ var Library = {
 	init: function() {
 		//Library.getArtists();
 		Library.events();
+		Library.search.init();
 	},
 
 	events: function() {
@@ -76,13 +77,12 @@ var Library = {
 			History.pushState({ 
 				navigate: false, 
 				source: 'artist-sidebar', 
-				target: '#releases', 
+				target: '#main-section', 
 				contentType: 'artistIndex',
 				meta: {
 					artistid: artistid
 				}
 			}, text, href);
-			//document.title = "Fuck World";
 		});
 
 		$(document).on("click", '#releases a', function(e){
@@ -398,6 +398,58 @@ var Library = {
 					console.dir(jqXHR);
 				}
 			});
+		}
+	},
+
+	search: {
+		init: function() {
+			Library.search.events();
+		},
+
+		events: function(){
+			$('#search-form #submit').click(function(e){
+				e.preventDefault();
+				var query = $('#search-form #query').val(),
+					type = $('#media-type').find(":selected").text(),
+					History = window.History,
+					url = '/search/'+query+'?media='+type;
+
+				console.log('searching for ', query, type);
+				$.ajax({
+					type: 'GET',
+					url: url,
+					success: function(data){
+						History.pushState({ 
+							navigate: true, 
+							source: '#search-form', 
+							target: '#main-section',
+							contentType: 'searchResults',
+							meta: {
+								"results": data
+							}
+						}, query, url);
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('--------------- ERROR ---------------');
+						console.log(error);
+						console.log(textStatus);
+						console.dir(jqXHR);
+					}
+				});
+			});
+		},
+
+		renderResults: function (data){
+			var $mainSection = $('#main-section'),
+				$results = $mainSection.find("#results");
+			$mainSection.html("<ul id='results'></ul>");
+			console.log('RENDERING RESULTS', data);
+
+			for (var i = 0; i < data["library"].length; i++) {
+				var name = data["library"][i].name,
+					mbid = data["library"][i].musicbrainzId;
+				$results.append("<li class='artist'><a href=''>ey yo</a></li>");
+			}
 		}
 	}
 }

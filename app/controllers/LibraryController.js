@@ -13,7 +13,9 @@ var hbs = require('hbs'),
 	mm = require('musicmetadata'),
 	Artist = mongoose.model('Artist'),
 	Release = mongoose.model('Release'),
-	step = require('Step');
+	step = require('Step'),
+	request = require('request'),
+	cheerio = require('cheerio');
 
 exports.index = function (req, res) {
 
@@ -271,4 +273,33 @@ exports.genres = function (req, res) {
 exports.artist = function (req, res, val) {
 	console.log('HELLO ARTIST');
 	res.render('library/artist');
+}
+
+exports.search = function (req, res) {
+	var query = req.params.query,
+		media = req.query.media;
+	console.log('searching for ', query, media);
+
+	if (media == 'Music') {
+		var reg = new RegExp(query, "gi"),
+			results = {};
+		Artist.find({name: { $regex: reg}}, function(err, result){
+
+			results["library"] = result;
+
+			request("http://ex.fm/api/v3/song/search/"+query, function(err, response, body){
+				var data = JSON.parse(body);
+				results["exfm"] = data["songs"];
+				res.writeHead(200, {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*"
+				});
+				res.end(JSON.stringify(results));
+			});
+
+		});
+	} else {
+
+	}
+
 }

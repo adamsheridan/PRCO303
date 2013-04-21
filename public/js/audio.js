@@ -349,5 +349,5 @@ var Audio = {
 
 $(function(){
 	Audio.init();
-	Audio.eq.setupCanvas();
+	//Audio.eq.setupCanvas();
 });

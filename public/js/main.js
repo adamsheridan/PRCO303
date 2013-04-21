@@ -186,6 +186,7 @@ $(document).ready(function(){
 					var t = State.data.target; // eg '#releases'
 					$(t).html('');
 					$('#songs').html('');
+					
 					for (var i = 0; i < data.length; i++) {
 						$(t).html('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
 					}
@@ -283,7 +284,9 @@ $(document).ready(function(){
 		} else if (State.data.contentType == 'browseRinse') {
 			Browse.sources.rinse.ajax(State);
 			Utils.setMainSectionWidth();
-		}  
+		} else if (State.data.contentType == 'searchResults') {
+			Library.search.renderResults(State.data.meta.results);
+		} 
 
 		
 	}

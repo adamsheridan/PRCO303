@@ -20,20 +20,46 @@ var express = require('express'),
     //sanitize = require('validator').sanitize;
     //$ = require('jquery');
 
-var clients = {};
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
+var clients = [];
 
 io.sockets.on('connection', function(socket){
     //console.log('session id', socket.handshake.sessionID);
 
+    //console.log('socket is:', socket);
+    console.log('socketid', socket.id);
+
     var address = socket.handshake.address,
         ip = address.address + ":" + address.port;
 
-    clients[address.address] = address.port;
+    clients.push(socket.handshake.address.address);
+    console.log('clients is', clients);
     
     console.log('current connected clients: ', clients);
-    socket.emit('updateClients', ip, clients);
+    socket.emit('updateClients', clients);
+    socket.broadcast.emit('updateClients', ip, clients);
+
+    socket.on('disconnect', function(){
+    /* var handshake = socket.handshake,
+        ip = handshake.address.address + ":" + handshake.address.port; */
+
+        var index = clients.indexOf(socket.id);
+        delete index;
+        console.log('DISCONNECT from ', ip);
+        console.log('clients is', clients);
+
+    });
 
 });
+
+//io.sockets.on('');
+//io.sockets.socket(clients[0]).emit("",);
 //upnp prototype
 //require('./prototypes/upnp/upnp.js');
 
@@ -47,12 +73,7 @@ var file = "D:\\test.mp4";
 
 //require('./config/vlc.js')(file);
 
-// Array Remove - By John Resig (MIT Licensed)
-Array.prototype.remove = function(from, to) {
-  var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
-  return this.push.apply(this, rest);
-};
+
 
 // Trim by Mozilla Developer Network
 String.prototype.trim = function () {

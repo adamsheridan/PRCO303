@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"data",
+				"data"
+			],
+			[
+				"music",
+				"musicbrainzId"
+			],
+			[
 				"q",
 				"queuePosition"
 			],
@@ -55,7 +63,15 @@
 			"file": "public/js/library.js",
 			"settings":
 			{
-				"buffer_size": 10586,
+				"buffer_size": 12883,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/views/_main.html",
+			"settings":
+			{
+				"buffer_size": 4313,
 				"line_ending": "Windows"
 			}
 		},
@@ -68,23 +84,15 @@
 			}
 		},
 		{
-			"file": "config/utils.js",
-			"settings":
-			{
-				"buffer_size": 402,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "public/views/music.html",
 			"settings":
 			{
-				"buffer_size": 7324,
+				"buffer_size": 7333,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/controllers/ArtworkController",
+			"file": "app/controllers/ArtworkController.js",
 			"settings":
 			{
 				"buffer_size": 500,
@@ -103,7 +111,39 @@
 			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 4198,
+				"buffer_size": 4204,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/sass/main.scss",
+			"settings":
+			{
+				"buffer_size": 8350,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/main.js",
+			"settings":
+			{
+				"buffer_size": 8735,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/views/browse.html",
+			"settings":
+			{
+				"buffer_size": 616,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/LibraryController.js",
+			"settings":
+			{
+				"buffer_size": 6952,
 				"line_ending": "Windows"
 			}
 		},
@@ -116,37 +156,34 @@
 			}
 		},
 		{
-			"file": "app/models/ArtistModel.js",
+			"file": "app/controllers/BrowseController.js",
 			"settings":
 			{
-				"buffer_size": 551,
+				"buffer_size": 150,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/main.scss",
+			"file": "app/controllers/SongController.js",
 			"settings":
 			{
-				"buffer_size": 8229,
+				"buffer_size": 3921,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "var app = {\n	init: function() {\n		console.log('APP INIT');\n		console.log(Library);\n		Library.music.init();\n		app.events();\n	},\n\n	// terrible place to keep these but it will do for now\n	keys: {\n		tmdb: 'd2033b71b41ec5c5e9be31423c0e8598',\n		fanarttv: '14b4149f558ec78c02c29833e77c0701'\n	},\n\n	events: function(){\n\n		function highlight(element){\n			console.log('highlighting ', element);\n			$('#main-nav .current').removeClass('current');\n			var $self = element,\n				current = $self.hasClass('current');\n\n			if (!current) {\n				$self.addClass('current');\n			} else {\n				console.log('has current', $self);\n			}\n\n		}\n\n		$('#main-nav #browse').click(function(e){\n			e.preventDefault();\n			console.log('browse click');\n\n			highlight($(this));\n\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: 'main-nav', \n				target: '#page', \n				contentType: 'browseIndex',\n			}, text, href);\n		});\n\n		$('#main-nav #library').click(function(e){\n			e.preventDefault();\n			console.log('library click');\n			highlight($(this));\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: 'main-nav', \n				target: '#page', \n				contentType: 'libraryIndex',\n			}, text, href);\n		});\n\n		$('#main-nav #playlists').click(function(e){\n			e.preventDefault();\n			console.log('playlists click');\n			highlight($(this));\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: 'main-nav', \n				target: '#page', \n				contentType: 'playlistsIndex',\n			}, text, href);\n		});\n\n		$('#notifications').click(function(e){\n			e.preventDefault();\n			Utils.notifications.requestPermission();\n		});\n\n	},\n\n	elements: {\n		//menu\n		$menuBrowse: $('#main-nav #browse'),\n		$menuLibrary: $('#main-nav #library'),\n		$menuGenres: $('#main-nav #genres'),\n		$menuPlaylists: $('#main-nav #playlists')\n	}\n}\n\napp.init();\n\n\n$(document).ready(function(){\n\n	var n = navigator;\n        socket = io.connect('http://localhost/');\n\n    socket.on('connect', function () {\n        console.log('connected');\n    });\n\n	var analyser;\n\n	function setupCanvas() {\n		\n	}\n\n	function setupWebAudio() {\n		\n	}\n\n	function draw() {\n		\n	}\n\n	setupCanvas();\n	setupWebAudio();\n	draw();\n\n	$(document).on(\"click\", '.playable', function(e){\n		e.preventDefault();\n		var $this = $(this),\n			songid = $this.attr('data-song-id'),\n			href = $this.attr('href').replace('D:', '/media/');\n\n		Audio.queue.add(songid, href);\n	\n	});\n\n	function addToQueue(songid, href) {\n		//$('#html5player').attr('src', href);\n\n	}\n\n	var History = window.History;\n\n	History.Adapter.bind(window,'statechange', function(){ \n	    var State = History.getState();\n        History.log(State.data, State.title, State.url);\n\n        //console.log('pushState stuff: ', State.data, State.title, State.url);\n\n        handleURL(State);\n\n        // logic to handle pushState Object\n\n        /*\n\n        switch(State.data.pageType) {\n        	case 'music':\n        		//console.log('music ting', State.url);\n        		var url = State.url;\n        		var id = url.substring(url.lastIndexOf('/') + 1);\n        		console.log('id is', id);\n        		\n        	break;\n\n        	case 'tv':\n        		console.log('tv ting');\n        	break;\n\n        	case 'movie':\n        		console.log('movie ting');\n        	break;\n        }\n\n        */\n\n    });\n\n	function handleURL(State) {\n		//console.log('pushObj: ', State.data);\n		// replace with switch statement soon\n		if (State.data.contentType == 'artistIndex') {\n			$.ajax({\n				url: '/artists/'+State.data.meta.artistid+'/releases',\n				type: 'GET',\n				success: function (data, textStatus, jqXHR) {\n					var t = State.data.target; // eg '#releases'\n					$(t).html('');\n					$('#songs').html('');\n					for (var i = 0; i < data.length; i++) {\n						$(t).html('<li><a href=\"/library/release/'+data[i]._id+'\" data-release-id=\"'+data[i]._id+'\">'+data[i].title+'</a></li>');\n					}\n				},\n				error: function(jqXHR, textStatus, error) {\n					console.log('AJAX Error: ', error, textStatus, jqXHR);\n				}\n			});\n		} else if (State.data.contentType == 'releaseIndex') {\n			console.log(State.data.target)\n			$.ajax({\n				url: '/releases/'+State.data.meta.releaseid+'/songs',\n				type: 'GET',\n				success: function (data, textStatus, jqXHR) {\n					var t = State.data.target; // eg '#releases'\n					console.log('data returned', data);\n					$(t).html('');\n					for (var i = 0; i < data.length; i++) {\n						$(t).append('<li><a href=\"'+data[i].location+'\" class=\"playable\" data-song-id=\"'+data[i]._id+'\">'+data[i].title+'</a></li>');\n					}\n				},\n				error: function(jqXHR, textStatus, error) {\n					console.log('AJAX Error: ', error, textStatus, jqXHR);\n				}\n			});\n\n		} else if (State.data.contentType == 'libraryIndex') {\n			//console.log(State.data.target)\n			Library.music.init();\n\n		} else if (State.data.contentType == 'moviesIndex') {\n			$.ajax({\n				url: '/views/movies.html',\n				type: 'GET',\n				success: function(data){\n					$('#page').html(data);\n					Library.movies.init();\n					Audio.queue.fx.hideQueue();\n				},\n				error: function(error){\n					console.log('error: ', error);\n				}\n			});\n		} else if (State.data.contentType == 'tvshowsIndex') {\n			$.ajax({\n				url: '/views/tvshows.html',\n				type: 'GET',\n				success: function(data){\n					$('#page').html(data);\n				},\n				error: function(error){\n					console.log('error: ', error);\n				}\n			});\n		} else if (State.data.contentType == 'browseIndex') {\n			$.ajax({\n				url: '/views/browse.html',\n				type: 'GET',\n				success: function(data){\n					$('#page').html(data);\n					Browse.init();\n					Browse.sources.exfm.trending();\n					Utils.setMainSectionWidth();\n				},\n				error: function(error){\n					console.log('error: ', error);\n				}\n			});\n\n		} else if (State.data.contentType == 'playlistsIndex') {\n			$.ajax({\n				url: '/views/playlists.html',\n				type: 'GET',\n				success: function(data){\n					$('#page').html(data);\n					Library.playlist.init();\n					Utils.setMainSectionWidth();\n				},\n				error: function(error){\n					console.log('error: ', error);\n				}\n			});\n		} else if (State.data.contentType == 'browseTrending') {\n			Browse.sources.exfm.trending();\n			Utils.setMainSectionWidth();\n		} else if (State.data.contentType == 'browseReddit') {\n			Browse.sources.reddit();\n			Utils.setMainSectionWidth();\n		} else if (State.data.contentType == 'browseYoutube') {\n			Browse.sources.youtube.loadChannel(State);\n			Utils.setMainSectionWidth();\n		} else if (State.data.contentType == 'browseHypem') {\n			Browse.sources.hypem.ajax(State);\n			Utils.setMainSectionWidth();\n		} else if (State.data.contentType == 'browseRinse') {\n			Browse.sources.rinse.ajax(State);\n			Utils.setMainSectionWidth();\n		}  \n\n		\n	}\n\n	Utils.setMainSectionWidth();\n\n	/* console.log('histroy.length: ', history.length);\n\n	checkURL();\n\n	var lastURL;\n\n	function checkURL(hash) {\n		if (!hash) var hash = window.location.hash;\n		console.log('hash=', hash);\n		console.log('window.location.hash', window.location.hash);\n		if (hash != lastURL) {\n			lastURL = hash;\n			loadPage(hash);\n		}\n	}\n\n	function loadPage(url) {\n		console.log('url:', url)\n	}*/\n	/* var socket = io.connect(window.location.protocol + '//' + window.location.host);\n\n	socket.on('connect', function () {\n	    console.log('connected');\n	});\n\n	socket.on('updateArtists', function(arr){\n		//console.log(arr);\n		var $artists = $('#artists');\n		for (var i = 0; i < arr.length; i++) {\n			var artist = arr[i].split('|');\n			console.log(artist);\n			if (arr.indexOf('.') != 0) {\n				$artists.append('<li class=\"artist\"><a href=\"#\" data-artist-id=\"'+artist[0]+'\" class=\"artist\">'+artist[1]+'</a></li>');\n			}\n		}\n		//document.write(arr);\n	})\n\n	socket.on('updateReleases', function(releases){\n		var release_list = $('#releases');\n		release_list.html('');\n\n		for (var i = 0; i < releases.length; i++) {\n			console.log('release: ', releases[i]);\n			release_list.append('<li><a href=\"#\" data-artist-id=\"'+releases[i].artistid+'\" data-release-id=\"'+releases[i]._id+'\">'+releases[i].title+'</a></li>');\n		}\n	});\n\n	// event handlers\n	$('#sendDir').click(function(){\n		socket.emit('getmedia', $('#inputDir').val());\n	});\n\n	$('#refresh-library').click(function(e){\n		e.preventDefault();\n		console.log('refreshing...');\n		socket.emit('refreshLibrary');\n	});\n\n	$('#populate-releases').click(function(e){\n		e.preventDefault();\n		socket.emit('populateReleases');\n	});\n\n	$('.artist').live('click', function(e){\n		e.preventDefault();\n		var id = $(this).attr('data-artist-id');\n		console.log('emitting', id);\n		socket.emit('getReleases', id);\n	});\n\n*/\n\n});",
-			"file": "public/js/main.js",
-			"file_size": 9106,
-			"file_write_time": 130108156199810293,
+			"file": "app/controllers/TVShowController.js",
 			"settings":
 			{
-				"buffer_size": 8735,
+				"buffer_size": 882,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/controllers/PlaylistController.js",
+			"file": "app/controllers/MovieController.js",
 			"settings":
 			{
-				"buffer_size": 866,
+				"buffer_size": 2587,
 				"line_ending": "Windows"
 			}
 		}
@@ -175,24 +212,25 @@
 	},
 	"file_history":
 	[
-		"/C/xampp/htdocs/PRCO303/app/controllers/PlaylistController.js",
-		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
 		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
+		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/PlaylistController.js",
+		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
+		"/C/xampp/htdocs/PRCO303/config/utils.js",
+		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
 		"/C/xampp/htdocs/PRCO303/public/js/browse.js",
 		"/C/xampp/htdocs/PRCO303/public/js/main.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/768.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/xampp/htdocs/PRCO303/app/models/MovieModel.js",
 		"/C/xampp/htdocs/PRCO303/package.json",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
 		"/C/Users/Adam/Downloads/webservice.php",
-		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
 		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/MovieController.js",
 		"/C/xampp/htdocs/Meat/index.html",
 		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
 		"/C/xampp/htdocs/Meat/js/main.js",
-		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
 		"/C/xampp/htdocs/Meat/server.js",
 		"/C/xampp/htdocs/PRCO303/server.js",
 		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
@@ -301,8 +339,7 @@
 		"/C/xampp/htdocs/PRCO303/src/sass/640",
 		"/C/xampp/htdocs/PRCO303/public/css/normalize.css",
 		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/package.json",
-		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/test.js",
-		"/C/xampp/htdocs/plym/exchange.plymouth.ac.uk -  home .htm"
+		"/C/xampp/htdocs/PRCO303/prototypes/node-upnp/test.js"
 	],
 	"find":
 	{
@@ -323,6 +360,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			",\n",
+			"req.",
+			"req.params",
+			"featured",
 			"getArtwork",
 			".item",
 			".thumb",
@@ -437,7 +478,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -445,15 +486,15 @@
 					"file": "public/js/library.js",
 					"settings":
 					{
-						"buffer_size": 10586,
+						"buffer_size": 12883,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6048,
-								6048
+								9919,
+								9919
 							]
 						],
 						"settings":
@@ -462,13 +503,41 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2859.0,
+						"translation.y": 5710.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "public/views/_main.html",
+					"settings":
+					{
+						"buffer_size": 4313,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1711,
+								1711
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "README.md",
 					"settings":
 					{
@@ -494,47 +563,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "config/utils.js",
-					"settings":
-					{
-						"buffer_size": 402,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 3,
 					"file": "public/views/music.html",
 					"settings":
 					{
-						"buffer_size": 7324,
+						"buffer_size": 7333,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2049,
-								2049
+								888,
+								888
 							]
 						],
 						"settings":
@@ -551,7 +592,7 @@
 				},
 				{
 					"buffer": 4,
-					"file": "app/controllers/ArtworkController",
+					"file": "app/controllers/ArtworkController.js",
 					"settings":
 					{
 						"buffer_size": 500,
@@ -588,8 +629,171 @@
 						"selection":
 						[
 							[
-								550,
-								550
+								1558,
+								1558
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "config/routes.js",
+					"settings":
+					{
+						"buffer_size": 4204,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3101,
+								3101
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 406.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/sass/main.scss",
+					"settings":
+					{
+						"buffer_size": 8350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3186,
+								3186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2802.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "public/js/main.js",
+					"settings":
+					{
+						"buffer_size": 8735,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2398,
+								2398
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4410.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "public/views/browse.html",
+					"settings":
+					{
+						"buffer_size": 616,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								453,
+								453
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/controllers/LibraryController.js",
+					"settings":
+					{
+						"buffer_size": 6952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6728,
+								6728
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3191.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/controllers/ArtistController.js",
+					"settings":
+					{
+						"buffer_size": 2221,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								379,
+								379
 							]
 						],
 						"settings":
@@ -604,65 +808,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "config/routes.js",
+					"buffer": 12,
+					"file": "app/controllers/BrowseController.js",
 					"settings":
 					{
-						"buffer_size": 4198,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3094,
-								3094
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 828.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/controllers/ArtistController.js",
-					"settings":
-					{
-						"buffer_size": 2221,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1699,
-								1699
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 588.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/models/ArtistModel.js",
-					"settings":
-					{
-						"buffer_size": 551,
+						"buffer_size": 150,
 						"regions":
 						{
 						},
@@ -684,46 +834,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "src/sass/main.scss",
+					"buffer": 13,
+					"file": "app/controllers/SongController.js",
 					"settings":
 					{
-						"buffer_size": 8229,
+						"buffer_size": 3921,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3823,
-								3823
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3513.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "public/js/main.js",
-					"settings":
-					{
-						"buffer_size": 8735,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								122,
-								122
+								3117,
+								2800
 							]
 						],
 						"settings":
@@ -732,25 +855,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2915.0,
+						"translation.y": 1386.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "app/controllers/PlaylistController.js",
+					"buffer": 14,
+					"file": "app/controllers/TVShowController.js",
 					"settings":
 					{
-						"buffer_size": 866,
+						"buffer_size": 882,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								284,
-								269
+								0,
+								0
 							]
 						],
 						"settings":
@@ -760,6 +883,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/controllers/MovieController.js",
+					"settings":
+					{
+						"buffer_size": 2587,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2299,
+								2299
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 831.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

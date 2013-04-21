@@ -78,6 +78,30 @@ exports.create = function(req, res){
 	});
 }
 
+exports.update = function(req, res){
+	console.log('update with: ', req.params.id, req.body.title);
+
+	var obj = {
+		id: req.params.id,
+		title: req.params.poster_path,
+		poster: req.params.poster,
+		rating: req.params.rating,
+		release_date: req.params.release_date,
+		src: req.params.src
+	}
+
+	Movie.update(obj, { title: req.body.title }, function(err, doc){
+		if (err) { console.log(err) } else {
+			res.render('releases/edit', {
+				locals: {
+					title: 'Editing Release',
+					message: 'Edit Successful'
+				}
+			});
+		}
+	});
+}
+
 exports.play = function(req, res) {
 	var id = req.params.id;
 	Movie.find({_id: req.params.id}, function(err, docs){

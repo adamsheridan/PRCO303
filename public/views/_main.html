@@ -36,6 +36,16 @@
 	<header id="header">
         <h1 id="logo">Shambala</h1>
 
+        <form id="search-form">
+            <input type="text" id="query" placeholder="Search" />
+            <select id="media-type">
+                    <option class="music">Music</option>
+                    <option class="tvshows">TV Shows</option>
+                    <option class="movies">Movies</option>
+            </select>
+            <button id="submit" type"submit">Search</button>
+        </form>
+
         <ul id="sources">
         </ul>
     </header>
@@ -107,10 +117,12 @@
     <script>
 
          var socket = io.connect(window.location.protocol + '//' + window.location.host);
-          socket.on('updateClients', function (address, clients) {
+          socket.on('updateClients', function (ip, clients) {
             console.log('client', clients);
             //socket.emit('my other event', { my: 'data' });
+            $('#sources').html('');
             $.each(clients, function(k,v){
+                alert('updating sources');
                 $('#sources').append('<li>'+clients[k]+':'+clients[v]+'</li>');
             });
             
