@@ -294,7 +294,6 @@ exports.search = function (req, res) {
 				});
 			},
 			function searchReleases(callback) {
-				//addRelease(obj);
 				Release.find({title: { $regex: reg}}, function(err, result){
 					if (err) { console.log('err', err); callback("searchRelease error"); }
 					//console.log('Release Lookup: ', result);

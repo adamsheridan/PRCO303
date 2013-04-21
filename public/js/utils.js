@@ -45,7 +45,6 @@ var Utils = {
 	setMainSectionWidth: function () {
 		var mainWidth = window.innerWidth - 300;
         $('#main-section').css('width', mainWidth);
-        console.log('widthSet');
 	},
 
 	dialog: {

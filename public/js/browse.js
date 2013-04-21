@@ -74,6 +74,24 @@ var Browse = {
 		
 	},
 
+	render: {
+		browseIndex: function(State){
+			$.ajax({
+				url: '/views/browse.html',
+				type: 'GET',
+				success: function(data){
+					$('#page').html(data);
+					Browse.init();
+					Browse.sources.exfm.trending();
+					Utils.setMainSectionWidth();
+				},
+				error: function(error){
+					console.log('error: ', error);
+				}
+			});
+		}
+	},
+
 	sources: {
 		exfm: {
 			events: function() {

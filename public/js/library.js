@@ -9,6 +9,15 @@ var Library = {
 	events: function() {
 		console.log('events loaded');
 
+		$(document).on("click", '.playable', function(e){
+			e.preventDefault();
+			var $this = $(this),
+				songid = $this.attr('data-song-id'),
+				href = $this.attr('href').replace('D:', '/media/');
+
+			Audio.queue.add(songid, href);
+		});
+
 		$(document).on("click", '.movie .play', function(e){
 			e.preventDefault();
 			
@@ -147,6 +156,23 @@ var Library = {
 			Library.movies.populateView();
 		},
 
+		render: {
+			moviesIndex: function(State){
+				$.ajax({
+					url: '/views/movies.html',
+					type: 'GET',
+					success: function(data){
+						$('#page').html(data);
+						Library.movies.init();
+						Audio.queue.fx.hideQueue();
+					},
+					error: function(error){
+						console.log('error: ', error);
+					}
+				});
+			}
+		},
+
 		populateView: function(){
 			$.ajax({
 				url: '/movies/',
@@ -168,6 +194,23 @@ var Library = {
 					console.dir(jqXHR);
 				}
 			});
+		}
+	},
+
+	tvshows: {
+		render: {
+			tvshowsIndex: function(State){
+				$.ajax({
+					url: '/views/tvshows.html',
+					type: 'GET',
+					success: function(data){
+						$('#page').html(data);
+					},
+					error: function(error){
+						console.log('error: ', error);
+					}
+				});
+			}
 		}
 	},
 
@@ -207,6 +250,54 @@ var Library = {
 					console.dir(jqXHR);
 				}
 			});
+		},
+
+		render: {
+			artistIndex: function(State){
+				$.ajax({
+					url: '/artists/'+State.data.meta.artistid+'/releases',
+					type: 'GET',
+					success: function (data, textStatus, jqXHR) {
+						var t = State.data.target; // eg '#releases'
+						$(t).html('');
+						$('#songs').html('');
+
+						if ($('#releases').length == 0) {
+							$(t).append('<ul id="releases"></ul>')
+						}
+						
+						for (var i = 0; i < data.length; i++) {
+							$('#releases').append('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+						}
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('AJAX Error: ', error, textStatus, jqXHR);
+					}
+				});
+			},
+			releaseIndex: function(State){
+				$.ajax({
+					url: '/releases/'+State.data.meta.releaseid+'/songs',
+					type: 'GET',
+					success: function (data, textStatus, jqXHR) {
+						var t = State.data.target,
+							$t = $(t);
+						console.log('data returned', data, 'target', $t);
+						if ($t.length == 0) {
+							$('#main-section').append('<ul id="songs"></ul>');
+						} else {
+							$t.html('');
+						}
+	
+						for (var i = 0; i < data.length; i++) {
+							$(t).append('<li><a href="'+data[i].location+'" class="playable" data-song-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+						}
+					},
+					error: function(jqXHR, textStatus, error) {
+						console.log('AJAX Error: ', error, textStatus, jqXHR);
+					}
+				});
+			}
 		},
 
 		getHomeScreenData: function(){
@@ -348,6 +439,23 @@ var Library = {
 			});
 		},
 
+		render: {
+			playlistsIndex: function(){
+				$.ajax({
+					url: '/views/playlists.html',
+					type: 'GET',
+					success: function(data){
+						$('#page').html(data);
+						Library.playlist.init();
+						Utils.setMainSectionWidth();
+					},
+					error: function(error){
+						console.log('error: ', error);
+					}
+				});
+			}
+		},
+
 		save: function(obj) {
 			console.log('saving:', obj);
 			var playlist = {};
@@ -458,108 +566,3 @@ var Library = {
 $(function(){
 	Library.init();
 });
-/*
-var Library = (function(){
-
-	var init = function (){
-		elements();
-		getArtists();
-		events();
-	};
-
-	var hello = function () {
-		alert('hello');
-	};
-
-	var events = function () {
-
-		$('#switch-media').click(function(e){
-			e.preventDefault();
-			var tab = $(this).children('ul');
-			if (tab.hasClass('closed')) {
-				tab.removeClass('closed').addClass('open');
-			} else {
-				tab.removeClass('open').addClass('artist');
-			}
-			
-		});
-
-		// closed sidebar pushState event handler
-		$(document).on("click", '.artist a', function(e){
-			e.preventDefault();
-
-			var href = $(this).attr('href'),
-				artistid = $(this).attr('data-artist-id'),
-				text = $(this).text();
-
-			History.pushState({ 
-				navigate: true, 
-				source: 'artist-sidebar', 
-				target: '#releases', 
-				contentType: 'artistIndex',
-				meta: {
-					artistid: artistid
-				}
-			}, text, href);
-			//document.title = "Fuck World";
-		});
-
-		$(document).on("click", '#releases a', function(e){
-			e.preventDefault();
-
-			var href = $(this).attr('href'),
-				releaseid = $(this).attr('data-release-id'),
-				text = $(this).text();
-
-			History.pushState({ 
-				navigate: true, 
-				source: '#releases a', 
-				target: '#songs', 
-				contentType: 'releaseIndex',
-				meta: {
-					releaseid: releaseid
-				}
-			}, text, href);
-		});
-
-	};
-
-	var elements = function (){
-		$sidebarArtists = $('.sidebar #artists');
-	};
-
-	var getArtists = function (){
-		$.ajax({
-			url: '/artists/',
-			type: 'GET',
-			success: function (data, textStatus, jqXHR) {
-				//console.log(data)
-				populateArtists(data);
-			},
-			error: function(jqXHR, textStatus, error) {
-				console.log('--------------- ERROR ---------------');
-				console.log(error);
-				console.log(textStatus);
-				console.dir(jqXHR);
-			}
-		});
-	};
-
-	var populateArtists = function (data) {
-		if ($sidebarArtists) {
-			//console.log($sidebarArtists);
-			for (var i = 0; i < data.length; i++) {
-				//console.log(data[i])
-				$sidebarArtists.append('<li class="artist"><a href="/library/artist/'+data[i]._id+'/releases/" data-artist-id="'+data[i]._id+'">'+data[i].name+'</a></li>');
-			}
-		}
-	};
-
-	var test = function (obj) {
-		alert('test called');
-		console.log('test obj: ', obj);
-	};
-
-	init();
-
-}()); */

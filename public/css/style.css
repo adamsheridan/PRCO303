@@ -230,7 +230,8 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   float: left;
   width: 280px; }
   .sidebar #artists {
-    display: block; }
+    display: block;
+    height: 100%; }
     .sidebar #artists .artist .bold a {
       font-family: "proxima_nova_rgbold";
       font-weight: bold; }
@@ -524,7 +525,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   width: 100%; }
 
 #queue {
-  background: red;
+  background: #3a3a3a;
   bottom: 0;
   display: block;
   height: 80px;

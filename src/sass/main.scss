@@ -117,6 +117,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 	#artists {
 		display: block;
+		height: 100%;
 
 		.artist {
 
@@ -546,7 +547,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 }
 
 #queue {
-	background: red;
+	background: #3a3a3a;
 	bottom: 0;
 	display: block;
 	height: 80px;
