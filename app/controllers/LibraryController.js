@@ -13,6 +13,7 @@ var hbs = require('hbs'),
 	mm = require('musicmetadata'),
 	Artist = mongoose.model('Artist'),
 	Release = mongoose.model('Release'),
+	Song = mongoose.model('Song'),
 	step = require('Step'),
 	request = require('request'),
 	cheerio = require('cheerio');
@@ -283,23 +284,70 @@ exports.search = function (req, res) {
 	if (media == 'Music') {
 		var reg = new RegExp(query, "gi"),
 			results = {};
-		Artist.find({name: { $regex: reg}}, function(err, result){
 
-			results["library"] = result;
+		// async flow control
+		async.series([
+			function searchArtists(callback) {
+				Artist.find({name: { $regex: reg}}, function(err, result){
+					if (err) { console.log('err', err); callback("searchArtist error"); }
+					callback(null, result)
+				});
+			},
+			function searchReleases(callback) {
+				//addRelease(obj);
+				Release.find({title: { $regex: reg}}, function(err, result){
+					if (err) { console.log('err', err); callback("searchRelease error"); }
+					//console.log('Release Lookup: ', result);
+					callback(null, result)
+				});
+			},
+			function searchSongs(callback) {
+				//addRelease(obj);
+				Song.find({title: { $regex: reg}}, function(err, result){
+					if (err) { console.log('err', err); callback("searchRelease error"); }
+					//console.log('Song Lookup: ', result);
+					callback(null, result)
+				});
+			},
+			function searchExFM(callback) {
+				request("http://ex.fm/api/v3/song/search/"+query, function(err, response, body){
+					var data = JSON.parse(body),
+						songs = data["songs"],
+						result = {};
 
-			request("http://ex.fm/api/v3/song/search/"+query, function(err, response, body){
-				var data = JSON.parse(body);
-				results["exfm"] = data["songs"];
+					for (var key in songs) {
+						var obj = songs[key];
+
+						//check for soundcloud url - shambala does not support
+						if (/(api.soundcloud.com)/gi.test(obj.url)) {
+							console.log('url contains soundcloud, removed:', obj.url);
+							continue;
+						}
+
+						result[key] = {
+							artist: obj.artist,
+							title: obj.title,
+							tags: obj.tags,
+							image: obj.image,
+							url: obj.url
+						}
+					}
+					callback(null, result)
+				});
+			}
+		], function(err, result){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(result.searchArtists);
 				res.writeHead(200, {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*"
 				});
-				res.end(JSON.stringify(results));
-			});
-
+				res.end(JSON.stringify(result, undefined, 2));
+			}
 		});
 	} else {
-
+		console.log('wrong type');
 	}
-
 }
