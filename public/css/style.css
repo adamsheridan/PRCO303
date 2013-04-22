@@ -140,12 +140,27 @@ textarea {
   font-weight: normal;
   font-style: normal; }
 
+html {
+  overflow: hidden;
+  width: 100%; }
+
 #header,
 #featured-artist,
 #recently-added,
 #switch-media,
 #artists {
   display: none; }
+
+#play-here {
+  background: red;
+  border-radius: 400px;
+  display: block;
+  height: 400px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 400px;
+  z-index: 2000; }
 
 html, body, h1 {
   padding: 0;
@@ -156,6 +171,9 @@ ol, ul {
 
 dl, ol, ul {
   margin: 0; }
+
+#play-here {
+  display: none; }
 
 header#header {
   background-color: #3a3a3a;
@@ -228,6 +246,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 .sidebar {
   clear: both;
   float: left;
+  height: 100%;
   width: 280px; }
   .sidebar #artists {
     display: block;
@@ -306,7 +325,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 #featured-artist {
   background-position: 20%, 30%;
   color: #fff;
-  display: none;
+  display: block;
   height: 460px;
   padding: 0;
   position: relative;
@@ -497,7 +516,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
       height: 20px;
       padding: 10px;
       text-decoration: none;
-      width: 260px; }
+      width: 100%; }
       #songs li a:hover {
         background: #8bd1ec; }
 

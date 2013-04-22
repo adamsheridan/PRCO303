@@ -2,7 +2,7 @@ var express = require('express'),
     http = require('http'),
     app = express(),
     server = http.createServer(app),
-    io = require('socket.io').listen(server, {origins: '*:*'}),
+    io = require('socket.io').listen(server),
     params = require('express-params'),
 	//events = require('events'),
     
@@ -27,7 +27,7 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
-var clients = [];
+var clients = {};
 
 io.sockets.on('connection', function(socket){
     //console.log('session id', socket.handshake.sessionID);
@@ -38,21 +38,34 @@ io.sockets.on('connection', function(socket){
     var address = socket.handshake.address,
         ip = address.address + ":" + address.port;
 
-    clients.push(socket.handshake.address.address);
-    console.log('clients is', clients);
-    
+    clients[socket.id] = ip;
     console.log('current connected clients: ', clients);
-    socket.emit('updateClients', clients);
+
+    socket.emit('updateClients', ip, clients);
+
     socket.broadcast.emit('updateClients', ip, clients);
 
+    socket.on('play-to', function(obj){
+        console.log('PLAY TO', obj);
+        var id = obj.target;
+        io.sockets.socket(id).emit('play-here', obj);
+    });
+    
+    // disconnection
     socket.on('disconnect', function(){
-    /* var handshake = socket.handshake,
-        ip = handshake.address.address + ":" + handshake.address.port; */
+        // remove own key from clients
+        for (var key in clients) {
+            console.log('key is', key);
+            if (key == socket.id) {
+                delete clients[key];
+            }
+            
+        }
 
-        var index = clients.indexOf(socket.id);
-        delete index;
         console.log('DISCONNECT from ', ip);
         console.log('clients is', clients);
+
+        socket.broadcast.emit('updateClients', ip, clients);
 
     });
 

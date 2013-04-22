@@ -339,7 +339,7 @@ var Library = {
 
 							var obj = Utils.objLiteralConvert(data);	
 
-							//console.log('obj still is: ', obj);
+							console.log('obj is: ', obj);
 
 							if (obj.artistthumb) {
 								$this.children('.thumb').attr('src', obj.artistthumb[0].url);

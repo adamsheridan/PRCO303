@@ -33,6 +33,8 @@
     </div>
     <div id="overlay"></div>-->
 
+    <div id="play-here"></div>
+
 	<header id="header">
         <h1 id="logo">Shambala</h1>
 
@@ -64,7 +66,6 @@
             <li><a id="browse" href="/browse/">Browse</a></li>
             <li><a id="library" href="/library/" class="current">My Library</a></li>
             <li><a id="playlists" href="/playlists/">Playlists</a></li>
-            <li><a id="search" href="/search/">Search</a></li>
         </ul>
 
     </nav>
@@ -116,17 +117,39 @@
     <script src="/js/main.js"></script>
     <script>
 
-         var socket = io.connect(window.location.protocol + '//' + window.location.host);
-          socket.on('updateClients', function (ip, clients) {
+        console.log('queue', Utils.getLocalStorage('queue'));
+
+        var socket = io.connect(window.location.protocol + '//' + window.location.host);
+        socket.on('updateClients', function (ip, clients) {
             console.log('client', clients);
             //socket.emit('my other event', { my: 'data' });
             $('#sources').html('');
+            console.log(clients);
             $.each(clients, function(k,v){
-                alert('updating sources');
-                $('#sources').append('<li>'+clients[k]+':'+clients[v]+'</li>');
+                console.log('updating sources');
+                $('#sources').append('<a href="" class="play-to" data-socketid="'+k+'"><li>'+clients[k]+':'+clients[v]+'</li></a>');
             });
-            
-          });
+
+        });
+
+        socket.on('play-here', function(obj){
+            Audio.player.stop();
+            Utils.setLocalStorage('queue', obj.queue);
+            Utils.setLocalStorage('queue-position', obj.queuePosition);
+            Audio.queue.persist();
+            Audio.queue.start();
+        });
+
+        $(document).on("click", '.play-to', function(e){
+            e.preventDefault();
+            var obj = {
+                target: $(this).data('socketid'),
+                queue: Utils.getLocalStorage('queue'),
+                queuePosition: Utils.getLocalStorage('queue-position')
+            };
+            Audio.player.stop();
+            socket.emit('play-to', obj)
+        });
 
     </script>
 

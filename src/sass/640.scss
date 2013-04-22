@@ -67,10 +67,27 @@
 
 }
 
+html {
+    overflow: hidden;
+    width: 100%;
+}
+
 #header,
 #featured-artist,
 #recently-added,
 #switch-media,
 #artists {
     display: none;
+}
+
+#play-here {
+    background: red;
+    border-radius: 400px;
+    display: block;
+    height: 400px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 400px;
+    z-index: 2000;
 }
