@@ -146,11 +146,6 @@ var Library = {
 		}
 	},
 
-	test: function (obj) {
-		alert('test called');
-		console.log('test obj: ', obj);
-	},
-
 	movies: {
 		init: function() {
 			Library.movies.populateView();
@@ -254,20 +249,38 @@ var Library = {
 
 		render: {
 			artistIndex: function(State){
+				var t = State.data.target;
 				$.ajax({
 					url: '/artists/'+State.data.meta.artistid+'/releases',
 					type: 'GET',
 					success: function (data, textStatus, jqXHR) {
-						var t = State.data.target; // eg '#releases'
+						console.log('artistINdex');
+
 						$(t).html('');
 						$('#songs').html('');
-
 						if ($('#releases').length == 0) {
-							$(t).append('<ul id="releases"></ul>')
+							$(t).append('<ul id="releases"></ul>');
 						}
-						
 						for (var i = 0; i < data.length; i++) {
-							$('#releases').append('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+							$.ajax({
+								type: 'GET',
+								url: '/artwork/release/'+data[i].title,
+								success: function(data){
+									console.log('artwork', data);
+
+									$('#releases').append('<li><img src="'+data+'" class="artwork" /><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+								},
+								error: function(jqXHR, textStatus, error) {
+									console.log('AJAX Error: ', error, textStatus, jqXHR);
+								}
+							});
+						}
+
+
+						
+						function renderResults(artwork) {
+							console.log('renderresults', artwork);
+							
 						}
 					},
 					error: function(jqXHR, textStatus, error) {
@@ -276,6 +289,7 @@ var Library = {
 				});
 			},
 			releaseIndex: function(State){
+				console.log('releaseINdex');
 				$.ajax({
 					url: '/releases/'+State.data.meta.releaseid+'/songs',
 					type: 'GET',
@@ -288,7 +302,6 @@ var Library = {
 						} else {
 							$t.html('');
 						}
-	
 						for (var i = 0; i < data.length; i++) {
 							$(t).append('<li><a href="'+data[i].location+'" class="playable" data-song-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
 						}

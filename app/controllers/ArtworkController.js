@@ -16,3 +16,21 @@ exports.getArtistArtwork = function (req, res) {
 		res.end(body);
 	});
 }
+
+exports.getReleaseArtwork = function (req, res) {
+	var artist = req.params.artist;
+	var url = 'http://api.discogs.com/database/search?q='+artist+'&type=release';
+	request(url, function(err, response, body){
+		console.log();
+		var data = JSON.parse(body);
+
+		for (var key in data) {
+
+		}
+		/* res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+		res.end(body); */
+	});
+}

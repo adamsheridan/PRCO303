@@ -83,6 +83,7 @@ module.exports = function (app, express) {
 
 	//artwork
 	app.get('/artwork/:id', artwork.getArtistArtwork);
+	app.get('/artwork/release/:artist', artwork.getReleaseArtwork);
 
 	// APPLICATION ROUTING //
 	app.get('/library/*', library.index);

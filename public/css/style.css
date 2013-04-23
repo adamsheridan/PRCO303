@@ -611,3 +611,9 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
     min-height: 100px;
     padding: 30px;
     width: 400px; }
+
+#sources {
+  float: right;
+  width: 200px; }
+  #sources a {
+    color: #fff; }

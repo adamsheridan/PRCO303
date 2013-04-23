@@ -7,7 +7,7 @@ Tasks to be Completed:
 
 High Priority
 - Search (Library/Exfm) (http://ex.fm/api#songsearch)
-- Mac OS Support
+- Mac OS Support Video
 - Import more test data to library
 - RESTify the API
 - Add TV Shows
