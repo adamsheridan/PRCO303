@@ -4,21 +4,11 @@ var express = require('express'),
     server = http.createServer(app),
     io = require('socket.io').listen(server),
     params = require('express-params'),
-	//events = require('events'),
-    
     fs = require('fs'),
     file = require('file'),
-    
     mongoose = require('mongoose'),
     hbs = require('hbs');
-    
     params.extend(app);
-    //server = http.createServer(app),
-    //mongo = require('mongojs'),
-    //ObjectId = mongo.ObjectId;
-    //io = require('socket.io').listen(server),
-    //sanitize = require('validator').sanitize;
-    //$ = require('jquery');
 
 // Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {
@@ -71,22 +61,6 @@ io.sockets.on('connection', function(socket){
 
 });
 
-//io.sockets.on('');
-//io.sockets.socket(clients[0]).emit("",);
-//upnp prototype
-//require('./prototypes/upnp/upnp.js');
-
-//upnp prototype
-//require('./prototypes/id3/id3.js');
-
-var file = "D:\\test.mp4";
-
-//batch jobs
-//require('./config/batch.js')(file);
-
-//require('./config/vlc.js')(file);
-
-
 
 // Trim by Mozilla Developer Network
 String.prototype.trim = function () {
@@ -130,12 +104,5 @@ require('./config/registerPartials.js')(app, express);
 
 // start connection to database
 mongoose.connect('mongodb://localhost/prco303');
-
-// start application
-//var server = app.listen(8080);
-
-/* io.sockets.on('connect', function(socket){
-    console.log('socket connected!', socket);
-}); */
 
 server.listen(8080);

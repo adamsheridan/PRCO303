@@ -249,39 +249,39 @@ var Library = {
 
 		render: {
 			artistIndex: function(State){
-				var t = State.data.target;
+				
 				$.ajax({
 					url: '/artists/'+State.data.meta.artistid+'/releases',
 					type: 'GET',
 					success: function (data, textStatus, jqXHR) {
-						console.log('artistINdex');
-
+						
+						var t = State.data.target;
 						$(t).html('');
 						$('#songs').html('');
 						if ($('#releases').length == 0) {
 							$(t).append('<ul id="releases"></ul>');
 						}
 						for (var i = 0; i < data.length; i++) {
+							$('#releases').append('<li><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+						}
+						/* 
 							$.ajax({
 								type: 'GET',
 								url: '/artwork/release/'+data[i].title,
 								success: function(data){
 									console.log('artwork', data);
 
-									$('#releases').append('<li><img src="'+data+'" class="artwork" /><a href="/library/release/'+data[i]._id+'" data-release-id="'+data[i]._id+'">'+data[i].title+'</a></li>');
+									
 								},
 								error: function(jqXHR, textStatus, error) {
 									console.log('AJAX Error: ', error, textStatus, jqXHR);
 								}
 							});
-						}
-
-
-						
+						} 
 						function renderResults(artwork) {
 							console.log('renderresults', artwork);
 							
-						}
+						}*/
 					},
 					error: function(jqXHR, textStatus, error) {
 						console.log('AJAX Error: ', error, textStatus, jqXHR);
@@ -562,15 +562,34 @@ var Library = {
 
 		renderResults: function (data){
 			var $mainSection = $('#main-section'),
-				$results = $mainSection.find("#results");
+				$results = $("#main-section #results");
 			$mainSection.html("<ul id='results'></ul>");
-			console.log('RENDERING RESULTS', data);
+			console.log('RENDERING RESULTS', data, $results);
 
-			for (var i = 0; i < data["library"].length; i++) {
-				var name = data["library"][i].name,
-					mbid = data["library"][i].musicbrainzId;
-				$results.append("<li class='artist'><a href=''>ey yo</a></li>");
+			for (var i = 0; i < data.length; i++) {
+				
+
+				var arr = data[i];
+				console.log('data, ', arr);
+
+				for (var i = 0; i < arr.length; i++) {
+					var obj = arr[i]; 
+					var name = obj.name,
+						mbid = obj.musicbrainzId;
+					$results.append("<li class='artist'><a href=''>ey yo</a></li>");
+				}
+				/* */
 			}
+
+			// loop
+			/* for (key in data) {
+				var obj = data[key];
+				console.log('search' , obj);
+
+				
+			}*/
+
+			
 		}
 	}
 }
