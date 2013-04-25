@@ -586,19 +586,16 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
         padding: 0 10px 3px 10px;
         text-decoration: none; }
 
-#queue-icon {
-  background: lime;
-  display: block;
+#queue-icon, #save-playlist {
+  background: #e4f7ff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #000;
+  display: inline-block;
   float: left;
   height: 50px;
-  width: 50px; }
-
-#save-playlist {
-  background: cyan;
-  display: block;
-  float: left;
-  height: 50px;
-  width: 50px; }
+  width: 100px; }
 
 .movie {
   background: #c6e3f1;
@@ -613,7 +610,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 #overlay {
   background: rgba(0, 0, 0, 0.8);
-  display: none;
+  display: block;
   height: 1000px;
   left: 0;
   position: absolute;
@@ -628,10 +625,10 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
     padding: 30px;
     width: 400px; }
 
-#sources {
+#header #sources {
   float: right;
   width: 200px; }
-  #sources a {
+  #header #sources a {
     color: #fff; }
 
 #recently-added {

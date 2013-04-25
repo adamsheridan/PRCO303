@@ -618,24 +618,17 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 }
 
 #queue-icon {
-	background: lime;
-	display: block;
+	background: $lightblue;
+	@include border-radius(5px);
+	color: #000;
+	display: inline-block;
 	float: left;
 	height: 50px;
-	width: 50px;
+	width: 100px;
 }
 
 #save-playlist {
-	background: cyan;
-	display: block;
-	float: left;
-	height: 50px;
-	width: 50px;
-}
-
-#movies {
-
-
+	@extend #queue-icon;
 }
 
 .movie {
@@ -654,7 +647,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 #overlay {
 	background: rgba(0,0,0,0.8);
-	display: none;
+	display: block;
 	height: 1000px;
 	left: 0;
 	position: absolute;
@@ -672,7 +665,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 	}
 }
 
-#sources {
+#header #sources {
 	float: right;
 	width: 200px;
 	a {
