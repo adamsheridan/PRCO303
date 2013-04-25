@@ -1,6 +1,6 @@
 {
-  "name": "PRCO303",
-  "description": "Web Based Media Server",
+  "name": "Shambala",
+  "description": "PRCO303: Web Based Media Server",
   "author": "Adam Sheridan <adam.sheridan@students.plymouth.ac.uk",
   "dependencies": {
     "express": ">= 3.0.6",

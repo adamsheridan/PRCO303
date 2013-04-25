@@ -38,7 +38,7 @@
     <div id="play-here"></div>
 
 	<header id="header">
-        <h1 id="logo">Shambala</h1>
+        <a href="/"><h1 id="logo">Shambala</h1></a>
 
         <form id="search-form">
             <input type="text" id="query" placeholder="Search" />
@@ -59,7 +59,6 @@
         <div id="switch-media">
             <ul class="closed">
                 <li><a href="/library/music">Music</a></li>
-                <li><a href="/library/tvshows">TV Shows</a></li>
                 <li><a href="/library/movies">Movies</a></li>
             </ul>
         </div>
@@ -77,7 +76,7 @@
     </div>
 
     <!-- _footer -->
-    <ul id="queue"></ul>
+    <div id="queue-container"><ul id="queue"></ul></div>
     <div id="player">
         <audio id="html5player" src="" controls>
             <!-- <source id="mp3source" type="audio/mpeg"></source> -->
@@ -128,7 +127,7 @@
             console.log(clients);
             $.each(clients, function(k,v){
                 console.log('updating sources');
-                $('#sources').append('<li><a href="" class="play-to" data-socketid="'+k+'">'+clients[k]+':'+clients[v]+'</a></li>');
+                $('#sources').append('<li><a href="" class="play-to" data-socketid="'+k+'">'+clients[k]+'</a></li>');
             });
 
         });

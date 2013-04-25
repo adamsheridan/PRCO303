@@ -1,15 +1,8 @@
 var app = {
 	init: function() {
 		console.log('APP INIT');
-		console.log(Library);
 		Library.music.init();
 		app.events();
-	},
-
-	// terrible place to keep these but it will do for now
-	keys: {
-		tmdb: 'd2033b71b41ec5c5e9be31423c0e8598',
-		fanarttv: '14b4149f558ec78c02c29833e77c0701'
 	},
 
 	events: function(){

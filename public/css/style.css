@@ -175,12 +175,14 @@ header#header {
   background-color: #3a3a3a;
   color: #fff;
   display: block;
+  height: 50px;
   padding: 20px 0;
   position: relative;
   width: 100%; }
   header#header #logo {
     background: url("../images/logo.png") no-repeat;
     display: block;
+    float: left;
     height: 40px;
     margin: 0 0 0 20px;
     position: relative;
@@ -200,6 +202,7 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
     text-decoration: none;
     text-transform: uppercase; }
   #menu #switch-media {
+    display: block;
     height: 30px;
     float: left;
     padding: 0 0 0 0;
@@ -518,7 +521,6 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 #results {
   background: #e4f7ff;
-  height: 300px;
   width: 100%; }
   #results li {
     list-style: none; }
@@ -526,9 +528,10 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
       color: #000;
       display: block;
       height: 20px;
+      overflow: hidden;
       padding: 10px;
       text-decoration: none;
-      width: 260px; }
+      width: 100%; }
       #results li a:hover {
         background: #8bd1ec; }
 
@@ -539,32 +542,49 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
   top: 0;
   width: 100%; }
 
-#queue {
+#queue-container {
   background: #3a3a3a;
   bottom: 0;
   display: block;
   height: 80px;
   left: 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
   position: fixed;
   width: 100%; }
-  #queue li {
-    background: #000;
-    color: #fff;
+  #queue-container::-webkit-scrollbar {
+    height: 10px; }
+  #queue-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px; }
+  #queue-container #queue {
     display: block;
-    float: left;
-    padding: 10px;
-    margin: 10px;
-    width: 200px; }
-    #queue li.current {
-      background: yellow; }
-    #queue li a.delete {
+    width: 4000px; }
+    #queue-container #queue li {
       background: #000;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
       color: #fff;
-      display: block;
-      height: 100%;
-      float: right;
-      text-decoration: none;
-      width: 30px; }
+      display: inline-block;
+      float: left;
+      padding: 10px;
+      margin: 10px;
+      width: 300px; }
+      #queue-container #queue li.current {
+        background: #c6e5f1;
+        color: black; }
+      #queue-container #queue li a.delete {
+        background: #000;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        color: #fff;
+        display: block;
+        height: 100%;
+        float: right;
+        padding: 0 10px 3px 10px;
+        text-decoration: none; }
 
 #queue-icon {
   background: lime;
@@ -616,3 +636,8 @@ h1, h2, h3, .artist a, #switch-media, #main-nav li a, #releases li, #songs li {
 
 #recently-added {
   display: block; }
+
+#search-form {
+  float: left;
+  margin: 20px 0 0 300px;
+  width: 500px; }

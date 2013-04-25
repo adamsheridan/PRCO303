@@ -558,6 +558,27 @@ var Library = {
 					}
 				});
 			});
+
+			$(document).on("click", '#results li a', function(e){
+				e.preventDefault();
+
+				var $this = $(this);
+
+				console.log('fuck');
+
+				var obj = {}
+				obj.location = $this.attr('href'),
+				obj.api = 'exfm',
+				obj.songid = $this.attr('data-songid'),
+				obj.queuePosition = Audio.queue.queue.length,
+				obj.artistname = $this.attr('data-artistname'),
+				obj.songtitle = $this.attr('data-songtitle'),
+				obj.source = $this.attr('data-source');
+
+				Audio.queue.queue.push(obj);
+				Audio.queue.events.updated();
+				//console.log('added to queue', Audio.queue.queue);
+			});
 		},
 
 		renderResults: function (data){
@@ -567,29 +588,28 @@ var Library = {
 			console.log('RENDERING RESULTS', data, $results);
 
 			for (var i = 0; i < data.length; i++) {
-				
-
 				var arr = data[i];
-				console.log('data, ', arr);
-
-				for (var i = 0; i < arr.length; i++) {
-					var obj = arr[i]; 
-					var name = obj.name,
-						mbid = obj.musicbrainzId;
-					$results.append("<li class='artist'><a href=''>ey yo</a></li>");
+				if (arr.length == 0){
+					continue;
 				}
-				/* */
-			}
-
-			// loop
-			/* for (key in data) {
-				var obj = data[key];
-				console.log('search' , obj);
-
-				
-			}*/
-
-			
+				for (var x in arr) {
+					if (typeof arr[x] == 'function' || arr[x].length == 0) {
+						continue;
+					}
+					console.log('prop', arr[x]);
+					var song = arr[x],
+						songid = song['_id'] || "exfm",
+						url = song['location'] || song['url'];
+					
+					if (songid == 'exfm') {
+						$('#results').append('<li><a href="'+song['url']+'" data-artistname="'+song['artist']+'" data-songtitle="'+song['title']+'" data-source="'+song['url']+'">'+song['artist']+' - '+song['title']+'</a></li>');
+					} else {
+						$('#results').append('<li><a data-song-id="'+songid+'" href="'+url+'"" class="playable">'+song['title']+'</a></li>');
+					}
+						
+					
+				}
+			} 			
 		}
 	}
 }

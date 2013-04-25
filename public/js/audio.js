@@ -102,18 +102,19 @@ var Audio = {
 
 		elements: {
 			$queue: $('#queue'),
+			$queueContainer: $('#queue-container'),
 			$btnQueue: $('#queue-icon'),
 			$btnDelete: $('#queue li .delete')
 		},
 
 		fx: {
 			showQueue: function () {
-				Audio.queue.elements.$queue.animate({ 'bottom': '80px'});
+				Audio.queue.elements.$queueContainer.animate({ 'bottom': '80px'});
 				Audio.queue.displayed = true;
 			},
 
 			hideQueue: function(){
-				Audio.queue.elements.$queue.animate({ 'bottom': '0'});
+				Audio.queue.elements.$queueContainer.animate({ 'bottom': '0'});
 				Audio.queue.displayed = false;
 			}
 		},
