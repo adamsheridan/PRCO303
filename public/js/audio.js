@@ -20,44 +20,30 @@ var Audio = {
 	},
 
 	events: function () {
-		//var audio = ;
-
-		//console.log(audio);
-
-		$('#controls li a').click(function(e){
+		Audio.elements.$btnPlay.click(function(e){
 			e.preventDefault();
-			var $this = $(this);
-
-			switch ($this.attr('class')) {
-				case "play":
-					Audio.elements.audioPlayer.play();
-					$(this).removeClass('play').addClass('pause');
-					break;
-
-				case "pause":
-					Audio.elements.audioPlayer.pause();
-					$(this).removeClass('pause').addClass('play');
-					break
-
-				case "loading":
-					break;
+			if (Audio.player.status == 'playing') {
+				Audio.elements.audioPlayer.pause();
+				Audio.elements.$btnPlay.removeClass('pause').addClass('play');
+				Audio.elements.$audioPlayer.attr('src', '');
+			} else {
+				Audio.player.play();
 			}
-			
 		});
 
-		Audio.elements.$btnPlay.click(function(){
-			Audio.player.play();
-		});
-
-		Audio.elements.$btnPause.click(function(e){
+		$('#controls .pause').click(function(e){
+			alert('pause');
+			e.preventDefault();
 			Audio.player.pause();
 		});
 
-		Audio.elements.$btnNext.click(function(){
+		Audio.elements.$btnNext.click(function(e){
+			e.preventDefault();
 			Audio.queue.next();
 		});
 
-		Audio.elements.$btnBack.click(function(){
+		Audio.elements.$btnBack.click(function(e){
+			e.preventDefault();
 			Audio.queue.back();
 		});
 
@@ -72,7 +58,6 @@ var Audio = {
 
 		Audio.elements.$btnSavePlaylist.click(function(e){
 			e.preventDefault();
-			console.log('sup bitchezz');
 			Audio.queue.saveAsPlaylist();
 		});
 
@@ -85,7 +70,6 @@ var Audio = {
 		Audio.elements.$audioPlayer.bind('timeupdate', function() {
 			var audio = Audio.elements.audioPlayer;
 			var t = Math.floor(audio.currentTime).toString();
-	
 			$('#player #time-current').html(Utils.formatSecondsAsTime(t));
 		});
 
@@ -268,7 +252,10 @@ var Audio = {
 		},
 
 		pause: function () {
+			console.log('Audio.player.pause');
 			Audio.elements.audioPlayer.pause();
+			Audio.elements.$btnPlay.removeClass('pause').addClass('play');
+			Audio.elements.$audioPlayer.attr('src', '');
 		},
 
 		stop: function () {
@@ -350,5 +337,4 @@ var Audio = {
 
 $(function(){
 	Audio.init();
-	//Audio.eq.setupCanvas();
 });

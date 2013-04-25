@@ -101,41 +101,38 @@ $(document).ready(function(){
     });
 
 	function handleURL(State) {
-		//console.log('pushObj: ', State.data);
-		// replace with switch statement soon
-		if (State.data.contentType == 'artistIndex') {
-			Library.music.render.artistIndex(State);
-		} else if (State.data.contentType == 'releaseIndex') {
-			Library.music.render.releaseIndex(State);
-		} else if (State.data.contentType == 'libraryIndex') {
-			Library.music.init();
-		} else if (State.data.contentType == 'moviesIndex') {
-			Library.movies.render.moviesIndex(State);
-		} else if (State.data.contentType == 'tvshowsIndex') {
-			Library.tvshows.render.tvshowsIndex(State);
-		} else if (State.data.contentType == 'browseIndex') {
-			Browse.render.browseIndex(State);
-		} else if (State.data.contentType == 'playlistsIndex') {
-			Library.playlist.render.playlistsIndex(State);
-		} else if (State.data.contentType == 'browseTrending') {
-			Browse.sources.exfm.trending();
-			Utils.setMainSectionWidth();
-		} else if (State.data.contentType == 'browseReddit') {
-			Browse.sources.reddit();
-			Utils.setMainSectionWidth();
-		} else if (State.data.contentType == 'browseYoutube') {
-			Browse.sources.youtube.loadChannel(State);
-			Utils.setMainSectionWidth();
-		} else if (State.data.contentType == 'browseHypem') {
-			Browse.sources.hypem.ajax(State);
-			Utils.setMainSectionWidth();
-		} else if (State.data.contentType == 'browseRinse') {
-			Browse.sources.rinse.ajax(State);
-			Utils.setMainSectionWidth();
-		} else if (State.data.contentType == 'searchResults') {
-			Library.search.renderResults(State.data.meta.results);
-		} 
 
+		switch (State.data.contentType) {
+			case 'artistIndex':
+				Library.music.render.artistIndex(State);
+				break;
+			case 'releaseIndex':
+				Library.music.render.releaseIndex(State);
+				break;
+			case 'libraryIndex':
+				Library.music.init();
+				break;
+			case 'moviesIndex':
+				Library.movies.render.moviesIndex(State);
+				break;
+			case 'browseIndex':
+				Browse.render.browseIndex(State);
+				break;
+			case 'playlistsIndex':
+				Library.playlist.render.playlistsIndex(State);
+				break;
+			case 'browseTrending':
+				Browse.sources.exfm.trending();
+				Utils.setMainSectionWidth();
+				break;
+			case 'browseRinse':
+				Browse.sources.rinse.ajax(State);
+				Utils.setMainSectionWidth();
+				break;
+			case 'searchResults':
+				Library.search.renderResults(State.data.meta.results);
+				break;
+		}
 		
 	}
 

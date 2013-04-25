@@ -593,13 +593,14 @@ var Library = {
 					continue;
 				}
 				for (var x in arr) {
-					if (typeof arr[x] == 'function' || arr[x].length == 0) {
+					if (typeof arr[x] == 'function' || arr[x].length <= 0) {
 						continue;
 					}
 					console.log('prop', arr[x]);
 					var song = arr[x],
 						songid = song['_id'] || "exfm",
-						url = song['location'] || song['url'];
+						url = song['location'] || song['url'],
+						type = song['type'];
 					
 					if (songid == 'exfm') {
 						$('#results').append('<li><a href="'+song['url']+'" data-artistname="'+song['artist']+'" data-songtitle="'+song['title']+'" data-source="'+song['url']+'">'+song['artist']+' - '+song['title']+'</a></li>');
@@ -607,7 +608,6 @@ var Library = {
 						$('#results').append('<li><a data-song-id="'+songid+'" href="'+url+'"" class="playable">'+song['title']+'</a></li>');
 					}
 						
-					
 				}
 			} 			
 		}

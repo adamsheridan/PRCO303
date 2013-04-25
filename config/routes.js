@@ -71,47 +71,7 @@ module.exports = function (app, express) {
 	app.get('/library/*', library.index);
 	app.get('/browse/*', library.index);
 	app.get('/playlists/*', library.index);
-	app.get('/search/:query', library.search);
-
-	//app.get('/#/artist/:artistid', library.artist)
-	//app.get('/library/artist/:id/releases/', function(req, res){
-	//	res.render('library/index');
-	//});
-
-	//app.get('/library/release/:id', function(req, res){
-	//	res.render('library/index');
-	//});
-
-
-	//app.get('/library/artist/:artistid/releases/', function(req, res){
-	//	res.render('library/index');
-	//});
-
-	//app.get('/library/scan', library.scan);
-	//app.post('/library/scan', library.scanDir);
 	
-	/* app.get('/library/playlists', library.playlists);
-	app.get('/library/genres', library.genres);
-	app.get('/library/rescan', library.rescan);
-	app.post('/library/rescan', library.rescannow); */
-
-	//	Artist.find({ _id: id}, function(err, result){
-	//		console.log('param result: ', result[0]);
-	//		req.artist = result[0];
-	//		req.artist.name = result[0].name
-	//		next();
-	//	});
-	//});
-
-	/* app.get('/library/artist/:artistid', function(req, res, next){
-		console.log(req.artist);
-		res.render('library/artist', {
-			layout: false,
-			locals: {
-				title: 'Library Artist'
-			},
-			artist: req.artist.name
-		});
-	}); */
+	app.get('/search/:query', library.search);
 	
 }
