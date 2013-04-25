@@ -5,12 +5,12 @@ var mongoose = require('mongoose'),
 var ArtistSchema = new Schema({
     id: ObjectId,
     name: { type: String, required: true, unique: true },
-    musicbrainzId: {type: String, required: true }
+    musicbrainzId: {type: String, required: true, unique: true }
 });
 
-ArtistSchema.path('name').validate(function (name){
+/* ArtistSchema.path('name').validate(function (name){
 	return name.length > 0
-}, 'Artist Name cannot be blank');
+}, 'Artist Name cannot be blank'); */
 
 ArtistSchema.statics.findAll = function (callback) {
 	console.log('findAll method');

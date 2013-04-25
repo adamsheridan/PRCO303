@@ -47,27 +47,6 @@ exports.create = function(req, res){
 
 // show
 exports.show = function (req, res) {
-	/*
-	async.parallel({
-		artistsAll: function (callback){
-			Artists.find({}, function(err, result){
-				callback(null, result);
-			});
-		},
-		artistsOne: function (callback){
-			Artists.find({name: 'Adam'}, function(err, result){
-				callback(null, result);
-			});
-		}
-	}, function(err, results){
-		res.render('library/index', {
-			locals: {
-				title: 'Library Index'
-			},
-			artists: results.artistsAll
-		})
-	});
-	*/
 
 	Model.find({_id: req.params.id}, function(err, docs){
 		console.log(docs[0]);
@@ -146,8 +125,18 @@ exports.update = function (req, res) {
 
 // destroy
 exports.destroy = function (req, res) {
-	Model.find({_id: req.params.id}, function(err, docs){
-		console.log('deleting', docs);
+	Song.findById(req.params.id, function(err, doc){
+		doc.remove(function(err){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log('removed: ', req.params.id);
+				res.writeHead(200, 'OK', {
+					"Content-Type": "text/html"
+				});
+				res.end('Deleted Successfully');
+			}
+		});
 	});
 }
 

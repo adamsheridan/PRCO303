@@ -90,20 +90,26 @@ exports.update = function (req, res) {
 
 	Release.update({ _id: req.params.id }, { title: req.body.title }, function(err, doc){
 		if (err) { console.log(err) } else {
-			res.render('releases/edit', {
-				locals: {
-					title: 'Editing Release',
-					message: 'Edit Successful'
-				}
-			});
+			console.log('Updated', req.body.name);
+			res.writeHead(200);
+			res.end('Updated');
 		}
 	});
 }
 
-// destroy
 exports.destroy = function (req, res) {
-	Release.find({_id: req.params.id}, function(err, docs){
-		console.log('deleting', docs);
+	Release.findById(req.params.id, function(err, doc){
+		doc.remove(function(err){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log('removed: ', req.params.id);
+				res.writeHead(200, 'OK', {
+					"Content-Type": "text/html"
+				});
+				res.end('Deleted Successfully');
+			}
+		});
 	});
 }
 

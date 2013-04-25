@@ -24,28 +24,18 @@ exports.new = function(req, res) {
 }
 
 exports.create = function(req, res){
-	//var artist = new Artist(req.body)
-	//artist.name = req.name;
-	console.log('headers', req.headers['content-type']);
-	console.log('req', req.body.artist_name);
 
-	artist = new Artist();
-	artist.type = "artist";
-	artist.name = req.body.artist_name;
-
-	//console.log('artist will be:', artist);
+	var artist = new Artist();
+	artist.name = req.body.name;
+	artist.musicbrainzId = req.body.musicbrainzId;
 
 	artist.save(function(err){
 		if (err) {
 			console.log(err);
 		} else {
-			console.log('saved', artist);
-			res.render('artists/new', {
-				locals: {
-					title: 'New Artist',
-					message: 'Successfully created!'
-				}
-			});
+			console.log('Inserted', artist);
+			res.writeHead(200);
+			res.end('Inserted');
 		}
 	});
 }
@@ -84,23 +74,28 @@ exports.edit = function (req, res) {
 
 // update
 exports.update = function (req, res) {
-	console.log('update with: ', req.params.id, req.body.name);
-
 	Artist.update({ _id: req.params.id }, { name: req.body.name }, function(err, doc){
 		if (err) { console.log(err) } else {
-			res.render('artists/edit', {
-				locals: {
-					title: 'Editing Artist',
-					message: 'Edit Successful'
-				}
-			});
+			console.log('Updated', req.body.name);
+			res.writeHead(200);
+			res.end('Updated');
 		}
 	});
 }
 
 // destroy
 exports.destroy = function (req, res) {
-	Artist.find({_id: req.params.id}, function(err, artists){
-		console.log('deleting', artists);
+	Artist.findById(req.params.id, function(err, doc){
+		doc.remove(function(err){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log('removed: ', req.params.id);
+				res.writeHead(200, 'OK', {
+					"Content-Type": "text/html"
+				});
+				res.end('Deleted Successfully');
+			}
+		});
 	});
 }

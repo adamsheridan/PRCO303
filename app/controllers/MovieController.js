@@ -78,6 +78,16 @@ exports.create = function(req, res){
 	});
 }
 
+exports.show = function (req, res) {
+	Movie.find({_id: req.params.id}, function(err, docs){
+		res.writeHead(200, {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
+		});
+		res.end(JSON.stringify(docs));
+	});
+}
+
 exports.update = function(req, res){
 	console.log('update with: ', req.params.id, req.body.title);
 
@@ -92,15 +102,30 @@ exports.update = function(req, res){
 
 	Movie.update(obj, { title: req.body.title }, function(err, doc){
 		if (err) { console.log(err) } else {
-			res.render('releases/edit', {
-				locals: {
-					title: 'Editing Release',
-					message: 'Edit Successful'
-				}
-			});
+			console.log('Updated', req.body.name);
+			res.writeHead(200);
+			res.end('Updated');
 		}
 	});
 }
+
+// destroy
+exports.destroy = function (req, res) {
+	Movie.findById(req.params.id, function(err, doc){
+		doc.remove(function(err){
+			if (err) {
+				console.log(err);
+			} else {
+				console.log('removed: ', req.params.id);
+				res.writeHead(200, 'OK', {
+					"Content-Type": "text/html"
+				});
+				res.end('Deleted Successfully');
+			}
+		});
+	});
+}
+
 
 exports.play = function(req, res) {
 	var id = req.params.id;

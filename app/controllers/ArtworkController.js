@@ -1,5 +1,4 @@
 var mongoose = require('mongoose'),
-	TVShow = mongoose.model('TVShow'),
 	async = require('async');
 
 var request = require('request');

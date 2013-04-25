@@ -67,14 +67,12 @@ String.prototype.trim = function () {
     return this.replace(/^\s+/, '').replace(/\s+$/, '');
 };
 
-var libraryPath = '/Users/adam/Music/iTunes/iTunes Media/Music/';
-
 // configure application
 app.configure(function(){
 
     app.set('title', 'PRCO303');
     app.set('views', __dirname + '/app/views');
-    app.use(express.bodyParser());
+    app.use(require('connect').bodyParser());
     app.set('view engine', 'html');
     app.engine('html', require('hbs').__express);
 
