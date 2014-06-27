@@ -71,7 +71,7 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 3073,
+				"buffer_size": 3017,
 				"line_ending": "Windows"
 			}
 		},
@@ -79,7 +79,7 @@
 			"file": "public/js/library.js",
 			"settings":
 			{
-				"buffer_size": 14534,
+				"buffer_size": 15466,
 				"line_ending": "Windows"
 			}
 		},
@@ -87,23 +87,7 @@
 			"file": "public/js/main.js",
 			"settings":
 			{
-				"buffer_size": 3898,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/browse.js",
-			"settings":
-			{
-				"buffer_size": 5581,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/views/_main.html",
-			"settings":
-			{
-				"buffer_size": 5317,
+				"buffer_size": 3004,
 				"line_ending": "Windows"
 			}
 		},
@@ -111,23 +95,72 @@
 			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 4269,
+				"buffer_size": 2491,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/audio.js",
+			"file": "app/controllers/ReleaseController.js",
 			"settings":
 			{
-				"buffer_size": 8860,
+				"buffer_size": 2687,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/controllers/MovieController.js",
+			"file": "app/controllers/ArtistController.js",
 			"settings":
 			{
-				"buffer_size": 2587,
+				"buffer_size": 2067,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/SongController.js",
+			"settings":
+			{
+				"buffer_size": 3704,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "// library controller\n// ./app/controllers/library.js\n\nvar hbs = require('hbs'),a\n	fs = require('fs'),\n	util = require('util'),\n	libraryPath = 'D:/Music/',\n	mongoose = require('mongoose'),\n	ObjectId = require('mongoose').Types.ObjectId,\n	async = require('async'),\n	Artist = mongoose.model('Artist'),\n	Release = mongoose.model('Release'),\n	Song = mongoose.model('Song'),\n	request = require('request'),\n	cheerio = require('cheerio');\n\nexports.index = function (req, res) {\n	console.log(__dirname);\n	res.render('../../public/views/_main.html');\n}\n\nexports.search = function (req, res) {\n	var query = req.params.query,\n		media = req.query.media;\n	console.log('searching for ', query, media);\n\n	if (media == 'Music') {\n		var reg = new RegExp(query, \"gi\"),\n			results = {};\n\n		// async flow control\n		async.series([\n			function searchArtists(callback) {\n				Artist.find({name: { $regex: reg}}, function(err, result){\n					if (err) { console.log('err', err); callback(\"searchArtist error\"); }\n					callback(null, result)\n				});\n			},\n			function searchReleases(callback) {\n				Release.find({title: { $regex: reg}}, function(err, result){\n					if (err) { console.log('err', err); callback(\"searchRelease error\"); }\n					//console.log('Release Lookup: ', result);\n					callback(null, result)\n				});\n			},\n			function searchSongs(callback) {\n				//addRelease(obj);\n				Song.find({title: { $regex: reg}}, function(err, result){\n					if (err) { console.log('err', err); callback(\"searchRelease error\"); }\n					//console.log('Song Lookup: ', result);\n					callback(null, result)\n				});\n			},\n			function searchExFM(callback) {\n				request(\"http://ex.fm/api/v3/song/search/\"+query, function(err, response, body){\n					var data = JSON.parse(body),\n						songs = data[\"songs\"],\n						result = {};\n\n					for (var key in songs) {\n						var obj = songs[key];\n						//check for soundcloud url - shambala does not support\n						if (/(api.soundcloud.com)/gi.test(obj.url)) {\n							console.log('url contains soundcloud, removed:', obj.url);\n							continue;\n						}\n						result[key] = {\n							artist: obj.artist,\n							title: obj.title,\n							tags: obj.tags,\n							image: obj.image,\n							url: obj.url,\n							type: 'exfm'\n						}\n					}\n					callback(null, result)\n				});\n			}\n		], function(err, result){\n			if (err) {\n				console.log(err);\n			} else {\n				console.log(result.searchArtists);\n				res.writeHead(200, {\n					\"Content-Type\": \"application/json\",\n					\"Access-Control-Allow-Origin\": \"*\"\n				});\n				res.end(JSON.stringify(result, undefined, 2));\n			}\n		});\n	} else {\n		console.log('wrong type');\n	}\n}",
+			"file": "app/controllers/LibraryController.js",
+			"file_size": 2692,
+			"file_write_time": 130113418026744569,
+			"settings":
+			{
+				"buffer_size": 2600,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/ArtistModel.js",
+			"settings":
+			{
+				"buffer_size": 631,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "var mongoose = require('mongoose'),\n    Schema = mongoose.Schema,\n    ObjectId = Schema.ObjectId;\n\nvar ReleaseSchema = new Schema({\n    id: ObjectId,\n    artistid: { type: ObjectId, required: true },\n    type: { type: String, required: true, default: 'release'},\n    title: { type: String, required: true },\n    year: { type: String },\n    id3image: { type: String }rior\n});\n\n/* ReleaseSchema.path('title').validate(function (name){\n	return title.length > 0\n}, 'Release Title cannot be blank');\n*/\n\nmongoose.model('Release', ReleaseSchema);",
+			"file": "app/models/ReleaseModel.js",
+			"file_size": 554,
+			"file_write_time": 130053552778925484,
+			"settings":
+			{
+				"buffer_size": 540,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "// vlc.js\n\nvar fs = require('fs'),\n	exec = require('child_process').exec;\n/*\n	console.log('VLC.js');\n\n	fs.writeFile('hello.txt', 'Hello World', function(err){\n		if (err) { console.log('error: ', err) } else {\n			console.log('done');\n		}\n	}); */\n\nmodule.exports = function (file) {\n\n	console.log('vlc.js', file);\n\n	var cmd = '\"C:/Program Files (x86)/VideoLAN/VLC/vlc.exe\" --fullscreen '+file;\n\n	fs.writeFile('./config/vlc.bat', cmd, function(err){\n		if (err) { console.log('error: ', err) } else {\n			console.log('done');\n			exec('vlc.bat');\n		}\n	})\n\n\n}",
+			"file": "config/vlc.js",
+			"file_size": 580,
+			"file_write_time": 130056791937396681,
+			"settings":
+			{
+				"buffer_size": 552,
 				"line_ending": "Windows"
 			}
 		},
@@ -140,58 +173,67 @@
 			}
 		},
 		{
-			"file": "README.md",
+			"file": "app/controllers/MovieController.js",
 			"settings":
 			{
-				"buffer_size": 1045,
+				"buffer_size": 2849,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/640.scss",
+			"contents": "var Browse = {\n\n	//exfm trending\n	//subreddit\n	//youtube rss\n	\n	init: function() {\n		Browse.events();\n	},\n\n	events: function(){\n		$('#sources .source .exfm-trending').click(function(e){\n			e.preventDefault();\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseTrending',\n			}, text, href);\n			\n		});\n\n		$('#sources .source .youtube').click(function(e){\n			e.preventDefault();\n			console.log('youtube');\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseYoutube',\n			}, text, href);\n			\n		});\n\n		$('#sources .source .hypem').click(function(e){\n			e.preventDefault();\n			console.log('hypem');\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseHypem',\n			}, text, href);\n			\n		});\n\n		$('#sources .source .rinse').click(function(e){\n			e.preventDefault();\n			console.log('rinse');\n			var href = $(this).attr('href'),\n				text = $(this).text(),\n				History = window.History;\n				\n			History.pushState({ \n				navigate: true, \n				source: '#sidebar', \n				target: '#main-section', \n				contentType: 'browseRinse',\n			}, text, href);\n			\n		});\n		\n	},\n\n	render: {\n		browseIndex: function(State){\n			$.ajax({\n				url: '/views/browse.html',\n				type: 'GET',\n				success: function(data){\n					$('#page').html(data);\n					Browse.init();\n					Browse.sources.exfm.trending();\n					Utils.setMainSectionWidth();\n				},\n				error: function(error){\n					console.log('error: ', error);\n				}\n			});\n		}\n	},\n\n	sources: {\n		exfm: {\n			events: function() {\n				$('#trending .song a').click(function(e){\n					e.preventDefault();\n\n					var $this = $(this);\n\n					console.log('fuck');\n\n					var obj = {}\n					obj.location = $this.attr('href'),\n					obj.api = 'exfm',\n					obj.songid = $this.attr('data-songid'),\n					obj.queuePosition = Audio.queue.queue.length,\n					obj.artistname = $this.attr('data-artistname'),\n					obj.songtitle = $this.attr('data-songtitle'),\n					obj.releasetitle = $this.attr('data-releasetitle');\n					obj.source = $this.attr('data-source');\n\n					Audio.queue.queue.push(obj);\n					Audio.queue.events.updated();\n					//console.log('added to queue', Audio.queue.queue);\n				});\n			},\n\n			trending: function(){\n				$.ajax({\n					url: 'http://ex.fm/api/v3/trending',\n					type: 'GET',\n					success: function(data){\n						console.log('exfm trending ', data);\n						var data = data.songs\n\n						$('#main-section').append('<ul id=\"trending\" class=\"clearfix\"></ul>');\n\n						$('#trending').html('');\n\n						for (var i = 0; i < 20; i++) {\n							console.log(data[i]);\n							$('#trending').append('<li class=\"song\"><a class=\"fadeLoad\" href=\"'+data[i].url+'\" data-artistname=\"'+data[i].artist+'\" data-songtitle=\"'+data[i].title+'\" data-releasetitle=\"'+data[i].album+'\" data-source=\"'+data[i].sources[0]+'\" style=\"background-image: url('+data[i].image.large+')\"></a></li>');\n						}\n\n						Library.music.fx.fadeLoad();\n						Browse.sources.exfm.events();\n					},\n					error: function(error){\n						console.log('error: ', error);\n					}\n				});\n			}\n		},\n		youtube: {\n			loadChannel: function(State){\n				//console.log(State);\n				$.ajax({\n					url: '/scrape/youtube/'+State.title,\n					type: 'GET',\n					success: function(data){\n						$('#main-section').html(data);\n						\n					},\n					error: function(error){\n						console.log('error: ', error);\n					}\n				});\n			}\n			//\n		},\n		hypem: {\n			ajax: function(State){\n				$.ajax({\n					url: 'http://hypem.com/playlist/popular/3day/json/1/data.js',\n					type: 'GET',\n					success: function(data){\n						console.log('hypem trending', data);\n						$('#page').html(data);\n						\n					},\n					error: function(error){\n						console.log('error: ', error);\n						$('#page').html(data);\n					}\n				});\n			}\n		},\n		rinse: {\n			events: function() {\n				$('#trending .song a').click(function(e){\n					e.preventDefault();\n\n					var $this = $(this);\n\n					var obj = {}\n					obj.location = $this.attr('href'),\n					obj.api = 'rinsefm',\n					//obj.songid = $this.attr('data-songid'),\n					obj.queuePosition = Audio.queue.queue.length,\n					obj.artistname = $this.attr('data-name'),\n					obj.songtitle = $this.attr('data-date'),\n					obj.releasetitle = 'http://rinse.fm';\n					//obj.source = $this.attr('data-source');\n\n					console.log('wut', obj);\n\n					Audio.queue.queue.push(obj);\n					Audio.queue.events.updated();\n					//console.log('added to queue', Audio.queue.queue);\n				});\n			},\n			ajax: function(Stat){\n				$.ajax({\n					url: '/scrape/rinsefm/podcasts',\n					type: 'GET',\n					success: function(data){\n						console.log('hypem trending', data);\n						$('#main-section').append('<ul id=\"trending\" class=\"clearfix\"></ul>');\n						$('#trending').html('');\n						for (var i = 0; i < data.length; i++) {\n							//console.log(data[i]);\n							$('#trending').append('<li class=\"song\"><a class=\"fadeLoad\" href=\"'+data[i].url+'\" data-name=\"'+data[i].name+'\" data-date=\"'+data[i].date+'\" data-time=\"'+data[i].time+'\" style=></a></li>');\n						}\n						Browse.sources.rinse.events();\n					},\n					error: function(error){\n						console.log('error: ', error);\n					}\n				});\n			}\n		}\n	}\n}\n\nBrowse.init();",
+			"file": "public/js/browse.js",
+			"file_size": 5808,
+			"file_write_time": 130110489852311634,
 			"settings":
 			{
-				"buffer_size": 3398,
+				"buffer_size": 5539,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/main.scss",
+			"file": "public/js/audio.js",
 			"settings":
 			{
-				"buffer_size": 8837,
+				"buffer_size": 8880,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/controllers/ArtistController.js",
-			"settings":
-			{
-				"buffer_size": 2221,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/ArtworkController.js",
-			"settings":
-			{
-				"buffer_size": 923,
-				"line_ending": "Windows"
-			}
-		},
-		{
+			"contents": "var Utils = {\n\n	init: function () {\n		// Array Remove - By John Resig (MIT Licensed)\n		Array.prototype.remove = function(from, to) {\n		  var rest = this.slice((to || from) + 1 || this.length);\n		  this.length = from < 0 ? this.length + from : from;\n		  return this.push.apply(this, rest);\n		};\n	},\n\n	setLocalStorage: function (key, val) {\n		if (Modernizr.localstorage) {\n			localStorage.setItem(key, val);\n		} else {\n			console.log('Local Storage not supported!');\n		}\n	},\n\n	getLocalStorage: function (key) {\n		if (Modernizr.localstorage) {\n			var val = localStorage.getItem(key);\n			return val;\n		} else {\n			console.log('Local Storage not supported!');\n		}\n	},\n\n	formatSecondsAsTime: function (secs, format) {\n		var hr  = Math.floor(secs / 3600);\n		var min = Math.floor((secs - (hr * 3600))/60);\n		var sec = Math.floor(secs - (hr * 3600) -  (min * 60));\n\n		if (min < 10){ \n			min = \"0\" + min; \n		}\n\n		if (sec < 10){ \n			sec  = \"0\" + sec;\n		}\n		\n		return min + ':' + sec;\n	},\n\n	setMainSectionWidth: function () {\n		var mainWidth = window.innerWidth - 300;\n        $('#main-section').css('width', mainWidth);\n	},\n\n	dialog: {\n		elements: {\n			overlay: '<div id=\"overlay\"></div>',\n			modal: '<div id=\"modal\"><h1 id=\"message\"></h1><form id=\"data\"></form><button type=\"submit\" id=\"submit-modal\">Submit</button></div>'\n		},\n\n		custom: function(message, values, callback){\n			//console.log(values);\n			$('body').prepend(Utils.dialog.elements.overlay);\n			$('#overlay').html(Utils.dialog.elements.modal);\n			$('#message').html(message);\n			\n			for (var key in values) {\n				console.log(values[key], key);\n\n				//create dom element from object literal values[key]\n				var element = $('<'+key+'>', values[key]);\n				$('#data').append(element);\n			}\n\n			$('#submit-modal').click(function(e){\n				e.preventDefault();\n				console.log($('#data').serialize(), callback);\n			});\n		},\n\n		savePlaylist: function (queue){\n			$('body').prepend(Utils.dialog.elements.overlay);\n			$('#overlay').html(Utils.dialog.elements.modal);\n			$('#message').html('Playlist Name?');\n			$('#data').append('<input type=\"text\" name=\"name\" id=\"name\" />');\n			$('#submit-modal').click(function(e){\n				e.preventDefault();\n				queue.name = $('#name').val();\n				console.log(queue);\n				Library.playlist.save(queue);\n				$('#overlay').remove();\n			});\n		},\n		\n	},\n\n	notifications: {\n\n		requestPermission: function() {\n\n			if (window.webkitNotifications.checkPermission() == 0) { \n				Utils.notifications.create('Shambala', 'Notifications Enabled');\n			} else {\n			    window.webkitNotifications.requestPermission();\n			}\n\n		},\n\n		create: function(title, message){\n			if (window.webkitNotifications.checkPermission() == 0) {\n				//permission is enabled\n			    notif = window.webkitNotifications.createNotification(\n			      'icon.png', title, message);\n\n			    notif.ondisplay = function() {\n			    	setTimeout(function(){\n			    		notif.close();\n			    	}, 3000);\n			    };\n\n			    notif.show();\n			} else {\n				window.webkitNotifications.requestPermission();\n			}\n		}\n	},\n\n	objLiteralConvert: function(lit) {\n		var obj = {};\n		for (var key in lit) {\n			if (lit.hasOwnProperty(key)) {\n				var obj = lit[key]\n				return obj;\n				/* for (var prop in obj) {\n					if (obj.hasOwnProperty(prop)) {\n						console.log('obj[prop]', obj[prop]);\n					}\n				} */\n			}\n		}\n	}\n}\n\n\n$(function(){\n	Utils.init();\n});",
 			"file": "public/js/utils.js",
+			"file_size": 3498,
+			"file_write_time": 130110507413686087,
 			"settings":
 			{
-				"buffer_size": 3358,
+				"buffer_size": 3359,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/views/music.html",
+			"file": "public/views/_main.html",
 			"settings":
 			{
-				"buffer_size": 850,
+				"buffer_size": 4312,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/MovieModel.js",
+			"settings":
+			{
+				"buffer_size": 471,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"file": "config/mongo.bat",
+			"file_size": 51,
+			"file_write_time": 130061237714255672,
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
@@ -220,66 +262,90 @@
 	},
 	"file_history":
 	[
-		"/C/xampp/htdocs/PRCO303/app/views/releases/delete.html",
+		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
+		"/C/xampp/htdocs/PRCO303/src/sass/mixins.scss",
+		"/C/xampp/htdocs/PRCO303/src/sass/style.scss",
+		"/C/xampp/htdocs/PRCO303/public/index.html",
+		"/C/xampp/htdocs/PRCO303/config/utils.js",
+		"/C/xampp/htdocs/PRCO303/app/models/PlaylistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/PhantomController.js",
+		"/C/xampp/htdocs/PRCO303/config/vlc.bat",
+		"/C/xampp/htdocs/PRCO303/config/shell.js",
+		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
+		"/C/xampp/htdocs/PRCO303/PRCO303.sublime-project",
+		"/C/xampp/htdocs/PRCO303/src/build.bat",
+		"/C/xampp/htdocs/PRCO303/src/build.sh",
+		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
+		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
+		"/C/xampp/htdocs/PRCO303/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/socket.io/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/validator/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/mongoose/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/request/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/mongoose/README.md",
+		"/C/xampp/htdocs/PRCO303/node_modules/connect/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/hbs/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/file/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/cheerio/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/async/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/express-params/package.json",
+		"/C/xampp/htdocs/PRCO303/node_modules/express-params/Readme.md",
+		"/C/xampp/htdocs/PRCO303/config/registerPartials.js",
+		"/C/xampp/htdocs/PRCO303/config/b.bat",
+		"/C/xampp/htdocs/PRCO303/README.md",
+		"/C/xampp/htdocs/PRCO303/PRCO303.sublime-workspace",
+		"/C/xampp/htdocs/PRCO303/app/controllers/MovieController.js",
+		"/C/xampp/htdocs/PRCO303/prototypes/netflix/index.html",
+		"/C/xampp/htdocs/PRCO303/prototypes/id3/id3.js",
+		"/C/xampp/htdocs/PRCO303/datamodels",
+		"/C/xampp/htdocs/PRCO303/index.html",
+		"/C/xampp/htdocs/PRCO303/hello.txt",
+		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
 		"/C/xampp/htdocs/PRCO303/app/models/ArtistModel.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtworkController.js",
+		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
+		"/C/xampp/htdocs/PRCO303/public/js/browse.js",
+		"/C/xampp/htdocs/PRCO303/public/views/music.html",
+		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
+		"/C/xampp/htdocs/PRCO303/public/css/main.css",
+		"/C/xampp/htdocs/PRCO303/config/batch.js",
+		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
+		"/C/xampp/htdocs/PRCO303/public/js/fx.js",
+		"/C/xampp/htdocs/PRCO303/app/views/releases/delete.html",
 		"/C/xampp/htdocs/PRCO303/app/controllers/LibraryController.js",
 		"/C/xampp/htdocs/PRCO303/server copy.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/ReleaseController.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController.js",
-		"/C/xampp/htdocs/PRCO303/config/utils.js",
 		"/C/xampp/htdocs/PRCO303/src/sass/boilerplate.scss",
 		"/C/xampp/htdocs/PRCO303/src/sass/768.scss",
-		"/C/xampp/htdocs/PRCO303/README.md",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ArtistController.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/MovieController.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/TVShowController.js",
-		"/C/xampp/htdocs/PRCO303/app/controllers/SongController.js",
 		"/C/xampp/htdocs/PRCO303/public/views/browse.html",
-		"/C/xampp/htdocs/PRCO303/app/controllers/ArtworkController.js",
-		"/C/xampp/htdocs/PRCO303/public/views/music.html",
-		"/C/xampp/htdocs/PRCO303/app/controllers/PhantomController.js",
-		"/C/xampp/htdocs/PRCO303/public/js/audio.js",
-		"/C/xampp/htdocs/PRCO303/public/js/utils.js",
 		"/C/xampp/htdocs/PRCO303/app/controllers/PlaylistController.js",
-		"/C/xampp/htdocs/PRCO303/public/views/_main.html",
-		"/C/xampp/htdocs/PRCO303/public/js/browse.js",
 		"/C/xampp/htdocs/PRCO303/public/js/main.js",
-		"/C/xampp/htdocs/PRCO303/src/sass/640.scss",
 		"/C/xampp/htdocs/PRCO303/app/models/MovieModel.js",
-		"/C/xampp/htdocs/PRCO303/package.json",
 		"/C/Users/Adam/Downloads/webservice.php",
 		"/C/xampp/htdocs/PRCO303/app/models/SongModel.js",
 		"/C/xampp/htdocs/Meat/index.html",
-		"/C/xampp/htdocs/PRCO303/src/sass/main.scss",
 		"/C/xampp/htdocs/Meat/js/main.js",
 		"/C/xampp/htdocs/Meat/server.js",
 		"/C/xampp/htdocs/PRCO303/server.js",
-		"/C/xampp/htdocs/PRCO303/public/mylibrary.html",
 		"/C/xampp/htdocs/PRCO303/apiroutes",
-		"/C/xampp/htdocs/PRCO303/src/sass/style.scss",
 		"/C/xampp/htdocs/PRCO303/public/js/plugins.js",
 		"/C/Users/Adam/Desktop/test.html",
 		"/C/Users/Adam/Dropbox/AINT304 Submission/Info.txt",
-		"/C/xampp/htdocs/PRCO303/public/css/main.css",
 		"/C/xampp/htdocs/PRCO303/app/views/movies/new.html",
 		"/C/xampp/htdocs/deadlines/.git/config",
 		"/C/xampp/htdocs/PRCO303/config/routes.js",
-		"/C/xampp/htdocs/PRCO303/config/batch.js",
 		"/C/xampp/htdocs/PRCO303/config/mongo.bat",
 		"/C/xampp/htdocs/PRCO303/npm-debug.log",
 		"/C/xampp/htdocs/deadlines-master/index.html",
 		"/C/xampp/htdocs/deadlines-master/css/main.css",
 		"/C/xampp/htdocs/deadlines-master/js/main.js",
 		"/C/xampp/htdocs/deadlines-master/js/deadlines.js",
-		"/C/xampp/htdocs/PRCO303/config/shell.js",
-		"/C/xampp/htdocs/PRCO303/config/vlc.bat",
 		"/C/xampp/htdocs/PRCO303/config/vlc.js",
-		"/C/xampp/htdocs/PRCO303/config/b.bat",
 		"/C/xampp/htdocs/PRCO303/prototypes/soundcloud/index.html",
 		"/C/xampp/htdocs/PRCO303/public/views/playlists.html",
-		"/C/xampp/htdocs/PRCO303/app/models/PlaylistModel.js",
 		"/C/xampp/htdocs/PRCO303/public/css/style.css",
-		"/C/xampp/htdocs/PRCO303/index.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_menu.html",
 		"/C/Users/Adam/Desktop/demo/index.html",
 		"/C/xampp/htdocs/PRCO303/public/views/library.html",
@@ -289,18 +355,14 @@
 		"/C/xampp/htdocs/PRCO303/app/views/library/artist.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_footer.html",
 		"/C/xampp/htdocs/PRCO303/app/views/partials/_sidebarArtists.html",
-		"/C/xampp/htdocs/PRCO303/public/js/fx.js",
 		"/C/xampp/htdocs/PRCO303/app/views/tvshows/new.html",
 		"/C/xampp/htdocs/PRCO303/public/js/library.js",
 		"/C/xampp/htdocs/PRCO303/public/tvshows.html",
 		"/C/xampp/htdocs/PRCO303/public/views/tvshows.html",
 		"/C/xampp/htdocs/PRCO303/public/js/vendor/handlebars.js",
-		"/C/xampp/htdocs/PRCO303/public/index.html",
 		"/C/xampp/htdocs/PRCO303/app/models/TVShowModel.js",
 		"/C/Windows/System32/drivers/etc/hosts",
-		"/C/xampp/htdocs/PRCO303/hello.txt",
 		"/C/xampp/htdocs/PRCO303/app/models/ReleaseModel.js",
-		"/C/xampp/htdocs/PRCO303/prototypes/id3/id3.js",
 		"/C/xampp/htdocs/PRCO303/app/views/library/scan.html",
 		"/C/xampp/htdocs/PRCO303/prototypes/upnp/upnp.js",
 		"/C/xampp/htdocs/PRCO303/public/fonts/Merienda/stylesheet.css",
@@ -310,7 +372,6 @@
 		"/C/xampp/htdocs/PRCO303/app/views/releases/new.html",
 		"/C/xampp/htdocs/PRCO303/app/views/releases/edit.html",
 		"/C/Users/Adam/Desktop/demo/js/app.js",
-		"/C/xampp/htdocs/PRCO303/config/registerPartials.js",
 		"/C/xampp/htdocs/PRCO303/app/views/artists/new.html",
 		"/C/xampp/htdocs/PRCO303/node_modules/sndlsadnsad_node-vlc/package.json",
 		"/C/xampp/htdocs/PRCO303/public/js/vendor/historyjs/History.md",
@@ -319,7 +380,6 @@
 		"/C/xampp/htdocs/PRCO303/app/views/songs/delete.html",
 		"/C/xampp/htdocs/PRCO303/app/views/artists/delete.html",
 		"/C/xampp/htdocs/PRCO303/app/views/newArtist.html",
-		"/C/xampp/htdocs/PRCO303/datamodels",
 		"/C/xampp/htdocs/PRCO303/app/controllers/BrowseController",
 		"/C/xampp/htdocs/PRCO303/app/views/library/rescan.html",
 		"/C/xampp/htdocs/PRCO303/app/views/browse/index.html",
@@ -329,29 +389,11 @@
 		"/C/xampp/htdocs/PRCO303/app/views/library/genres.html",
 		"/C/Users/Adam/AppData/Local/Temp/Rar$DI22.008/id3.js",
 		"/C/xampp/htdocs/PRCO303/app/views/_header.html",
-		"/C/xampp/htdocs/PRCO303/app/views/test.html",
-		"/C/xampp/htdocs/PRCO303/config/config.js",
-		"/C/xampp/htdocs/PRCO303/node_modules/mongojs/README.md",
-		"/C/xampp/htdocs/PRCO303/node_modules/express/Readme.md",
-		"/C/xampp/htdocs/PRCO303/models/ArtistModel.js",
-		"/C/Users/Adam/AppData/Local/Temp/Rar$DI82.800/MemberModel.js",
-		"/C/Program Files/nodejs/nodejsvars.bat",
-		"/C/xampp/htdocs/node-mvc/config/routes.js",
-		"/C/xampp/htdocs/AINT304/public/search.html",
-		"/C/xampp/htdocs/PRCO303/public/.htaccess",
-		"/C/xampp/htdocs/PRCO303/public/js/vendor/quantize.js",
-		"/C/xampp/htdocs/PRCO303/public/js/vendor/colorThief.js",
-		"/C/Users/Adam/AppData/Local/Temp/Rar$DI36.248/stylesheet.css",
-		"/C/xampp/htdocs/PRCO303/src/build.sh",
-		"/C/Users/Adam/Downloads/color-thief-master/sass/app.sass",
-		"/C/Users/Adam/Downloads/color-thief-master/README.markdown",
-		"/C/xampp/htdocs/PRCO303/src/build.bat",
-		"/C/xampp/htdocs/PRCO303/src/sass/640",
-		"/C/xampp/htdocs/PRCO303/public/css/normalize.css"
+		"/C/xampp/htdocs/PRCO303/app/views/test.html"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -368,6 +410,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"movie",
+			"source",
+			"queue",
+			"wrench",
+			"shit",
+			"Audio",
+			"fuck",
+			"play",
+			"Audio.player.play();",
+			"exfm.events",
+			"tRe",
+			"trending",
+			"exfm",
+			"playable",
+			"switch",
+			"queue",
+			"logo",
+			"search",
+			"song",
 			"#r",
 			"#recently",
 			"rece",
@@ -476,12 +537,7 @@
 			"dubsilo",
 			"feature-list",
 			"hot pi",
-			"font-family",
-			"phone-number",
-			"h3",
-			"h4",
-			"a4",
-			"ul"
+			"font-family"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -502,7 +558,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -510,15 +566,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 3073,
+						"buffer_size": 3017,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1166,
-								1166
+								293,
+								293
 							]
 						],
 						"settings":
@@ -528,7 +584,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 14.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -538,15 +594,15 @@
 					"file": "public/js/library.js",
 					"settings":
 					{
-						"buffer_size": 14534,
+						"buffer_size": 15466,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14245,
-								14245
+								13342,
+								13342
 							]
 						],
 						"settings":
@@ -554,8 +610,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 22.0,
-						"translation.y": 7534.0,
+						"translation.x": 0.0,
+						"translation.y": 7346.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -565,15 +621,15 @@
 					"file": "public/js/main.js",
 					"settings":
 					{
-						"buffer_size": 3898,
+						"buffer_size": 3004,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1357,
-								1357
+								102,
+								102
 							]
 						],
 						"settings":
@@ -589,18 +645,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "public/js/browse.js",
+					"file": "config/routes.js",
 					"settings":
 					{
-						"buffer_size": 5581,
+						"buffer_size": 2491,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								828,
-								828
+								2033,
+								2032
 							]
 						],
 						"settings":
@@ -609,53 +665,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 118.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "public/views/_main.html",
+					"file": "app/controllers/ReleaseController.js",
 					"settings":
 					{
-						"buffer_size": 5317,
+						"buffer_size": 2687,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4579,
-								4579
+								2084,
+								2084
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 482.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "config/routes.js",
+					"file": "app/controllers/ArtistController.js",
 					"settings":
 					{
-						"buffer_size": 4269,
+						"buffer_size": 2067,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2705,
-								2705
+								1774,
+								1774
 							]
 						],
 						"settings":
@@ -664,25 +719,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 716.0,
+						"translation.y": 42.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "public/js/audio.js",
+					"file": "app/controllers/SongController.js",
 					"settings":
 					{
-						"buffer_size": 8860,
+						"buffer_size": 3704,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2919,
-								2919
+								3330,
+								3330
 							]
 						],
 						"settings":
@@ -691,25 +746,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1691.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "app/controllers/MovieController.js",
+					"file": "app/controllers/LibraryController.js",
 					"settings":
 					{
-						"buffer_size": 2587,
+						"buffer_size": 2600,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								583,
+								583
 							]
 						],
 						"settings":
@@ -718,25 +773,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1143.0,
+						"translation.y": 27.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "config/batch.js",
+					"file": "app/models/ArtistModel.js",
 					"settings":
 					{
-						"buffer_size": 269,
+						"buffer_size": 631,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								269,
-								269
+								330,
+								330
 							]
 						],
 						"settings":
@@ -751,23 +806,23 @@
 				},
 				{
 					"buffer": 9,
-					"file": "README.md",
+					"file": "app/models/ReleaseModel.js",
 					"settings":
 					{
-						"buffer_size": 1045,
+						"buffer_size": 540,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								161,
-								161
+								335,
+								335
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -777,52 +832,50 @@
 				},
 				{
 					"buffer": 10,
-					"file": "src/sass/640.scss",
+					"file": "config/vlc.js",
 					"settings":
 					{
-						"buffer_size": 3398,
+						"buffer_size": 552,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3118,
-								3118
+								548,
+								548
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 625.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 11,
-					"file": "src/sass/main.scss",
+					"file": "config/batch.js",
 					"settings":
 					{
-						"buffer_size": 8837,
+						"buffer_size": 269,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8597,
-								8597
+								269,
+								1
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SASS/Syntaxes/SASS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -832,18 +885,18 @@
 				},
 				{
 					"buffer": 12,
-					"file": "app/controllers/ArtistController.js",
+					"file": "app/controllers/MovieController.js",
 					"settings":
 					{
-						"buffer_size": 2221,
+						"buffer_size": 2849,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1699,
-								1699
+								1649,
+								1649
 							]
 						],
 						"settings":
@@ -852,25 +905,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1060.0,
+						"translation.y": 232.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 13,
-					"file": "app/controllers/ArtworkController.js",
+					"file": "public/js/browse.js",
 					"settings":
 					{
-						"buffer_size": 923,
+						"buffer_size": 5539,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								923,
-								923
+								281,
+								281
 							]
 						],
 						"settings":
@@ -879,25 +932,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 840.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 14,
-					"file": "public/js/utils.js",
+					"file": "public/js/audio.js",
 					"settings":
 					{
-						"buffer_size": 3358,
+						"buffer_size": 8880,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1319,
-								1318
+								7225,
+								7236
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 144.0,
+						"translation.y": 3477.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "public/js/utils.js",
+					"settings":
+					{
+						"buffer_size": 3359,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2304,
+								2276
 							]
 						],
 						"settings":
@@ -906,25 +986,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1025.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "public/views/music.html",
+					"buffer": 16,
+					"file": "public/views/_main.html",
 					"settings":
 					{
-						"buffer_size": 850,
+						"buffer_size": 4312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								374,
-								374
+								1051,
+								1051
 							]
 						],
 						"settings":
@@ -932,6 +1012,58 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/models/MovieModel.js",
+					"settings":
+					{
+						"buffer_size": 471,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								471,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "config/mongo.bat",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Batch File/Batch File.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1002,6 +1134,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 216.0,
+	"side_bar_width": 221.0,
 	"status_bar_visible": true
 }
